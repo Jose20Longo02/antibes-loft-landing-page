@@ -1,0 +1,39 @@
+# Render Blueprint — https://render.com/docs/blueprint-spec
+# Connect repo: github.com/Jose20Longo02/antibes-loft-landing-page
+
+services:
+  - type: web
+    name: antibes-loft-landing
+    runtime: node
+    region: frankfurt
+    plan: free
+    branch: main
+    buildCommand: npm ci
+    startCommand: npm start
+    healthCheckPath: /en
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: TRUST_PROXY
+        value: '1'
+      - key: PRIVACY_POLICY_URL
+        value: https://www.finlaybrewer.com/privacy-policy
+      # SITE_URL — optional on Render (RENDER_EXTERNAL_URL is set automatically).
+      # Set SITE_URL when you add a custom domain, e.g. https://villa.finlaybrewer.com
+      - key: GOOGLE_SHEETS_WEBHOOK_URL
+        sync: false
+      - key: SMTP_HOST
+        value: smtp.gmail.com
+      - key: SMTP_PORT
+        value: '587'
+      - key: SMTP_SECURE
+        value: 'false'
+      - key: SMTP_USER
+        sync: false
+      - key: SMTP_PASS
+        sync: false
+      - key: EMAIL_FROM
+        sync: false
+      - key: NOTIFICATION_EMAIL
+        sync: false

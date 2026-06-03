@@ -39,7 +39,13 @@ The server listens on `PORT` and serves static files from `public/`.
 
 ## Platform notes
 
-### Railway / Render / Fly.io
+### Render
+
+**Full walkthrough:** [RENDER.md](./RENDER.md) — includes Blueprint (`render.yaml`) and env var checklist.
+
+On Render, `RENDER_EXTERNAL_URL` is used as `SITE_URL` if you do not set one manually.
+
+### Railway / Fly.io
 
 - Build command: `npm ci`
 - Start command: `npm start`

@@ -32,6 +32,8 @@ Copy: `locales/en.js`, `locales/fr.js`, `locales/de.js`
 
 See **[docs/DEPLOYMENT.md](docs/DEPLOYMENT.md)** for hosting, env vars, and checklist.
 
+**Deploy on Render:** **[docs/RENDER.md](docs/RENDER.md)** (uses `render.yaml` in the repo).
+
 ```bash
 npm run check:env   # validate configuration
 npm start           # NODE_ENV=production recommended

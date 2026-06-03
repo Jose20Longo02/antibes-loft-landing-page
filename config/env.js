@@ -5,7 +5,11 @@ function isProduction() {
 }
 
 function getSiteUrl() {
-  const raw = (process.env.SITE_URL || '').trim();
+  const raw = (
+    process.env.SITE_URL ||
+    process.env.RENDER_EXTERNAL_URL ||
+    ''
+  ).trim();
   if (!raw) return '';
   return raw.replace(/\/$/, '');
 }

@@ -16,6 +16,7 @@ validateConfig();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+const HOST = process.env.HOST || '0.0.0.0';
 
 app.disable('x-powered-by');
 app.set('trust proxy', Number(process.env.TRUST_PROXY ?? 1));
@@ -44,7 +45,7 @@ app.use('/api/inquiries', inquiryRoutes);
 app.use(notFound);
 app.use(errorHandler);
 
-app.listen(PORT, () => {
+app.listen(PORT, HOST, () => {
   const site = getSiteUrl() || `http://localhost:${PORT}`;
   console.log(`Antibes Luxury Loft — ${site} (${process.env.NODE_ENV || 'development'})`);
 });
