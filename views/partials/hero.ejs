@@ -12,12 +12,24 @@
     <div class="hero__veil" aria-hidden="true"></div>
   </div>
   <div class="hero__content reveal">
-    <p class="eyebrow"><%= content.hero.eyebrow %></p>
-    <h1 class="hero__title display"><%= content.hero.headline %></h1>
-    <p class="hero__offer"><%= content.hero.offer %></p>
-    <p class="hero__sub lead"><%= content.hero.subheadline %></p>
-    <p class="hero__price"><%= content.hero.priceOffer %></p>
-    <a href="#presentation" class="btn btn--light"><%= content.hero.cta %></a>
+    <div class="hero__head">
+      <p class="eyebrow"><%= content.hero.eyebrow %></p>
+      <h1 class="hero__title display"><%= content.hero.headline %></h1>
+    </div>
+
+    <div class="hero__summary" aria-label="Property summary">
+      <p class="hero__summary-type"><%= content.hero.offer %></p>
+      <p class="hero__summary-price">
+        <span class="hero__summary-amount"><%= content.hero.price %></span>
+        <span class="hero__summary-note"><%= content.hero.priceNote %></span>
+      </p>
+    </div>
+
+    <p class="hero__sub"><%= content.hero.subheadline %></p>
+
+    <div class="hero__actions">
+      <a href="#presentation" class="btn btn--light"><%= content.hero.cta %></a>
+    </div>
   </div>
   <a href="#idea" class="hero__scroll" aria-label="<%= content.ui.discover %>">
     <span class="hero__scroll-text"><%= content.ui.discover %></span>

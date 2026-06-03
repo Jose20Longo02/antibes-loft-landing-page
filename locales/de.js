@@ -56,9 +56,10 @@ module.exports = {
     eyebrow: 'Privat angeboten · Antibes · Französische Riviera',
     headline: 'Die Villa über Antibes',
     offer: 'Architekten-Loft · ca. 206 m²',
+    price: '1.980.000 €',
+    priceNote: 'Privatverkauf · auf Anfrage',
     subheadline:
       'Wo die Diskretion einer Villa auf den Puls der Altstadt trifft — panoramisches Meer, außergewöhnliche Raumhöhe und die Riviera zu Fuß.',
-    priceOffer: 'Angeboten für 1.980.000 € · Privatverkauf auf Anfrage',
     cta: 'Private Präsentation anfragen',
     alt: 'Fort Carré, Port Vauban und das Mittelmeer, von oben über Antibes gesehen',
   },

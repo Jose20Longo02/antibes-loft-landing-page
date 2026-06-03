@@ -56,9 +56,10 @@ module.exports = {
     eyebrow: 'Offre privée · Antibes · Côte d\'Azur',
     headline: 'La Villa au-dessus d\'Antibes',
     offer: 'Loft d\'architecte · environ 206 m²',
+    price: '1 980 000 €',
+    priceNote: 'Vente privée · sur introduction',
     subheadline:
       'Là où la discrétion d\'une villa rencontre l\'âme du vieil Antibes — mer panoramique, volumes exceptionnels, et la Riviera à portée de pas.',
-    priceOffer: 'Proposé à 1 980 000 € · vente privée sur introduction',
     cta: 'Demander une présentation privée',
     alt: 'Fort Carré, Port Vauban et la Méditerranée vus au-dessus d\'Antibes',
   },

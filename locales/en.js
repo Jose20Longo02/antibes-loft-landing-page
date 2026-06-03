@@ -55,10 +55,11 @@ module.exports = {
   hero: {
     eyebrow: 'Privately offered · Antibes · French Riviera',
     headline: 'The Villa Above Antibes',
-    offer: 'Architect-designed loft residence · approximately 206 m²',
+    offer: 'Architect-designed loft · approximately 206 m²',
+    price: '€1,980,000',
+    priceNote: 'Private sale · introduction on request',
     subheadline:
       'Where the discretion of a private villa meets the pulse of the old town — panoramic sea, exceptional volume, and the Riviera at your feet.',
-    priceOffer: 'Offered at €1,980,000 · private sale by introduction',
     cta: 'Request Private Presentation',
     alt: 'Fort Carré, Port Vauban, and the Mediterranean coast viewed from above Antibes',
   },
