@@ -55,6 +55,8 @@ module.exports = {
   hero: {
     eyebrow: 'Privat angeboten · Antibes · Französische Riviera',
     headline: 'Die Villa über Antibes',
+    headlineLine1: 'Die Villa',
+    headlineLine2: 'über Antibes',
     offer: 'Architekten-Loft · ca. 206 m²',
     price: '1.980.000 €',
     priceNote: 'Privatverkauf · auf Anfrage',

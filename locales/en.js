@@ -55,6 +55,8 @@ module.exports = {
   hero: {
     eyebrow: 'Privately offered · Antibes · French Riviera',
     headline: 'The Villa Above Antibes',
+    headlineLine1: 'The Villa',
+    headlineLine2: 'Above Antibes',
     offer: 'Architect-designed loft · approximately 206 m²',
     price: '€1,980,000',
     priceNote: 'Private sale · introduction on request',

@@ -55,6 +55,8 @@ module.exports = {
   hero: {
     eyebrow: 'Offre privée · Antibes · Côte d\'Azur',
     headline: 'La Villa au-dessus d\'Antibes',
+    headlineLine1: 'La Villa',
+    headlineLine2: 'au-dessus d\'Antibes',
     offer: 'Loft d\'architecte · environ 206 m²',
     price: '1 980 000 €',
     priceNote: 'Vente privée · sur introduction',
