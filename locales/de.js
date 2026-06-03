@@ -2,7 +2,7 @@ module.exports = {
   meta: {
     title: 'Die Villa über Antibes | Finlay Brewer International',
     description:
-      'Eine seltene architektonische Residenz in Antibes — Villenprivatsphäre, 180° Mittelmeerblick und die Fußgängerfreundlichkeit des alten Antibes. Privat präsentiert von Finlay Brewer International.',
+      'Privat angebotener Architekten-Loft in Antibes — ca. 206 m², 1.980.000 €. 180° Mittelmeerblick. Private Präsentation durch Finlay Brewer International.',
   },
 
   app: {
@@ -27,6 +27,7 @@ module.exports = {
       experience: 'Das Erlebnis',
       gallery: 'Galerie',
       antibes: 'Antibes',
+      offering: 'Das Angebot',
     },
     form: {
       fullName: 'Vollständiger Name',
@@ -52,10 +53,12 @@ module.exports = {
   },
 
   hero: {
-    eyebrow: 'Antibes · Französische Riviera',
+    eyebrow: 'Privat angeboten · Antibes · Französische Riviera',
     headline: 'Die Villa über Antibes',
+    offer: 'Architekten-Loft · ca. 206 m²',
     subheadline:
       'Wo die Diskretion einer Villa auf den Puls der Altstadt trifft — panoramisches Meer, außergewöhnliche Raumhöhe und die Riviera zu Fuß.',
+    priceOffer: 'Angeboten für 1.980.000 € · Privatverkauf auf Anfrage',
     cta: 'Private Präsentation anfragen',
     alt: 'Fort Carré, Port Vauban und das Mittelmeer, von oben über Antibes gesehen',
   },
@@ -141,7 +144,8 @@ module.exports = {
 
   details: {
     label: 'Residenz',
-    title: 'Auf einen Blick',
+    title: 'Das Angebot',
+    lead: 'Im Privatverkauf erhältlich. Unterlagen, Pläne und weitere Bilder auf Anfrage.',
     price: '1.980.000 €',
     location: 'Antibes, Französische Riviera',
     specs: [
@@ -156,14 +160,14 @@ module.exports = {
       { label: 'Küche', value: 'Zeitgenössisch, individuell geplant' },
       { label: 'Ausstattung', value: 'Luxusspezifikation durchgehend' },
     ],
-    note: 'Als private Einladung angeboten. Pläne, Spezifikationen und weitere Bilder auf Anfrage.',
+    note: 'Exklusiv und diskret über Finlay Brewer International angeboten — nicht breit vermarktet.',
   },
 
   presentation: {
     label: 'Private Präsentation',
     title: 'Zugang anfragen',
     lead:
-      'Diese Residenz wird nicht breit vermarktet. Für eine private Präsentation — persönlich oder nach Vereinbarung — hinterlassen Sie bitte Ihre Kontaktdaten.',
+      'Um den Erwerb dieser Residenz zu prüfen, fordern Sie eine private Präsentation an — persönlich oder nach Vereinbarung. Begrenzt vermarktet; qualifizierte Anfragen sind willkommen.',
     cta: 'Private Präsentation anfragen',
     timelines: [
       'Innerhalb von 3 Monaten',

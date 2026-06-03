@@ -2,7 +2,7 @@ module.exports = {
   meta: {
     title: 'La Villa au-dessus d\'Antibes | Finlay Brewer International',
     description:
-      'Une résidence d\'exception à Antibes — l\'intimité d\'une villa, vues méditerranéennes à 180°, et la vie piétonne du vieil Antibes. Présentation privée par Finlay Brewer International.',
+      'Loft d\'architecte proposé en vente privée à Antibes — environ 206 m², 1 980 000 €. Vues méditerranéennes à 180°. Présentation privée par Finlay Brewer International.',
   },
 
   app: {
@@ -27,6 +27,7 @@ module.exports = {
       experience: 'L\'expérience',
       gallery: 'Galerie',
       antibes: 'Antibes',
+      offering: 'L\'offre',
     },
     form: {
       fullName: 'Nom complet',
@@ -52,10 +53,12 @@ module.exports = {
   },
 
   hero: {
-    eyebrow: 'Antibes · Côte d\'Azur',
+    eyebrow: 'Offre privée · Antibes · Côte d\'Azur',
     headline: 'La Villa au-dessus d\'Antibes',
+    offer: 'Loft d\'architecte · environ 206 m²',
     subheadline:
       'Là où la discrétion d\'une villa rencontre l\'âme du vieil Antibes — mer panoramique, volumes exceptionnels, et la Riviera à portée de pas.',
+    priceOffer: 'Proposé à 1 980 000 € · vente privée sur introduction',
     cta: 'Demander une présentation privée',
     alt: 'Fort Carré, Port Vauban et la Méditerranée vus au-dessus d\'Antibes',
   },
@@ -141,7 +144,8 @@ module.exports = {
 
   details: {
     label: 'Résidence',
-    title: 'En bref',
+    title: 'L\'offre',
+    lead: 'Disponible en vente privée. Dossier complet, plans et visuels supplémentaires sur demande.',
     price: '1 980 000 €',
     location: 'Antibes, Côte d\'Azur',
     specs: [
@@ -156,14 +160,14 @@ module.exports = {
       { label: 'Cuisine', value: 'Contemporaine, sur mesure' },
       { label: 'Finitions', value: 'Prestations de luxe' },
     ],
-    note: 'Présentation privée. Plans, spécifications et visuels complémentaires sur demande.',
+    note: 'Proposé en exclusivité et en toute discrétion par Finlay Brewer International — sans large commercialisation.',
   },
 
   presentation: {
     label: 'Présentation privée',
     title: 'Demander l\'accès',
     lead:
-      'Cette résidence n\'est pas largement commercialisée. Pour recevoir une présentation privée — en personne ou sur arrangement — nous vous invitons à laisser vos coordonnées.',
+      'Pour envisager l\'acquisition de cette résidence, demandez une présentation privée — en personne ou sur arrangement. Peu commercialisée ; nous accueillons les demandes qualifiées ci-dessous.',
     cta: 'Demander une présentation privée',
     timelines: [
       'Sous 3 mois',

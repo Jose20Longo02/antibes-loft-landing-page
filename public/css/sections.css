@@ -62,11 +62,33 @@
   text-shadow: 0 2px 32px rgba(0, 0, 0, 0.45);
 }
 
+.hero__offer {
+  margin: 0 auto var(--space-sm);
+  max-width: 36rem;
+  font-size: 0.68rem;
+  font-weight: 450;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(247, 245, 241, 0.84);
+  text-shadow: 0 1px 16px rgba(0, 0, 0, 0.45);
+}
+
 .hero__sub {
-  margin: 0 auto var(--space-lg);
+  margin: 0 auto var(--space-md);
   max-width: 32rem;
   color: rgba(247, 245, 241, 0.92);
   text-shadow: 0 1px 20px rgba(0, 0, 0, 0.4);
+}
+
+.hero__price {
+  margin: 0 auto var(--space-lg);
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+  font-weight: 300;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(247, 245, 241, 0.9);
+  text-shadow: 0 1px 20px rgba(0, 0, 0, 0.45);
 }
 
 .hero__content .eyebrow {
@@ -441,6 +463,14 @@
 
 .section--details .eyebrow {
   color: var(--color-stone-light);
+}
+
+.details__lead {
+  margin: 0 auto var(--space-md);
+  max-width: 32rem;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--color-charcoal-soft);
 }
 
 .details__location {

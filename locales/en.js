@@ -2,7 +2,7 @@ module.exports = {
   meta: {
     title: 'The Villa Above Antibes | Finlay Brewer International',
     description:
-      'A rare architect-designed residence in Antibes — villa privacy, 180° Mediterranean views, and the walkability of Old Antibes. Presented privately by Finlay Brewer International.',
+      'Privately offered architect-designed loft in Antibes, French Riviera — approximately 206 m², €1,980,000. 180° Mediterranean views. Private presentation by Finlay Brewer International.',
   },
 
   app: {
@@ -27,6 +27,7 @@ module.exports = {
       experience: 'Experience',
       gallery: 'Gallery',
       antibes: 'Antibes',
+      offering: 'The Offering',
     },
     form: {
       fullName: 'Full Name',
@@ -52,10 +53,12 @@ module.exports = {
   },
 
   hero: {
-    eyebrow: 'Antibes · French Riviera',
+    eyebrow: 'Privately offered · Antibes · French Riviera',
     headline: 'The Villa Above Antibes',
+    offer: 'Architect-designed loft residence · approximately 206 m²',
     subheadline:
       'Where the discretion of a private villa meets the pulse of the old town — panoramic sea, exceptional volume, and the Riviera at your feet.',
+    priceOffer: 'Offered at €1,980,000 · private sale by introduction',
     cta: 'Request Private Presentation',
     alt: 'Fort Carré, Port Vauban, and the Mediterranean coast viewed from above Antibes',
   },
@@ -141,7 +144,8 @@ module.exports = {
 
   details: {
     label: 'Residence',
-    title: 'In brief',
+    title: 'The offering',
+    lead: 'Available by private sale. Full particulars, plans, and further imagery on request.',
     price: '€1,980,000',
     location: 'Antibes, French Riviera',
     specs: [
@@ -156,14 +160,14 @@ module.exports = {
       { label: 'Kitchen', value: 'Contemporary, custom-designed' },
       { label: 'Finishes', value: 'Luxury specification throughout' },
     ],
-    note: 'Offered as a private introduction. Plans, specifications, and further imagery are available on request.',
+    note: 'Exclusively and privately offered through Finlay Brewer International — not widely marketed.',
   },
 
   presentation: {
     label: 'Private Presentation',
     title: 'Request access',
     lead:
-      'This residence is not widely marketed. If you would like to receive a private presentation — in person or by arrangement — we invite you to leave your details below.',
+      'To explore acquiring this residence, request a private presentation — in person or by arrangement. Not widely marketed; we invite qualified enquiries below.',
     cta: 'Request Private Presentation',
     timelines: [
       'Within 3 months',
