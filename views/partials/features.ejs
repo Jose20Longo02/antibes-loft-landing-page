@@ -1,0 +1,19 @@
+<section id="features" class="section section--features" aria-labelledby="features-title">
+  <div class="features__layout">
+    <figure class="features__visual reveal">
+      <img src="<%= content.features.image %>" alt="<%= content.features.alt %>" loading="lazy" decoding="async">
+    </figure>
+    <div class="features__content reveal">
+      <p class="eyebrow"><%= content.features.label %></p>
+      <h2 id="features-title" class="section__title display"><%= content.features.title %></h2>
+      <ul class="features-list">
+        <% content.features.items.forEach(function (item) { %>
+          <li class="features-list__item">
+            <h3 class="features-list__title"><%= item.title %></h3>
+            <p class="features-list__text"><%= item.text %></p>
+          </li>
+        <% }); %>
+      </ul>
+    </div>
+  </div>
+</section>

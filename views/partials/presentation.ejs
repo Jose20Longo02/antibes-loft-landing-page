@@ -1,0 +1,78 @@
+<section id="presentation" class="section section--presentation" aria-labelledby="presentation-title">
+  <div class="presentation__layout">
+    <div class="presentation__intro reveal">
+      <p class="eyebrow"><%= content.presentation.label %></p>
+      <h2 id="presentation-title" class="section__title display"><%= content.presentation.title %></h2>
+      <p class="section__lead"><%= content.presentation.lead %></p>
+    </div>
+
+    <form
+      id="presentation-form"
+      class="presentation-form reveal"
+      novalidate
+      data-msg-required="<%= content.ui.formMessages.required %>"
+      data-msg-error="<%= content.ui.formMessages.error %>"
+      data-thank-you-url="/<%= lang %>/thank-you"
+    >
+      <div class="form-field form-field--honeypot" aria-hidden="true">
+        <label for="website">Website</label>
+        <input type="text" name="website" id="website" tabindex="-1" autocomplete="off">
+      </div>
+      <div class="form-field form-field--language">
+        <label for="language-display"><%= content.ui.form.language %></label>
+        <input
+          type="text"
+          id="language-display"
+          class="form-field__readonly"
+          value="<%= currentLanguageName %>"
+          readonly
+          tabindex="-1"
+          aria-readonly="true"
+        >
+        <input type="hidden" name="language" id="language" value="<%= lang %>">
+      </div>
+      <div class="form-row">
+        <div class="form-field">
+          <label for="full-name"><%= content.ui.form.fullName %></label>
+          <input type="text" id="full-name" name="name" required autocomplete="name">
+        </div>
+        <div class="form-field">
+          <label for="email"><%= content.ui.form.email %></label>
+          <input type="email" id="email" name="email" required autocomplete="email">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-field">
+          <label for="phone"><%= content.ui.form.phone %></label>
+          <input type="tel" id="phone" name="phone" autocomplete="tel">
+        </div>
+        <div class="form-field">
+          <label for="country"><%= content.ui.form.country %></label>
+          <input type="text" id="country" name="country" autocomplete="country-name">
+        </div>
+      </div>
+      <div class="form-field">
+        <label for="timeline"><%= content.ui.form.timeline %></label>
+        <select id="timeline" name="purchase_timeline">
+          <option value=""><%= content.ui.form.select %></option>
+          <% content.presentation.timelines.forEach(function (t) { %>
+            <option value="<%= t %>"><%= t %></option>
+          <% }); %>
+        </select>
+      </div>
+      <div class="form-field">
+        <label for="message">
+          <%= content.ui.form.message %>
+          <span class="label-optional"><%= content.ui.form.optional %></span>
+        </label>
+        <textarea id="message" name="message" rows="3" placeholder="<%= content.ui.form.messagePlaceholder %>"></textarea>
+      </div>
+      <p class="presentation-form__privacy">
+        <%= content.ui.privacyNotice %>
+        <a href="<%= config.privacyPolicyUrl %>" target="_blank" rel="noopener noreferrer"><%= content.ui.privacyLink %></a>.
+      </p>
+      <button type="submit" class="btn btn--dark"><%= content.presentation.cta %></button>
+      <p id="presentation-status" class="presentation-form__status" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>

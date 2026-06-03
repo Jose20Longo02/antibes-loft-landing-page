@@ -1,0 +1,20 @@
+<section id="experience" class="section section--experience" aria-labelledby="experience-title">
+  <div class="section__intro section__intro--center reveal">
+    <p class="eyebrow"><%= content.experience.label %></p>
+    <h2 id="experience-title" class="section__title display"><%= content.experience.title %></h2>
+    <p class="section__lead"><%= content.experience.lead %></p>
+  </div>
+
+  <div class="experience-grid">
+    <% content.experience.moments.forEach(function (moment, i) { %>
+      <article class="experience-item <%= i % 2 === 1 ? 'experience-item--reverse' : '' %> reveal">
+        <figure class="experience-item__media">
+          <img src="<%= moment.image %>" alt="<%= moment.alt %>" loading="lazy" decoding="async">
+        </figure>
+        <div class="experience-item__copy">
+          <p class="experience-item__text"><%= moment.text %></p>
+        </div>
+      </article>
+    <% }); %>
+  </div>
+</section>

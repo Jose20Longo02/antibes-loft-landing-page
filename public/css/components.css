@@ -1,0 +1,158 @@
+.btn {
+  display: inline-block;
+  padding: 0.95rem 1.75rem;
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 450;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition:
+    background var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out);
+}
+
+.btn--light {
+  color: var(--color-ivory);
+  border-color: var(--color-line-light);
+  background: transparent;
+}
+
+.btn--light:hover {
+  background: var(--color-ivory);
+  color: var(--color-charcoal);
+  opacity: 1;
+}
+
+.btn--dark {
+  color: var(--color-ivory);
+  background: var(--color-charcoal);
+  border-color: var(--color-charcoal);
+}
+
+.btn--dark:hover {
+  background: var(--color-charcoal-soft);
+  opacity: 1;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-sm);
+}
+
+@media (max-width: 640px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-field {
+  margin-bottom: var(--space-sm);
+}
+
+.form-field label {
+  display: block;
+  margin-bottom: var(--space-2xs);
+  font-size: 0.68rem;
+  font-weight: 450;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-stone);
+}
+
+.label-optional {
+  font-weight: 300;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--color-stone-light);
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  width: 100%;
+  padding: 0.85rem 0;
+  font: inherit;
+  font-weight: 300;
+  color: var(--color-charcoal);
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--color-line);
+  border-radius: 0;
+  appearance: none;
+}
+
+.form-field select {
+  cursor: pointer;
+  background-image: linear-gradient(45deg, transparent 50%, var(--color-stone) 50%),
+    linear-gradient(135deg, var(--color-stone) 50%, transparent 50%);
+  background-position: calc(100% - 16px) calc(50% + 2px), calc(100% - 10px) calc(50% + 2px);
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  outline: none;
+  border-bottom-color: var(--color-charcoal);
+}
+
+.form-field__readonly,
+.form-field input[readonly] {
+  color: var(--color-charcoal-soft);
+  cursor: default;
+  border-bottom-style: dashed;
+}
+
+.form-field--language {
+  margin-bottom: var(--space-md);
+}
+
+.form-field--honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.presentation-form__privacy {
+  margin: 0 0 var(--space-md);
+  font-size: 0.78rem;
+  font-weight: 300;
+  line-height: 1.6;
+  color: var(--color-stone);
+}
+
+.presentation-form__privacy a {
+  color: var(--color-charcoal-soft);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+  transition: color var(--duration-fast);
+}
+
+.presentation-form__privacy a:hover {
+  color: var(--color-charcoal);
+}
+
+.presentation-form__status {
+  margin-top: var(--space-sm);
+  min-height: 1.25rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+}
+
+.presentation-form__status--success {
+  color: #4a5d4a;
+}
+
+.presentation-form__status--error {
+  color: #6b4545;
+}

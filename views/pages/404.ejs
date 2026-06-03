@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="<%= lang %>">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 | <%= config.propertyConcept %></title>
+  <link rel="stylesheet" href="/css/variables.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <style>
+    .error-page { min-height: 80vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 2rem; }
+    .error-page h1 { font-family: var(--font-display); font-weight: 300; letter-spacing: 0.1em; }
+  </style>
+</head>
+<body>
+  <main class="error-page">
+    <h1>404</h1>
+    <p><%= lang === 'fr' ? 'Page introuvable.' : lang === 'de' ? 'Seite nicht gefunden.' : 'Page not found.' %></p>
+    <a href="<%= homeUrl %>" class="btn btn--dark"><%= lang === 'fr' ? 'Retour' : lang === 'de' ? 'Zur Startseite' : 'Return home' %></a>
+  </main>
+</body>
+</html>

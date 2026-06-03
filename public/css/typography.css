@@ -1,0 +1,48 @@
+.display {
+  font-family: var(--font-display);
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  line-height: 1.08;
+  text-transform: uppercase;
+}
+
+.eyebrow {
+  margin: 0 0 var(--space-sm);
+  font-size: 0.68rem;
+  font-weight: 450;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-stone);
+}
+
+.lead {
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--color-charcoal-soft);
+}
+
+.section__title {
+  margin: 0 0 var(--space-md);
+  font-size: clamp(2.25rem, 5.5vw, 3.75rem);
+}
+
+.section__lead {
+  margin: 0 auto;
+  max-width: 36rem;
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--color-charcoal-soft);
+}
+
+.section__prose {
+  margin: 0 0 var(--space-sm);
+  max-width: 34rem;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--color-charcoal-soft);
+}
+
+.section__prose:last-child {
+  margin-bottom: 0;
+}

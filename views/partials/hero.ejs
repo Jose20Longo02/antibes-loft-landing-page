@@ -1,0 +1,24 @@
+<section id="hero" class="hero" aria-label="Introduction">
+  <div class="hero__media">
+    <img
+      class="hero__image"
+      src="<%= content.hero.image %>"
+      alt="<%= content.hero.alt %>"
+      width="2400"
+      height="1600"
+      fetchpriority="high"
+      decoding="async"
+    >
+    <div class="hero__veil" aria-hidden="true"></div>
+  </div>
+  <div class="hero__content reveal">
+    <p class="eyebrow"><%= content.hero.eyebrow %></p>
+    <h1 class="hero__title display"><%= content.hero.headline %></h1>
+    <p class="hero__sub lead"><%= content.hero.subheadline %></p>
+    <a href="#presentation" class="btn btn--light"><%= content.hero.cta %></a>
+  </div>
+  <a href="#idea" class="hero__scroll" aria-label="<%= content.ui.discover %>">
+    <span class="hero__scroll-text"><%= content.ui.discover %></span>
+    <span class="hero__scroll-line" aria-hidden="true"></span>
+  </a>
+</section>

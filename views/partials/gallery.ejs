@@ -1,0 +1,34 @@
+<section id="gallery" class="section section--gallery" aria-labelledby="gallery-title">
+  <div class="section__intro section__intro--center reveal">
+    <p class="eyebrow"><%= content.gallery.label %></p>
+    <h2 id="gallery-title" class="section__title display"><%= content.gallery.title %></h2>
+    <p class="section__lead"><%= content.gallery.lead %></p>
+  </div>
+
+  <div class="gallery-mosaic reveal" data-gallery-mosaic>
+    <% content.gallery.images.forEach(function (img, i) { %>
+      <button
+        type="button"
+        class="gallery-mosaic__item gallery-mosaic__item--<%= img.span %>"
+        data-gallery-index="<%= i %>"
+        data-src="<%= img.full %>"
+        data-alt="<%= img.alt %>"
+        aria-label="View image: <%= img.alt %>"
+      >
+        <img src="<%= img.src %>" alt="<%= img.alt %>" loading="lazy" decoding="async">
+      </button>
+    <% }); %>
+  </div>
+</section>
+
+<div id="lightbox" class="lightbox" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-label="Image gallery">
+  <button type="button" class="lightbox__close" data-lightbox-close aria-label="Close gallery">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <button type="button" class="lightbox__nav lightbox__nav--prev" data-lightbox-prev aria-label="Previous image"></button>
+  <figure class="lightbox__figure">
+    <img class="lightbox__image" src="" alt="">
+  </figure>
+  <button type="button" class="lightbox__nav lightbox__nav--next" data-lightbox-next aria-label="Next image"></button>
+  <p class="lightbox__caption" data-lightbox-caption></p>
+</div>

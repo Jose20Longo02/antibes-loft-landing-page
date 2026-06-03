@@ -1,0 +1,27 @@
+<header class="site-header" id="site-header" role="banner">
+  <div class="site-header__bar">
+    <a href="<%= homeUrl %>" class="site-header__logo" aria-label="<%= config.siteName %> — home">
+      <img src="<%= config.logo %>" alt="" width="48" height="48" decoding="async">
+    </a>
+    <nav class="site-nav" id="site-nav" aria-label="Primary">
+      <ul class="site-nav__list">
+        <li><a href="<%= homeUrl %>#idea"><%= content.ui.nav.idea %></a></li>
+        <li><a href="<%= homeUrl %>#experience"><%= content.ui.nav.experience %></a></li>
+        <li><a href="<%= homeUrl %>#gallery"><%= content.ui.nav.gallery %></a></li>
+        <li><a href="<%= homeUrl %>#antibes"><%= content.ui.nav.antibes %></a></li>
+        <li><a href="<%= homeUrl %>#presentation" class="site-nav__cta"><%= content.presentation.cta %></a></li>
+      </ul>
+      <div class="site-nav__lang lang-switcher--mobile">
+        <%- include('./lang-switcher') %>
+      </div>
+    </nav>
+    <div class="site-header__end">
+      <%- include('./lang-switcher') %>
+      <button type="button" class="site-header__toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+        <span class="visually-hidden"><%= content.ui.menu %></span>
+        <span class="site-header__toggle-line" aria-hidden="true"></span>
+        <span class="site-header__toggle-line" aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+</header>

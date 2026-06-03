@@ -1,0 +1,24 @@
+<section id="idea" class="section section--idea" aria-labelledby="idea-title">
+  <div class="section__intro reveal">
+    <p class="eyebrow"><%= content.idea.label %></p>
+    <h2 id="idea-title" class="section__title display"><%= content.idea.title %></h2>
+    <% content.idea.paragraphs.forEach(function (p) { %>
+      <p class="section__prose"><%= p %></p>
+    <% }); %>
+  </div>
+
+  <figure class="editorial-panel reveal">
+    <div class="editorial-panel__media">
+      <img src="<%= content.idea.image %>" alt="<%= content.idea.alt %>" loading="lazy" decoding="async">
+    </div>
+  </figure>
+
+  <div class="pillars reveal">
+    <% content.idea.pillars.forEach(function (pillar, i) { %>
+      <article class="pillar" style="--reveal-delay: <%= i * 80 %>ms">
+        <h3 class="pillar__title"><%= pillar.title %></h3>
+        <p class="pillar__text"><%= pillar.text %></p>
+      </article>
+    <% }); %>
+  </div>
+</section>

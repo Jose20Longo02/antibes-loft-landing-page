@@ -1,0 +1,44 @@
+<% const pageCanonical = typeof canonicalUrl !== 'undefined' ? canonicalUrl : homeUrl; %>
+<% const shareImage = typeof ogImage !== 'undefined' ? ogImage : ''; %>
+<% const ogLocales = { en: 'en_GB', fr: 'fr_FR', de: 'de_DE' }; %>
+<% const ogLocale = ogLocales[lang] || 'en_GB'; %>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="<%= typeof meta !== 'undefined' ? meta.description : '' %>">
+<meta name="theme-color" content="#f7f5f1">
+<title><%= typeof title !== 'undefined' ? title : '' %></title>
+<% if (typeof localeSwitcher !== 'undefined') { %>
+  <% localeSwitcher.forEach(function (loc) { %>
+    <link rel="alternate" hreflang="<%= loc.code %>" href="<%= loc.href %>">
+  <% }); %>
+  <link rel="alternate" hreflang="x-default" href="<%= typeof siteUrl !== 'undefined' && siteUrl ? siteUrl + '/en' : '/en' %>">
+<% } %>
+<link rel="canonical" href="<%= pageCanonical %>">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="<%= config.siteName %>">
+<meta property="og:title" content="<%= typeof title !== 'undefined' ? title : '' %>">
+<meta property="og:description" content="<%= typeof meta !== 'undefined' ? meta.description : '' %>">
+<meta property="og:url" content="<%= pageCanonical %>">
+<meta property="og:locale" content="<%= ogLocale %>">
+<% if (shareImage) { %>
+<meta property="og:image" content="<%= shareImage %>">
+<meta property="og:image:alt" content="<%= content.hero.alt %>">
+<% } %>
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="<%= typeof title !== 'undefined' ? title : '' %>">
+<meta name="twitter:description" content="<%= typeof meta !== 'undefined' ? meta.description : '' %>">
+<% if (shareImage) { %>
+<meta name="twitter:image" content="<%= shareImage %>">
+<% } %>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;450;500&display=swap" rel="stylesheet">
+<link rel="icon" href="<%= config.logo %>" type="image/png">
+<link rel="stylesheet" href="/css/variables.css">
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/typography.css">
+<link rel="stylesheet" href="/css/layout.css">
+<link rel="stylesheet" href="/css/components.css">
+<link rel="stylesheet" href="/css/sections.css">
+<link rel="stylesheet" href="/css/gallery.css">
+<link rel="stylesheet" href="/css/social-sidebar.css">

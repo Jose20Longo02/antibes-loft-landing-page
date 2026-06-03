@@ -1,0 +1,14 @@
+<footer class="site-footer" role="contentinfo">
+  <div class="site-footer__inner">
+    <a href="<%= config.companyUrl %>" class="site-footer__logo" target="_blank" rel="noopener noreferrer">
+      <img src="<%= config.logo %>" alt="<%= config.siteName %>" width="40" height="40" decoding="async">
+    </a>
+    <p class="site-footer__text">
+      <span class="site-footer__concept"><%= config.propertyConcept %></span>
+      <span class="site-footer__sep" aria-hidden="true">·</span>
+      <span><%= config.propertyLocation %></span>
+    </p>
+    <p class="site-footer__agency"><%= config.siteName %></p>
+    <p class="site-footer__copy">&copy; <%= new Date().getFullYear() %></p>
+  </div>
+</footer>

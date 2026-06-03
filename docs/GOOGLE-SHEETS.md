@@ -1,0 +1,54 @@
+# Google Sheets lead capture
+
+Leads from the presentation form are appended to a Google Sheet (no database required).
+
+## 1. Create the sheet
+
+Create a new Google Sheet. In **row 1**, add these headers:
+
+| A | B | C | D | E | F | G | H | I |
+|---|---|---|---|---|---|---|---|---|
+| Submitted | Property | Name | Email | Phone | Country | Timeline | Language | Message |
+
+## 2. Install the script
+
+1. In the sheet: **Extensions → Apps Script**
+2. Delete any sample code and paste the contents of `scripts/google-apps-script.js` from this project
+3. **Save** the project
+
+## 3. Deploy as web app
+
+1. **Deploy → New deployment**
+2. Type: **Web app**
+3. **Execute as:** Me
+4. **Who has access:** Anyone
+5. Deploy and **authorize** when prompted
+6. Copy the **Web app URL** (ends with `/exec`)
+
+## 4. Configure the site
+
+Add to your `.env`:
+
+```env
+GOOGLE_SHEETS_WEBHOOK_URL=https://script.google.com/macros/s/XXXXX/exec
+```
+
+Restart the server: `npm run dev`
+
+## 5. Test
+
+Submit the form on the site, or run:
+
+```bash
+curl -X POST "$GOOGLE_SHEETS_WEBHOOK_URL" \
+  -H "Content-Type: application/json" \
+  -d '{"submittedAt":"2026-01-01T12:00:00Z","property":"Test","name":"Test","email":"test@example.com","phone":"","country":"","purchaseTimeline":"","language":"English (en)","message":"Test row"}'
+```
+
+A new row should appear in the sheet.
+
+## Notes
+
+- Email notifications (Gmail) work independently — configure both for redundancy
+- The webhook URL is secret; do not commit it to git (keep it in `.env` only)
+- You can share the sheet with your team for viewing and filtering leads

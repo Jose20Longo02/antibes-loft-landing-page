@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="<%= lang %>" dir="<%= langDir %>">
+<head>
+  <%- include('../partials/head') %>
+</head>
+<body class="page-home" data-locale="<%= lang %>">
+  <%- include('../partials/header') %>
+  <%- include('../partials/social-sidebar') %>
+
+  <main id="main-content">
+    <%- include('../partials/hero') %>
+    <%- include('../partials/idea') %>
+    <%- include('../partials/experience') %>
+    <%- include('../partials/features') %>
+    <%- include('../partials/gallery') %>
+    <%- include('../partials/lifestyle') %>
+    <%- include('../partials/details') %>
+    <%- include('../partials/presentation') %>
+  </main>
+
+  <%- include('../partials/footer') %>
+  <%- include('../partials/scripts') %>
+</body>
+</html>

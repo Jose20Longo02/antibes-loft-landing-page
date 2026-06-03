@@ -1,0 +1,19 @@
+<section id="details" class="section section--details" aria-labelledby="details-title">
+  <div class="details__inner reveal">
+    <p class="eyebrow"><%= content.details.label %></p>
+    <h2 id="details-title" class="section__title display"><%= content.details.title %></h2>
+    <p class="details__location"><%= content.details.location %></p>
+    <p class="details__price"><%= content.details.price %></p>
+
+    <dl class="details-specs">
+      <% content.details.specs.forEach(function (spec) { %>
+        <div class="details-specs__row">
+          <dt><%= spec.label %></dt>
+          <dd><%= spec.value %></dd>
+        </div>
+      <% }); %>
+    </dl>
+
+    <p class="details__note"><%= content.details.note %></p>
+  </div>
+</section>

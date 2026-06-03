@@ -1,0 +1,17 @@
+<section id="antibes" class="section section--lifestyle" aria-labelledby="antibes-title">
+  <div class="lifestyle__layout">
+    <div class="lifestyle__copy reveal">
+      <p class="eyebrow"><%= content.lifestyle.label %></p>
+      <h2 id="antibes-title" class="section__title display"><%= content.lifestyle.title %></h2>
+      <p class="section__lead"><%= content.lifestyle.lead %></p>
+      <ul class="lifestyle-list">
+        <% content.lifestyle.points.forEach(function (point) { %>
+          <li class="lifestyle-list__item"><%= point %></li>
+        <% }); %>
+      </ul>
+    </div>
+    <figure class="lifestyle__visual reveal">
+      <img src="<%= content.lifestyle.image %>" alt="<%= content.lifestyle.alt %>" loading="lazy" decoding="async">
+    </figure>
+  </div>
+</section>

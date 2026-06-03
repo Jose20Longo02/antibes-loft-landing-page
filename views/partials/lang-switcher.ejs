@@ -1,0 +1,16 @@
+<div class="lang-switcher" role="navigation" aria-label="<%= content.ui.langLabel %>">
+  <ul class="lang-switcher__list">
+    <% localeSwitcher.forEach(function (loc) { %>
+      <li class="lang-switcher__item">
+        <a
+          href="<%= loc.href %>"
+          class="lang-switcher__link<%= loc.active ? ' is-active' : '' %>"
+          hreflang="<%= loc.code %>"
+          lang="<%= loc.code %>"
+          <%= loc.active ? 'aria-current="true"' : '' %>
+          title="<%= loc.name %>"
+        ><%= loc.label %></a>
+      </li>
+    <% }); %>
+  </ul>
+</div>

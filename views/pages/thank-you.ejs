@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="<%= lang %>" dir="<%= langDir %>">
+<head>
+  <%- include('../partials/head') %>
+  <link rel="stylesheet" href="/css/thank-you.css">
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body class="page-thank-you" data-locale="<%= lang %>">
+  <%- include('../partials/header') %>
+  <%- include('../partials/social-sidebar') %>
+
+  <main class="thank-you">
+    <section class="thank-you__hero" aria-labelledby="thank-you-title">
+      <div class="thank-you__media">
+        <img
+          src="<%= thankYou.image %>"
+          alt="<%= thankYou.imageAlt %>"
+          width="2400"
+          height="1600"
+          decoding="async"
+        >
+        <div class="thank-you__veil" aria-hidden="true"></div>
+      </div>
+
+      <div class="thank-you__intro">
+        <p class="eyebrow"><%= thankYou.eyebrow %></p>
+        <h1 id="thank-you-title" class="thank-you__title display"><%= thankYou.headline %></h1>
+        <p class="thank-you__lead"><%= thankYou.lead %></p>
+        <p class="thank-you__time"><%= thankYou.responseTime %></p>
+      </div>
+    </section>
+
+    <section class="thank-you__steps" aria-labelledby="thank-you-steps-title">
+      <div class="thank-you__steps-inner">
+        <p class="eyebrow"><%= thankYou.stepsTitle %></p>
+        <h2 id="thank-you-steps-title" class="visually-hidden"><%= thankYou.stepsTitle %></h2>
+        <ol class="thank-you__list">
+          <% thankYou.steps.forEach(function (step, i) { %>
+            <li class="thank-you__step">
+              <span class="thank-you__step-num" aria-hidden="true"><%= String(i + 1).padStart(2, '0') %></span>
+              <div class="thank-you__step-copy">
+                <h3 class="thank-you__step-title"><%= step.title %></h3>
+                <p class="thank-you__step-text"><%= step.text %></p>
+              </div>
+            </li>
+          <% }); %>
+        </ol>
+      </div>
+    </section>
+
+    <section class="thank-you__actions">
+      <div class="thank-you__actions-inner">
+        <a href="<%= homeUrl %>" class="thank-you__back"><%= thankYou.backCta %></a>
+      </div>
+    </section>
+  </main>
+
+  <%- include('../partials/footer') %>
+  <%- include('../partials/scripts') %>
+</body>
+</html>
