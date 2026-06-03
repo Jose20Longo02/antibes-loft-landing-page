@@ -22,12 +22,10 @@ const helmetMiddleware = helmet({
 });
 
 function forceHttps(req, res, next) {
-  if (!isProduction() || !getSiteUrl().startsWith('https://')) return next();
+  if (!isProduction()) return next();
   const proto = req.headers['x-forwarded-proto'];
   if (req.secure || proto === 'https') return next();
   return res.redirect(301, `https://${req.get('host')}${req.originalUrl}`);
 }
 
 module.exports = { helmetMiddleware, forceHttps };
-
-module.exports = { helmetMiddleware };
