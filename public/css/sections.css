@@ -84,9 +84,6 @@
 .hero__summary {
   width: 100%;
   max-width: 26rem;
-  padding: var(--space-sm) 0;
-  border-top: 1px solid rgba(247, 245, 241, 0.28);
-  border-bottom: 1px solid rgba(247, 245, 241, 0.28);
 }
 
 .hero__summary-type {
@@ -123,16 +120,6 @@
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: rgba(247, 245, 241, 0.65);
-}
-
-.hero__sub {
-  margin: 0;
-  max-width: 30rem;
-  font-size: clamp(1rem, 2vw, 1.12rem);
-  font-weight: 300;
-  line-height: 1.75;
-  color: rgba(247, 245, 241, 0.88);
-  text-shadow: 0 1px 20px rgba(0, 0, 0, 0.4);
 }
 
 .hero__actions {
