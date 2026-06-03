@@ -136,7 +136,12 @@
 @media (max-width: 720px) {
   .hero__content {
     width: min(92vw, 100%);
-    padding-bottom: 9vh;
+    gap: var(--space-md);
+    padding: calc(var(--header-h) + 3vh) 5vw 12vh;
+  }
+
+  .hero__head {
+    gap: var(--space-sm);
   }
 
   .hero__title {
@@ -144,12 +149,29 @@
     letter-spacing: 0.08em;
   }
 
+  .hero__title-line + .hero__title-line {
+    margin-top: 0.2em;
+  }
+
   .hero__summary {
-    margin-top: 1.5rem;
+    margin-top: 0;
+    max-width: 100%;
+  }
+
+  .hero__summary-type {
+    margin-bottom: 1.15rem;
+  }
+
+  .hero__summary-price {
+    gap: 0.65rem;
   }
 
   .hero__actions {
-    margin-top: 1.75rem;
+    margin-top: 0;
+  }
+
+  .hero__actions .btn {
+    padding: 1.05rem 1.5rem;
   }
 }
 
