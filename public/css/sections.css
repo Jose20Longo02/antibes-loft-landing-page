@@ -136,12 +136,12 @@
 @media (max-width: 720px) {
   .hero__content {
     width: min(92vw, 100%);
-    gap: var(--space-md);
-    padding: calc(var(--header-h) + 3vh) 5vw 12vh;
+    gap: var(--space-lg);
+    padding: calc(var(--header-h) + 4vh) 5vw 13vh;
   }
 
   .hero__head {
-    gap: var(--space-sm);
+    gap: var(--space-md);
   }
 
   .hero__title {
@@ -150,7 +150,7 @@
   }
 
   .hero__title-line + .hero__title-line {
-    margin-top: 0.2em;
+    margin-top: 0.28em;
   }
 
   .hero__summary {
@@ -159,11 +159,11 @@
   }
 
   .hero__summary-type {
-    margin-bottom: 1.15rem;
+    margin-bottom: 1.5rem;
   }
 
   .hero__summary-price {
-    gap: 0.65rem;
+    gap: 1rem;
   }
 
   .hero__actions {
