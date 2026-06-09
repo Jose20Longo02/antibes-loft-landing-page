@@ -1,0 +1,49 @@
+<section id="film" class="section section--film" aria-labelledby="film-title">
+  <div class="section__intro section__intro--center reveal">
+    <p class="eyebrow"><%= content.film.label %></p>
+    <h2 id="film-title" class="section__title display"><%= content.film.title %></h2>
+    <p class="section__lead film__lead"><%= content.film.lead %></p>
+  </div>
+
+  <figure class="film__figure reveal" data-film>
+    <div class="film__frame">
+      <video
+        class="film__video"
+        playsinline
+        muted
+        loop
+        preload="none"
+        poster="<%= content.film.image %>"
+        data-sd="<%= content.film.videoCompressed %>"
+        data-hd="<%= content.film.videoHd %>"
+        aria-label="<%= content.film.posterAlt %>"
+      ></video>
+      <div class="film__veil" aria-hidden="true"></div>
+      <div class="film__controls">
+        <button
+          type="button"
+          class="film__play"
+          data-film-play
+          data-pause-label="<%= content.film.pauseLabel %>"
+          aria-label="<%= content.film.playLabel %>"
+        >
+          <span class="film__play-ring" aria-hidden="true"></span>
+          <span class="film__play-icon" aria-hidden="true"></span>
+        </button>
+        <button
+          type="button"
+          class="film__mute"
+          data-film-mute
+          data-mute-label="<%= content.film.muteLabel %>"
+          hidden
+          aria-label="<%= content.film.unmuteLabel %>"
+          aria-pressed="true"
+        >
+          <span class="film__mute-icon film__mute-icon--off" aria-hidden="true"></span>
+          <span class="film__mute-icon film__mute-icon--on" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+    <figcaption class="film__caption"><%= content.film.caption %></figcaption>
+  </figure>
+</section>

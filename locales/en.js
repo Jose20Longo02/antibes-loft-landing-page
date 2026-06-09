@@ -23,6 +23,7 @@ module.exports = {
       whatsapp: 'WhatsApp',
     },
     nav: {
+      film: 'In Motion',
       idea: 'The Idea',
       experience: 'Experience',
       gallery: 'Gallery',
@@ -62,6 +63,19 @@ module.exports = {
     priceNote: 'Private sale · introduction on request',
     cta: 'Request Private Presentation',
     alt: 'Fort Carré, Port Vauban, and the Mediterranean coast viewed from above Antibes',
+  },
+
+  film: {
+    label: 'In Motion',
+    title: 'Above Antibes',
+    lead:
+      'A quiet procession through the residence — volume, light, and the horizon held in a single, unbroken view.',
+    caption: 'Architect-designed loft · Antibes, French Riviera',
+    posterAlt: 'The Villa Above Antibes — Mediterranean panorama from the residence',
+    playLabel: 'Play film',
+    pauseLabel: 'Pause film',
+    muteLabel: 'Mute',
+    unmuteLabel: 'Unmute',
   },
 
   idea: {

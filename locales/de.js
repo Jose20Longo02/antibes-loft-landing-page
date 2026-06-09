@@ -23,6 +23,7 @@ module.exports = {
       whatsapp: 'WhatsApp',
     },
     nav: {
+      film: 'In Bewegung',
       idea: 'Die Idee',
       experience: 'Das Erlebnis',
       gallery: 'Galerie',
@@ -62,6 +63,19 @@ module.exports = {
     priceNote: 'Privatverkauf · auf Anfrage',
     cta: 'Private Präsentation anfragen',
     alt: 'Fort Carré, Port Vauban und das Mittelmeer, von oben über Antibes gesehen',
+  },
+
+  film: {
+    label: 'In Bewegung',
+    title: 'Über Antibes',
+    lead:
+      'Ein stiller Gang durch die Residenz — Raum, Licht und der Horizont in einer einzigen, ungeteilten Aussicht.',
+    caption: 'Architekten-Loft · Antibes, Französische Riviera',
+    posterAlt: 'Die Villa über Antibes — Mittelmeerpanorama von der Residenz aus',
+    playLabel: 'Film abspielen',
+    pauseLabel: 'Pause',
+    muteLabel: 'Stumm schalten',
+    unmuteLabel: 'Ton einschalten',
   },
 
   idea: {

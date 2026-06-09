@@ -210,6 +210,191 @@
   50% { transform: scaleY(1); opacity: 1; }
 }
 
+/* —— Film —— */
+.section--film {
+  padding-top: var(--space-xl);
+  padding-bottom: var(--space-2xl);
+}
+
+.section--film .section__intro {
+  margin-bottom: var(--space-lg);
+}
+
+.film__lead {
+  max-width: 36rem;
+  margin-inline: auto;
+}
+
+.film__figure {
+  width: var(--container);
+  max-width: 100%;
+  margin: 0 auto;
+  padding-inline: 4vw;
+}
+
+.film__frame {
+  position: relative;
+  aspect-ratio: 2.35 / 1;
+  overflow: hidden;
+  background: var(--color-charcoal);
+  border: 1px solid var(--color-line);
+}
+
+.film__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.film__veil {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(28, 27, 25, 0.08) 0%,
+    rgba(28, 27, 25, 0) 35%,
+    rgba(28, 27, 25, 0.18) 100%
+  );
+  transition: opacity var(--duration-fast) var(--ease-out);
+}
+
+.film__frame.is-playing .film__veil {
+  opacity: 0.35;
+}
+
+.film__controls {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
+.film__play,
+.film__mute {
+  pointer-events: auto;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: var(--color-ivory);
+}
+
+.film__play {
+  position: relative;
+  width: 4.5rem;
+  height: 4.5rem;
+  display: grid;
+  place-items: center;
+  transition: transform var(--duration-fast) var(--ease-out), opacity var(--duration-fast);
+}
+
+.film__play:hover {
+  transform: scale(1.04);
+}
+
+.film__play-ring {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(247, 245, 241, 0.55);
+  border-radius: 50%;
+  transition: border-color var(--duration-fast);
+}
+
+.film__play:hover .film__play-ring {
+  border-color: rgba(247, 245, 241, 0.9);
+}
+
+.film__play-icon {
+  width: 0;
+  height: 0;
+  margin-left: 0.2rem;
+  border-style: solid;
+  border-width: 0.45rem 0 0.45rem 0.78rem;
+  border-color: transparent transparent transparent currentColor;
+}
+
+.film__mute {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  width: 2.25rem;
+  height: 2.25rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(247, 245, 241, 0.35);
+  border-radius: 50%;
+  backdrop-filter: blur(6px);
+  background: rgba(28, 27, 25, 0.28);
+  opacity: 0.88;
+  transition: opacity var(--duration-fast), border-color var(--duration-fast);
+}
+
+.film__mute:hover {
+  opacity: 1;
+  border-color: rgba(247, 245, 241, 0.65);
+}
+
+.film__mute-icon {
+  position: absolute;
+  width: 0.95rem;
+  height: 0.95rem;
+  background: currentColor;
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+}
+
+.film__mute-icon--off {
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.5'%3E%3Cpath d='M11 5L6 9H3v6h3l5 4V5z'/%3E%3Cpath d='M15.5 8.5L19 12m0 0l-3.5 3.5M19 12l-3.5-3.5M19 12l3.5 3.5'/%3E%3C/svg%3E");
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.5'%3E%3Cpath d='M11 5L6 9H3v6h3l5 4V5z'/%3E%3Cpath d='M15.5 8.5L19 12m0 0l-3.5 3.5M19 12l-3.5-3.5M19 12l3.5 3.5'/%3E%3C/svg%3E");
+}
+
+.film__mute-icon--on {
+  opacity: 0;
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.5'%3E%3Cpath d='M11 5L6 9H3v6h3l5 4V5z'/%3E%3Cpath d='M14 9.5a4 4 0 010 5'/%3E%3Cpath d='M16.5 7a7 7 0 010 10'/%3E%3C/svg%3E");
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.5'%3E%3Cpath d='M11 5L6 9H3v6h3l5 4V5z'/%3E%3Cpath d='M14 9.5a4 4 0 010 5'/%3E%3Cpath d='M16.5 7a7 7 0 010 10'/%3E%3C/svg%3E");
+}
+
+.film__mute.is-unmuted .film__mute-icon--off {
+  opacity: 0;
+}
+
+.film__mute.is-unmuted .film__mute-icon--on {
+  opacity: 1;
+}
+
+.film__caption {
+  margin: var(--space-sm) 0 0;
+  text-align: center;
+  font-size: 0.62rem;
+  font-weight: 450;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-stone);
+}
+
+@media (max-width: 720px) {
+  .section--film {
+    padding-top: var(--space-lg);
+  }
+
+  .film__frame {
+    aspect-ratio: 16 / 10;
+  }
+
+  .film__play {
+    width: 3.75rem;
+    height: 3.75rem;
+  }
+}
+
 /* —— The Idea —— */
 .section--idea {
   padding-top: var(--space-3xl);

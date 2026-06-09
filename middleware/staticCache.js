@@ -7,8 +7,9 @@ function staticCache(req, res, next) {
   if (!isProduction()) return next();
 
   const isAsset =
-    /\.(css|js|jpg|jpeg|png|webp|gif|svg|ico|woff2?)$/i.test(req.path) ||
-    req.path.startsWith('/images/');
+    /\.(css|js|jpg|jpeg|png|webp|gif|svg|ico|woff2?|mp4|webm)$/i.test(req.path) ||
+    req.path.startsWith('/images/') ||
+    req.path.startsWith('/videos/');
 
   if (isAsset) {
     res.setHeader('Cache-Control', `public, max-age=${ONE_YEAR}, immutable`);

@@ -23,6 +23,7 @@ module.exports = {
       whatsapp: 'WhatsApp',
     },
     nav: {
+      film: 'En mouvement',
       idea: 'L\'idée',
       experience: 'L\'expérience',
       gallery: 'Galerie',
@@ -62,6 +63,19 @@ module.exports = {
     priceNote: 'Vente privée · sur introduction',
     cta: 'Demander une présentation privée',
     alt: 'Fort Carré, Port Vauban et la Méditerranée vus au-dessus d\'Antibes',
+  },
+
+  film: {
+    label: 'En mouvement',
+    title: 'Au-dessus d\'Antibes',
+    lead:
+      'Une promenade silencieuse à travers la résidence — le volume, la lumière et l\'horizon réunis en un seul regard.',
+    caption: 'Loft d\'architecte · Antibes, Côte d\'Azur',
+    posterAlt: 'La Villa au-dessus d\'Antibes — panorama méditerranéen depuis la résidence',
+    playLabel: 'Lire le film',
+    pauseLabel: 'Mettre en pause',
+    muteLabel: 'Couper le son',
+    unmuteLabel: 'Activer le son',
   },
 
   idea: {

@@ -23,6 +23,7 @@ function mergeWithMedia(strings) {
   const content = JSON.parse(JSON.stringify(strings));
 
   Object.assign(content.hero, media.hero);
+  Object.assign(content.film, media.film);
   Object.assign(content.idea, media.idea);
   Object.assign(content.features, media.features);
   Object.assign(content.lifestyle, media.lifestyle);

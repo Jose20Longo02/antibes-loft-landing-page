@@ -33,10 +33,18 @@ function img(file) {
   };
 }
 
+const VIDEO = '/videos';
+
 module.exports = {
   IMG,
   IMG_LIGHTBOX,
+  VIDEO,
   hero: img('_DSC1605-Edit.jpg'),
+  film: {
+    ...img('_DSC1605-Edit.jpg'),
+    videoCompressed: `${VIDEO}/villa-antibes-compressed.mp4`,
+    videoHd: `${VIDEO}/villa-antibes-hd.mp4`,
+  },
   idea: img('_DSC1602.jpg'),
   experienceMoments: [
     img('_DSC1675-Edit-2.jpg'),
