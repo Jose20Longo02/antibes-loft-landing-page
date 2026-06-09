@@ -3,8 +3,10 @@
     src, webp, src960, webp960, alt,
     className, width, height, loading, fetchpriority, sizes
 %>
+<% const hasSrcset = typeof webp960 !== 'undefined' && webp960 && typeof src960 !== 'undefined' && src960 && typeof webp !== 'undefined' && webp; %>
+<% const hasWebp = typeof webp !== 'undefined' && webp; %>
 <picture>
-  <% if (webp960 && src960 && webp) { %>
+  <% if (hasSrcset) { %>
     <source
       type="image/webp"
       srcset="<%= webp960 %> 960w, <%= webp %> 1400w"
@@ -15,7 +17,7 @@
       srcset="<%= src960 %> 960w, <%= src %> 1400w"
       sizes="<%= typeof sizes !== 'undefined' ? sizes : '100vw' %>"
     >
-  <% } else if (webp) { %>
+  <% } else if (hasWebp) { %>
     <source type="image/webp" srcset="<%= webp %>">
   <% } %>
   <img
