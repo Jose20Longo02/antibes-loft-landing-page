@@ -1,14 +1,17 @@
 <section id="hero" class="hero" aria-label="Introduction">
   <div class="hero__media">
-    <img
-      class="hero__image"
-      src="<%= content.hero.image %>"
-      alt="<%= content.hero.alt %>"
-      width="2400"
-      height="1600"
-      fetchpriority="high"
-      decoding="async"
-    >
+    <%- include('picture-img', {
+      className: 'hero__image',
+      src: content.hero.image,
+      webp: content.hero.imageWebp,
+      src960: content.hero.image960,
+      webp960: content.hero.image960Webp,
+      alt: content.hero.alt,
+      width: 1400,
+      height: 933,
+      fetchpriority: 'high',
+      sizes: '100vw',
+    }) %>
     <div class="hero__veil" aria-hidden="true"></div>
   </div>
   <div class="hero__content reveal">

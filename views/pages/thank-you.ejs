@@ -12,13 +12,17 @@
   <main class="thank-you">
     <section class="thank-you__hero" aria-labelledby="thank-you-title">
       <div class="thank-you__media">
-        <img
-          src="<%= thankYou.image %>"
-          alt="<%= thankYou.imageAlt %>"
-          width="2400"
-          height="1600"
-          decoding="async"
-        >
+        <%- include('../partials/picture-img', {
+          src: thankYou.image,
+          webp: thankYou.imageWebp,
+          src960: thankYou.image960,
+          webp960: thankYou.image960Webp,
+          alt: thankYou.imageAlt,
+          width: 1400,
+          height: 933,
+          fetchpriority: 'high',
+          sizes: '100vw',
+        }) %>
         <div class="thank-you__veil" aria-hidden="true"></div>
       </div>
 

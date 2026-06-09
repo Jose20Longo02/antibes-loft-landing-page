@@ -1,0 +1,30 @@
+<%#
+  locals:
+    src, webp, src960, webp960, alt,
+    className, width, height, loading, fetchpriority, sizes
+%>
+<picture>
+  <% if (webp960 && src960 && webp) { %>
+    <source
+      type="image/webp"
+      srcset="<%= webp960 %> 960w, <%= webp %> 1400w"
+      sizes="<%= typeof sizes !== 'undefined' ? sizes : '100vw' %>"
+    >
+    <source
+      type="image/jpeg"
+      srcset="<%= src960 %> 960w, <%= src %> 1400w"
+      sizes="<%= typeof sizes !== 'undefined' ? sizes : '100vw' %>"
+    >
+  <% } else if (webp) { %>
+    <source type="image/webp" srcset="<%= webp %>">
+  <% } %>
+  <img
+    <% if (typeof className !== 'undefined' && className) { %>class="<%= className %>"<% } %>
+    src="<%= src %>"
+    alt="<%= alt %>"
+    <% if (typeof width !== 'undefined' && width) { %>width="<%= width %>" height="<%= height %>"<% } %>
+    <% if (typeof loading !== 'undefined' && loading) { %>loading="<%= loading %>"<% } %>
+    <% if (typeof fetchpriority !== 'undefined' && fetchpriority) { %>fetchpriority="<%= fetchpriority %>"<% } %>
+    decoding="async"
+  >
+</picture>

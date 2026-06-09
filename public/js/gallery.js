@@ -13,6 +13,13 @@
   const nextBtn = lightbox.querySelector('[data-lightbox-next]');
 
   let currentIndex = 0;
+  let prefersWebp = false;
+
+  function detectWebp() {
+    const canvas = document.createElement('canvas');
+    if (!canvas.getContext) return;
+    prefersWebp = canvas.toDataURL('image/webp').startsWith('data:image/webp');
+  }
 
   function open(index) {
     currentIndex = index;
@@ -31,7 +38,9 @@
   function showSlide() {
     const item = items[currentIndex];
     if (!item) return;
-    imgEl.src = item.dataset.src || item.querySelector('img')?.src || '';
+    const jpeg = item.dataset.src || item.querySelector('img')?.src || '';
+    const webp = item.dataset.srcWebp || '';
+    imgEl.src = prefersWebp && webp ? webp : jpeg;
     imgEl.alt = item.dataset.alt || '';
     captionEl.textContent = item.dataset.alt || '';
   }
@@ -40,6 +49,8 @@
     currentIndex = (currentIndex + dir + items.length) % items.length;
     showSlide();
   }
+
+  detectWebp();
 
   items.forEach((item, index) => {
     item.addEventListener('click', () => open(index));

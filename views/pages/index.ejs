@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="<%= lang %>" dir="<%= langDir %>">
 <head>
-  <%- include('../partials/head') %>
+  <%- include('../partials/head', { preloadHero: true }) %>
 </head>
 <body class="page-home" data-locale="<%= lang %>">
   <%- include('../partials/header') %>

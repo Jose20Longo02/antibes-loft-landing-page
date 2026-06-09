@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node server.js",
     "dev": "node --watch server.js",
-    "check:env": "node scripts/check-env.js"
+    "check:env": "node scripts/check-env.js",
+    "optimize:images": "node scripts/optimize-images.js"
   },
   "keywords": [
     "finlay-brewer",
@@ -28,5 +29,8 @@
     "express-rate-limit": "^7.5.0",
     "helmet": "^8.2.0",
     "nodemailer": "^6.10.0"
+  },
+  "devDependencies": {
+    "sharp": "^0.34.2"
   }
 }

@@ -18,8 +18,7 @@ function getThankYou(req, res) {
     meta: content.thankYou.meta,
     thankYou: {
       ...content.thankYou,
-      image: media.thankYou.image,
-      imageFull: media.thankYou.imageFull,
+      ...media.thankYou,
     },
   });
 }

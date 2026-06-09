@@ -1,7 +1,13 @@
 <section id="features" class="section section--features" aria-labelledby="features-title">
   <div class="features__layout">
     <figure class="features__visual reveal">
-      <img src="<%= content.features.image %>" alt="<%= content.features.alt %>" loading="lazy" decoding="async">
+      <%- include('picture-img', {
+        src: content.features.image,
+        webp: content.features.imageWebp,
+        alt: content.features.alt,
+        loading: 'lazy',
+        sizes: '(min-width: 900px) 45vw, 100vw',
+      }) %>
     </figure>
     <div class="features__content reveal">
       <p class="eyebrow"><%= content.features.label %></p>

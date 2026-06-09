@@ -12,10 +12,17 @@
         class="gallery-mosaic__item gallery-mosaic__item--<%= img.span %>"
         data-gallery-index="<%= i %>"
         data-src="<%= img.full %>"
+        data-src-webp="<%= img.fullWebp %>"
         data-alt="<%= img.alt %>"
         aria-label="View image: <%= img.alt %>"
       >
-        <img src="<%= img.src %>" alt="<%= img.alt %>" loading="lazy" decoding="async">
+        <%- include('picture-img', {
+          src: img.src,
+          webp: img.webp,
+          alt: img.alt,
+          loading: 'lazy',
+          sizes: '(min-width: 1200px) 33vw, (min-width: 700px) 50vw, 100vw',
+        }) %>
       </button>
     <% }); %>
   </div>

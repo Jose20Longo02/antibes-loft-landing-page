@@ -9,7 +9,13 @@
     <% content.experience.moments.forEach(function (moment, i) { %>
       <article class="experience-item <%= i % 2 === 1 ? 'experience-item--reverse' : '' %> reveal">
         <figure class="experience-item__media">
-          <img src="<%= moment.image %>" alt="<%= moment.alt %>" loading="lazy" decoding="async">
+          <%- include('picture-img', {
+            src: moment.image,
+            webp: moment.imageWebp,
+            alt: moment.alt,
+            loading: 'lazy',
+            sizes: '(min-width: 900px) 42vw, 100vw',
+          }) %>
         </figure>
         <div class="experience-item__copy">
           <p class="experience-item__text"><%= moment.text %></p>

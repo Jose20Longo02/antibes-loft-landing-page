@@ -11,7 +11,13 @@
       </ul>
     </div>
     <figure class="lifestyle__visual reveal">
-      <img src="<%= content.lifestyle.image %>" alt="<%= content.lifestyle.alt %>" loading="lazy" decoding="async">
+      <%- include('picture-img', {
+        src: content.lifestyle.image,
+        webp: content.lifestyle.imageWebp,
+        alt: content.lifestyle.alt,
+        loading: 'lazy',
+        sizes: '(min-width: 900px) 45vw, 100vw',
+      }) %>
     </figure>
   </div>
 </section>

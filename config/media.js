@@ -1,5 +1,9 @@
-const IMG = '/images/gallery/optimized';
-const IMG_FULL = '/images/gallery/full-res';
+const IMG = '/images/gallery/display';
+const IMG_LIGHTBOX = '/images/gallery/lightbox';
+
+function fileBase(file) {
+  return file.replace(/\.jpe?g$/i, '');
+}
 
 const galleryFiles = [
   { file: '_DSC1605-Edit.jpg', span: 'wide' },
@@ -18,15 +22,20 @@ const galleryFiles = [
 ];
 
 function img(file) {
+  const base = fileBase(file);
   return {
     image: `${IMG}/${file}`,
-    imageFull: `${IMG_FULL}/${file}`,
+    imageWebp: `${IMG}/${base}.webp`,
+    image960: `${IMG}/${base}-960.jpg`,
+    image960Webp: `${IMG}/${base}-960.webp`,
+    imageFull: `${IMG_LIGHTBOX}/${file}`,
+    imageFullWebp: `${IMG_LIGHTBOX}/${base}.webp`,
   };
 }
 
 module.exports = {
   IMG,
-  IMG_FULL,
+  IMG_LIGHTBOX,
   hero: img('_DSC1605-Edit.jpg'),
   idea: img('_DSC1602.jpg'),
   experienceMoments: [
@@ -37,11 +46,16 @@ module.exports = {
   ],
   features: img('_DSC1556.jpg'),
   lifestyle: img('_DSC1602.jpg'),
-  presentation: { image: `${IMG}/_DSC1431.jpg` },
+  presentation: img('_DSC1431.jpg'),
   thankYou: img('_DSC1690-Edit-2.jpg'),
-  galleryFiles: galleryFiles.map(({ file, span }) => ({
-    src: `${IMG}/${file}`,
-    full: `${IMG_FULL}/${file}`,
-    span,
-  })),
+  galleryFiles: galleryFiles.map(({ file, span }) => {
+    const base = fileBase(file);
+    return {
+      src: `${IMG}/${file}`,
+      webp: `${IMG}/${base}.webp`,
+      full: `${IMG_LIGHTBOX}/${file}`,
+      fullWebp: `${IMG_LIGHTBOX}/${base}.webp`,
+      span,
+    };
+  }),
 };

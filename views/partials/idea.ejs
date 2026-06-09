@@ -9,7 +9,13 @@
 
   <figure class="editorial-panel reveal">
     <div class="editorial-panel__media">
-      <img src="<%= content.idea.image %>" alt="<%= content.idea.alt %>" loading="lazy" decoding="async">
+      <%- include('picture-img', {
+        src: content.idea.image,
+        webp: content.idea.imageWebp,
+        alt: content.idea.alt,
+        loading: 'lazy',
+        sizes: '(min-width: 900px) 50vw, 100vw',
+      }) %>
     </div>
   </figure>
 

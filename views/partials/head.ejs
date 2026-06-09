@@ -30,6 +30,15 @@
 <% if (shareImage) { %>
 <meta name="twitter:image" content="<%= shareImage %>">
 <% } %>
+<% if (typeof preloadHero !== 'undefined' && preloadHero && content.hero && content.hero.imageWebp) { %>
+<link
+  rel="preload"
+  as="image"
+  type="image/webp"
+  imagesrcset="<%= content.hero.image960Webp %> 960w, <%= content.hero.imageWebp %> 1400w"
+  imagesizes="100vw"
+>
+<% } %>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;450;500&display=swap" rel="stylesheet">
