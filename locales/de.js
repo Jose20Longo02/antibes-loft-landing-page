@@ -70,7 +70,15 @@ module.exports = {
     title: 'Über Antibes',
     lead:
       'Ein stiller Gang durch die Residenz — Raum, Licht und der Horizont in einer einzigen, ungeteilten Aussicht.',
-    caption: 'Architekten-Loft · Antibes, Französische Riviera',
+    highlightsLabel: 'Auf einen Blick',
+    highlights: [
+      { label: 'Innenfläche', value: 'Etwa 206 m²' },
+      { label: 'Terrasse', value: '40 m², panoramisch' },
+      { label: 'Wohnen', value: '65 m² offener Grundriss' },
+      { label: 'Suiten', value: 'Drei, inkl. Hauptsuite mit Ankleide' },
+      { label: 'Aussicht', value: '180° Mittelmeer-Panorama' },
+      { label: 'Zugang', value: 'Privater Aufzug · sichere Garage' },
+    ],
     posterAlt: 'Die Villa über Antibes — Mittelmeerpanorama von der Residenz aus',
     playLabel: 'Film abspielen',
     pauseLabel: 'Pause',

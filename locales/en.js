@@ -70,7 +70,15 @@ module.exports = {
     title: 'Above Antibes',
     lead:
       'A quiet procession through the residence — volume, light, and the horizon held in a single, unbroken view.',
-    caption: 'Architect-designed loft · Antibes, French Riviera',
+    highlightsLabel: 'At a glance',
+    highlights: [
+      { label: 'Interior', value: 'Approximately 206 m²' },
+      { label: 'Terrace', value: '40 m², panoramic' },
+      { label: 'Living', value: '65 m² open-plan' },
+      { label: 'Suites', value: 'Three, incl. principal with dressing room' },
+      { label: 'Views', value: '180° Mediterranean panorama' },
+      { label: 'Access', value: 'Private elevator · secure garage' },
+    ],
     posterAlt: 'The Villa Above Antibes — Mediterranean panorama from the residence',
     playLabel: 'Play film',
     pauseLabel: 'Pause film',

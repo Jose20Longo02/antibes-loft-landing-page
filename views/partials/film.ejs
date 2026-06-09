@@ -56,9 +56,50 @@
       </div>
     </figure>
 
-    <div class="film__aside reveal">
-      <p class="film__caption"><%= content.film.caption %></p>
-      <span class="film__mark" aria-hidden="true"></span>
-    </div>
+    <aside class="film__aside reveal">
+      <div class="film__specs" data-film-specs data-interval="5200">
+        <header class="film__specs-head">
+          <p class="eyebrow film__specs-eyebrow"><%= content.film.highlightsLabel %></p>
+          <p class="film__specs-price display"><%= content.details.price %></p>
+          <p class="film__specs-location"><%= content.details.location %></p>
+        </header>
+
+        <div class="film__specs-stage" aria-live="polite" aria-atomic="true">
+          <p class="film__specs-stage-label" data-spec-stage-label>
+            <%= content.film.highlights[0].label %>
+          </p>
+          <p class="film__specs-stage-value" data-spec-stage-value>
+            <%= content.film.highlights[0].value %>
+          </p>
+        </div>
+
+        <ol class="film__specs-index" role="tablist" aria-label="<%= content.film.highlightsLabel %>">
+          <% content.film.highlights.forEach(function (item, i) { %>
+            <li class="film__specs-item">
+              <button
+                type="button"
+                class="film__specs-tab<%= i === 0 ? ' is-active' : '' %>"
+                role="tab"
+                id="film-spec-tab-<%= i %>"
+                aria-selected="<%= i === 0 ? 'true' : 'false' %>"
+                aria-controls="film-spec-panel"
+                data-spec-tab
+                data-label="<%= item.label %>"
+                data-value="<%= item.value %>"
+              >
+                <span class="film__specs-tab-num" aria-hidden="true"><%= String(i + 1).padStart(2, '0') %></span>
+                <span class="film__specs-tab-label"><%= item.label %></span>
+              </button>
+            </li>
+          <% }); %>
+        </ol>
+
+        <div class="film__specs-progress" aria-hidden="true">
+          <span class="film__specs-progress-fill" data-spec-progress></span>
+        </div>
+
+        <p id="film-spec-panel" class="visually-hidden" role="tabpanel" tabindex="-1"></p>
+      </div>
+    </aside>
   </div>
 </section>

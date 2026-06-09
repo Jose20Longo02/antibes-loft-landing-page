@@ -70,7 +70,15 @@ module.exports = {
     title: 'Au-dessus d\'Antibes',
     lead:
       'Une promenade silencieuse à travers la résidence — le volume, la lumière et l\'horizon réunis en un seul regard.',
-    caption: 'Loft d\'architecte · Antibes, Côte d\'Azur',
+    highlightsLabel: 'L\'essentiel',
+    highlights: [
+      { label: 'Intérieur', value: 'Environ 206 m²' },
+      { label: 'Terrasse', value: '40 m², panoramique' },
+      { label: 'Séjour', value: '65 m² en open space' },
+      { label: 'Suites', value: 'Trois, dont suite principale avec dressing' },
+      { label: 'Vues', value: 'Panorama méditerranéen à 180°' },
+      { label: 'Accès', value: 'Ascenseur privé · garage sécurisé' },
+    ],
     posterAlt: 'La Villa au-dessus d\'Antibes — panorama méditerranéen depuis la résidence',
     playLabel: 'Lire le film',
     pauseLabel: 'Mettre en pause',

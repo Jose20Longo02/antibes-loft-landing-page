@@ -128,3 +128,106 @@
 
   setMuted(true);
 })();
+
+(function () {
+  'use strict';
+
+  const root = document.querySelector('[data-film-specs]');
+  if (!root) return;
+
+  const tabs = [...root.querySelectorAll('[data-spec-tab]')];
+  const stage = root.querySelector('.film__specs-stage');
+  const stageLabel = root.querySelector('[data-spec-stage-label]');
+  const stageValue = root.querySelector('[data-spec-stage-value]');
+  const panel = document.getElementById('film-spec-panel');
+  const progress = root.querySelector('[data-spec-progress]');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!tabs.length || !stageLabel || !stageValue) return;
+
+  const interval = Number(root.dataset.interval) || 5200;
+  let index = 0;
+  let timer = null;
+  let paused = false;
+
+  function runProgress() {
+    if (!progress || reducedMotion) return;
+    progress.style.animation = 'none';
+    void progress.offsetWidth;
+    progress.style.animation = `filmSpecProgress ${interval}ms linear forwards`;
+    progress.style.animationPlayState = paused ? 'paused' : 'running';
+  }
+
+  function setActive(nextIndex) {
+    index = nextIndex;
+    const tab = tabs[index];
+
+    stage?.classList.add('is-changing');
+    window.setTimeout(() => {
+      stageLabel.textContent = tab.dataset.label || '';
+      stageValue.textContent = tab.dataset.value || '';
+      if (panel) panel.textContent = `${tab.dataset.label}: ${tab.dataset.value}`;
+      stage?.classList.remove('is-changing');
+    }, reducedMotion ? 0 : 180);
+
+    tabs.forEach((item, i) => {
+      const active = i === index;
+      item.classList.toggle('is-active', active);
+      item.setAttribute('aria-selected', String(active));
+    });
+
+    runProgress();
+  }
+
+  function schedule() {
+    clearInterval(timer);
+    if (reducedMotion || paused) return;
+    timer = window.setInterval(() => {
+      setActive((index + 1) % tabs.length);
+    }, interval);
+  }
+
+  function activate(nextIndex) {
+    setActive(nextIndex);
+    schedule();
+  }
+
+  tabs.forEach((tab, i) => {
+    tab.addEventListener('click', () => activate(i));
+  });
+
+  root.addEventListener('mouseenter', () => {
+    paused = true;
+    root.classList.add('is-paused');
+    clearInterval(timer);
+    if (progress) progress.style.animationPlayState = 'paused';
+  });
+
+  root.addEventListener('mouseleave', () => {
+    paused = false;
+    root.classList.remove('is-paused');
+    if (progress) progress.style.animationPlayState = 'running';
+    schedule();
+  });
+
+  root.addEventListener('focusin', () => {
+    paused = true;
+    clearInterval(timer);
+  });
+
+  root.addEventListener('focusout', () => {
+    if (!root.contains(document.activeElement)) {
+      paused = false;
+      root.classList.remove('is-paused');
+      if (progress) progress.style.animationPlayState = 'running';
+      schedule();
+    }
+  });
+
+  if (panel && tabs[0]) {
+    panel.textContent = `${tabs[0].dataset.label}: ${tabs[0].dataset.value}`;
+  }
+
+  runProgress();
+  schedule();
+})();

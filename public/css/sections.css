@@ -419,27 +419,177 @@
 
 .film__aside {
   justify-self: start;
-  max-width: 13rem;
+  width: min(100%, 16.5rem);
   padding-left: clamp(var(--space-sm), 3vw, var(--space-md));
   border-left: 1px solid var(--color-line);
 }
 
-.film__caption {
+.film__specs-head {
+  margin-bottom: var(--space-md);
+}
+
+.film__specs-eyebrow {
+  margin-bottom: var(--space-xs);
+}
+
+.film__specs-price {
+  margin: 0 0 0.35rem;
+  font-size: clamp(1.5rem, 2.4vw, 1.85rem);
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  line-height: 1.1;
+  color: var(--color-charcoal);
+}
+
+.film__specs-location {
   margin: 0;
+  font-size: 0.62rem;
+  font-weight: 450;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-stone);
+}
+
+.film__specs-stage {
+  min-height: 4.5rem;
+  margin-bottom: var(--space-sm);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--color-line);
+}
+
+.film__specs-stage-label {
+  margin: 0 0 0.4rem;
   font-size: 0.62rem;
   font-weight: 450;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--color-stone);
-  line-height: 1.85;
+  transition: opacity 0.45s var(--ease-reveal), transform 0.45s var(--ease-reveal);
 }
 
-.film__mark {
-  display: block;
-  width: 1.5rem;
+.film__specs-stage-value {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  line-height: 1.35;
+  color: var(--color-charcoal);
+  transition: opacity 0.45s var(--ease-reveal), transform 0.45s var(--ease-reveal);
+}
+
+.film__specs-stage-label.is-swapping,
+.film__specs-stage-value.is-swapping {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.film__specs-stage.is-changing .film__specs-stage-label,
+.film__specs-stage.is-changing .film__specs-stage-value {
+  opacity: 0;
+  transform: translate3d(0, 6px, 0);
+}
+
+.film__specs-index {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.film__specs-item {
+  margin: 0;
+}
+
+.film__specs-tab {
+  display: grid;
+  grid-template-columns: 1.75rem 1fr;
+  align-items: baseline;
+  gap: 0.5rem;
+  width: 100%;
+  margin: 0;
+  padding: 0.55rem 0;
+  border: none;
+  border-top: 1px solid transparent;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  color: var(--color-stone);
+  transition: color var(--duration-fast), padding-left var(--duration-fast);
+}
+
+.film__specs-item + .film__specs-item .film__specs-tab {
+  border-top-color: var(--color-line);
+}
+
+.film__specs-tab-num {
+  font-size: 0.58rem;
+  font-weight: 450;
+  letter-spacing: 0.14em;
+  opacity: 0.45;
+  transition: opacity var(--duration-fast);
+}
+
+.film__specs-tab-label {
+  font-size: 0.68rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+
+.film__specs-tab:hover,
+.film__specs-tab:focus-visible {
+  color: var(--color-charcoal-soft);
+  padding-left: 0.2rem;
+  outline: none;
+}
+
+.film__specs-tab.is-active {
+  color: var(--color-charcoal);
+  padding-left: 0.25rem;
+}
+
+.film__specs-tab.is-active .film__specs-tab-num {
+  opacity: 1;
+}
+
+.film__specs-progress {
   height: 1px;
-  margin-top: var(--space-md);
+  margin-top: var(--space-sm);
   background: var(--color-line);
+  overflow: hidden;
+}
+
+.film__specs-progress-fill {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--color-charcoal);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.film__specs.is-paused .film__specs-progress-fill {
+  animation-play-state: paused;
+}
+
+@keyframes filmSpecProgress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .film__specs-stage-label,
+  .film__specs-stage-value {
+    transition: none;
+  }
+
+  .film__specs-progress {
+    display: none;
+  }
 }
 
 @media (max-width: 960px) {
@@ -478,14 +628,29 @@
   .film__aside {
     grid-area: aside;
     justify-self: center;
-    max-width: 20rem;
+    width: min(100%, 22rem);
     padding: 0;
-    text-align: center;
     border-left: none;
   }
 
-  .film__mark {
-    margin-inline: auto;
+  .film__specs-head {
+    text-align: center;
+  }
+
+  .film__specs-stage {
+    text-align: center;
+    min-height: 4rem;
+  }
+
+  .film__specs-tab {
+    grid-template-columns: 2rem 1fr;
+    padding: 0.65rem 0;
+  }
+
+  .film__specs-tab.is-active,
+  .film__specs-tab:hover,
+  .film__specs-tab:focus-visible {
+    padding-left: 0;
   }
 }
 
