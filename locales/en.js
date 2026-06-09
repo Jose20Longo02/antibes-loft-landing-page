@@ -61,7 +61,7 @@ module.exports = {
     offer: 'Architect-designed loft · approximately 206 m²',
     price: '€1,980,000',
     priceNote: 'Private sale · introduction on request',
-    cta: 'Request Private Presentation',
+    cta: 'Request Private Viewing',
     alt: 'Fort Carré, Port Vauban, and the Mediterranean coast viewed from above Antibes',
   },
 
@@ -183,7 +183,7 @@ module.exports = {
     title: 'Request access',
     lead:
       'To explore acquiring this residence, request a private presentation — in person or by arrangement. Not widely marketed; we invite qualified enquiries below.',
-    cta: 'Request Private Presentation',
+    cta: 'Request Private Viewing',
     timelines: [
       'Within 3 months',
       '3–6 months',

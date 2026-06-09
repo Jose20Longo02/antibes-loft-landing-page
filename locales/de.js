@@ -61,7 +61,7 @@ module.exports = {
     offer: 'Architekten-Loft · ca. 206 m²',
     price: '1.980.000 €',
     priceNote: 'Privatverkauf · auf Anfrage',
-    cta: 'Private Präsentation anfragen',
+    cta: 'Private Besichtigung anfragen',
     alt: 'Fort Carré, Port Vauban und das Mittelmeer, von oben über Antibes gesehen',
   },
 
@@ -183,7 +183,7 @@ module.exports = {
     title: 'Zugang anfragen',
     lead:
       'Um den Erwerb dieser Residenz zu prüfen, fordern Sie eine private Präsentation an — persönlich oder nach Vereinbarung. Begrenzt vermarktet; qualifizierte Anfragen sind willkommen.',
-    cta: 'Private Präsentation anfragen',
+    cta: 'Private Besichtigung anfragen',
     timelines: [
       'Innerhalb von 3 Monaten',
       '3–6 Monate',

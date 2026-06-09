@@ -61,7 +61,7 @@ module.exports = {
     offer: 'Loft d\'architecte · environ 206 m²',
     price: '1 980 000 €',
     priceNote: 'Vente privée · sur introduction',
-    cta: 'Demander une présentation privée',
+    cta: 'Demander une visite privée',
     alt: 'Fort Carré, Port Vauban et la Méditerranée vus au-dessus d\'Antibes',
   },
 
@@ -183,7 +183,7 @@ module.exports = {
     title: 'Demander l\'accès',
     lead:
       'Pour envisager l\'acquisition de cette résidence, demandez une présentation privée — en personne ou sur arrangement. Peu commercialisée ; nous accueillons les demandes qualifiées ci-dessous.',
-    cta: 'Demander une présentation privée',
+    cta: 'Demander une visite privée',
     timelines: [
       'Sous 3 mois',
       '3 à 6 mois',
