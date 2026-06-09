@@ -41,7 +41,8 @@ module.exports = {
   VIDEO,
   hero: img('_DSC1605-Edit.jpg'),
   film: {
-    ...img('_DSC1605-Edit.jpg'),
+    poster: '/images/film/poster.jpg',
+    posterWebp: '/images/film/poster.webp',
     videoCompressed: `${VIDEO}/villa-antibes-compressed.mp4`,
     videoHd: `${VIDEO}/villa-antibes-hd.mp4`,
   },

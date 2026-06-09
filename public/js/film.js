@@ -8,6 +8,7 @@
   const playBtn = figure.querySelector('[data-film-play]');
   const muteBtn = figure.querySelector('[data-film-mute]');
   const frame = figure.querySelector('.film__frame');
+  const poster = figure.querySelector('.film__poster');
 
   if (!video || !playBtn) return;
 
@@ -58,6 +59,7 @@
     playing = next;
     frame.classList.toggle('is-playing', playing);
     playBtn.hidden = playing;
+    if (poster) poster.hidden = playing;
     if (muteBtn) muteBtn.hidden = !playing;
     playBtn.setAttribute('aria-label', playing ? labels.pause : labels.play);
   }
@@ -104,6 +106,9 @@
     if (playing) pause();
     else play();
   });
+
+  video.addEventListener('play', () => setPlaying(true));
+  video.addEventListener('pause', () => setPlaying(false));
 
   if (!reducedMotion && 'IntersectionObserver' in window) {
     const observer = new IntersectionObserver(

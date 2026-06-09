@@ -8,13 +8,22 @@
 
     <figure class="film__figure reveal" data-film>
       <div class="film__frame">
+        <img
+          class="film__poster"
+          src="<%= content.film.poster %>"
+          alt=""
+          width="720"
+          height="1280"
+          decoding="async"
+          aria-hidden="true"
+        >
         <video
           class="film__video"
           playsinline
           muted
           loop
           preload="none"
-          poster="<%= content.film.image %>"
+          poster="<%= content.film.poster %>"
           data-sd="<%= content.film.videoCompressed %>"
           data-hd="<%= content.film.videoHd %>"
           aria-label="<%= content.film.posterAlt %>"
