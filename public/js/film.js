@@ -50,6 +50,7 @@
     if (loaded) return;
     const src = pickSrc();
     if (!src) return;
+    video.style.display = 'none';
     video.src = src;
     video.load();
     loaded = true;

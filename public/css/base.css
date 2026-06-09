@@ -40,6 +40,13 @@ video {
   display: block;
 }
 
+/* Safari/WebKit: global height:auto breaks absolutely positioned film media */
+.film__poster,
+.film__video {
+  max-width: none;
+  height: 100%;
+}
+
 button {
   font: inherit;
   color: inherit;
