@@ -58,11 +58,16 @@
   function setPlaying(next) {
     playing = next;
     frame.classList.toggle('is-playing', playing);
-    video.style.removeProperty('display');
     playBtn.hidden = playing;
-    if (poster) poster.hidden = playing;
     if (muteBtn) muteBtn.hidden = !playing;
     playBtn.setAttribute('aria-label', playing ? labels.pause : labels.play);
+  }
+
+  function waitForFrame() {
+    if (video.readyState >= 2) return Promise.resolve();
+    return new Promise((resolve) => {
+      video.addEventListener('loadeddata', resolve, { once: true });
+    });
   }
 
   function setMuted(muted) {
@@ -79,6 +84,7 @@
   async function play() {
     loadVideo();
     try {
+      await waitForFrame();
       await video.play();
       setPlaying(true);
     } catch {

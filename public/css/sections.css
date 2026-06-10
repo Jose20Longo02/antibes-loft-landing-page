@@ -264,17 +264,12 @@
   background: var(--color-charcoal);
   border: 1px solid var(--color-line);
   box-shadow: 0 24px 48px rgba(28, 27, 25, 0.08);
-  isolation: isolate;
-  contain: layout paint;
 }
 
-.film__poster,
 .film__video {
   position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  inset: 0;
+  z-index: 1;
   width: 100%;
   height: 100%;
   max-width: none;
@@ -284,30 +279,33 @@
   object-fit: cover;
   object-position: center;
   background: var(--color-charcoal);
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
 }
 
-.film__video {
-  z-index: 1;
-  display: none;
+.film__poster {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  border: none;
+  object-fit: cover;
+  object-position: center;
+  background: var(--color-charcoal);
+  transition: opacity var(--duration-fast) var(--ease-out), visibility var(--duration-fast);
+}
+
+.film__frame.is-playing .film__poster {
   opacity: 0;
-}
-
-.film__frame.is-playing .film__video {
-  display: block;
-  opacity: 1;
-}
-
-.film__frame.is-playing .film__poster,
-.film__poster[hidden] {
-  display: none !important;
+  visibility: hidden;
 }
 
 .film__veil {
   position: absolute;
   inset: 0;
-  z-index: 2;
+  z-index: 3;
   pointer-events: none;
   background: linear-gradient(
     180deg,
@@ -320,7 +318,7 @@
 }
 
 .film__frame.is-playing .film__veil {
-  opacity: 0.45;
+  opacity: 0.2;
 }
 
 .film__frame.is-playing .film__play,
@@ -335,7 +333,7 @@
 .film__controls {
   position: absolute;
   inset: 0;
-  z-index: 3;
+  z-index: 4;
   display: grid;
   place-items: center;
   pointer-events: none;
@@ -618,21 +616,6 @@
 
   .film__specs-progress {
     display: none;
-  }
-}
-
-/* WebKit/Safari: reinforce frame height and keep video out of document flow until play */
-@supports (-webkit-touch-callout: none) {
-  .film__frame {
-    contain: layout paint;
-  }
-
-  .film__video {
-    pointer-events: none;
-  }
-
-  .film__frame.is-playing .film__video {
-    pointer-events: auto;
   }
 }
 
