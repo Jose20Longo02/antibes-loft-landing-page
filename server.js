@@ -11,6 +11,7 @@ const { getRobots, getSitemap } = require('./controllers/seoController');
 const { notFound, errorHandler } = require('./middleware/errorHandler');
 const { helmetMiddleware, forceHttps } = require('./middleware/security');
 const { staticCache } = require('./middleware/staticCache');
+const { assetUrl } = require('./config/assets');
 
 validateConfig();
 
@@ -35,6 +36,11 @@ app.use(express.urlencoded({ extended: true, limit: '32kb' }));
 
 app.get('/robots.txt', getRobots);
 app.get('/sitemap.xml', getSitemap);
+
+app.use((req, res, next) => {
+  res.locals.assetUrl = assetUrl;
+  next();
+});
 
 app.use(staticCache);
 app.use(express.static(path.join(__dirname, 'public')));
