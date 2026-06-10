@@ -307,6 +307,7 @@
 .film__veil {
   position: absolute;
   inset: 0;
+  z-index: 2;
   pointer-events: none;
   background: linear-gradient(
     180deg,
@@ -334,7 +335,7 @@
 .film__controls {
   position: absolute;
   inset: 0;
-  z-index: 2;
+  z-index: 3;
   display: grid;
   place-items: center;
   pointer-events: none;

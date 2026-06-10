@@ -50,7 +50,6 @@
     if (loaded) return;
     const src = pickSrc();
     if (!src) return;
-    video.style.display = 'none';
     video.src = src;
     video.load();
     loaded = true;
@@ -59,6 +58,7 @@
   function setPlaying(next) {
     playing = next;
     frame.classList.toggle('is-playing', playing);
+    video.style.removeProperty('display');
     playBtn.hidden = playing;
     if (poster) poster.hidden = playing;
     if (muteBtn) muteBtn.hidden = !playing;
