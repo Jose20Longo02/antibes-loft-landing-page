@@ -65,7 +65,7 @@ async function appendLead(lead) {
     throw new Error(data.error || `Google Sheets webhook failed (${res.status})`);
   }
 
-  return { saved: true, data };
+  return { saved: true, data, emailSent: Boolean(data.emailSent) };
 }
 
 module.exports = { appendLead, isSheetsConfigured };

@@ -74,6 +74,8 @@ app.listen(PORT, HOST, () => {
 
   if (!isEmailConfigured()) {
     console.warn('[email] SMTP not fully configured — lead notification emails disabled');
+  } else if (isProduction() && process.env.GOOGLE_SHEETS_WEBHOOK_URL) {
+    console.log('[email] Production uses Apps Script for notifications (Render blocks SMTP on free tier)');
   }
 });
 

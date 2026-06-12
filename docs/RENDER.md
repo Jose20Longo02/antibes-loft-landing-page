@@ -102,7 +102,8 @@ Your site will be at:
 ## Free tier notes
 
 - Service **spins down after ~15 min** of no traffic; first visit may take 30–60s (cold start).
-- Upgrade to a paid plan for always-on and faster builds.
+- **Outbound SMTP is blocked** on ports 25, 587, and 465 — Gmail SMTP from the Node app will timeout. Send lead emails via **Google Apps Script** instead (`docs/GOOGLE-SHEETS.md`).
+- Upgrade to a paid plan for always-on, faster builds, and direct SMTP access.
 - Gallery images are in the repo, so builds are larger than a minimal API.
 
 ---
@@ -114,8 +115,10 @@ Your site will be at:
 | Deploy fails immediately | Open **Logs** — usually missing `GOOGLE_SHEETS_WEBHOOK_URL` or SMTP vars |
 | “Application failed to respond” | Wait for cold start; check health path `/en` |
 | Form 503 | Lead capture not configured — add Sheets and/or SMTP env vars |
+| `[email] Connection timeout` on Render | **Free tier blocks SMTP** — use Apps Script email (see `docs/GOOGLE-SHEETS.md` §2b) |
+| Emails work locally but not on Render | Same as above; upgrade Render to paid **or** use Apps Script `NOTIFICATION_EMAIL` |
 | Wrong OG / canonical URLs | Set `SITE_URL` to your public URL (or custom domain) |
-| Emails not sending | Use Gmail **App Password**, not normal password |
+| Emails not sending (local) | Use Gmail **App Password**, not normal password |
 
 ---
 

@@ -1,7 +1,7 @@
 const { sendNewLeadNotification, isEmailConfigured } = require('../services/emailService');
 const { appendLead, isSheetsConfigured } = require('../services/sheetsService');
 const { sendLeadEvent, isMetaConversionsConfigured } = require('../services/metaConversionsService');
-const { absoluteUrl } = require('../config/env');
+const { absoluteUrl, isProduction } = require('../config/env');
 const { isSupported, DEFAULT_LOCALE } = require('../config/i18n');
 const crypto = require('crypto');
 
@@ -31,40 +31,37 @@ function withTimeout(promise, ms, label) {
   ]);
 }
 
+function shouldUseSmtpFallback(sentEmail) {
+  if (sentEmail || !isEmailConfigured()) return false;
+  if (process.env.SKIP_SMTP === 'true') return false;
+  // Render free tier blocks outbound SMTP — rely on Apps Script email instead.
+  if (isProduction() && isSheetsConfigured()) return false;
+  return true;
+}
+
 async function createInquiry(req, res, next) {
   try {
     const lead = leadFromBody(req.body);
     let savedToSheets = false;
     let sentEmail = false;
 
-    const tasks = [];
-
     if (isSheetsConfigured()) {
-      tasks.push(
-        withTimeout(appendLead(lead), SHEETS_TIMEOUT_MS, 'Google Sheets')
-          .then(() => {
-            savedToSheets = true;
-          })
-          .catch((err) => {
-            console.error('[sheets] Failed to save lead:', err.message);
-          })
-      );
+      try {
+        const result = await withTimeout(appendLead(lead), SHEETS_TIMEOUT_MS, 'Google Sheets');
+        savedToSheets = Boolean(result.saved);
+        if (result.emailSent) sentEmail = true;
+      } catch (err) {
+        console.error('[sheets] Failed to save lead:', err.message);
+      }
     }
 
-    if (isEmailConfigured()) {
-      tasks.push(
-        withTimeout(sendNewLeadNotification(lead), EMAIL_TIMEOUT_MS, 'Email delivery')
-          .then(() => {
-            sentEmail = true;
-          })
-          .catch((err) => {
-            console.error('[email] Failed to send lead notification:', err.message);
-          })
-      );
-    }
-
-    if (tasks.length) {
-      await Promise.all(tasks);
+    if (shouldUseSmtpFallback(sentEmail)) {
+      try {
+        await withTimeout(sendNewLeadNotification(lead), EMAIL_TIMEOUT_MS, 'Email delivery');
+        sentEmail = true;
+      } catch (err) {
+        console.error('[email] Failed to send lead notification:', err.message);
+      }
     }
 
     if (!savedToSheets && !sentEmail) {

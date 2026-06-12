@@ -16,6 +16,17 @@ Create a new Google Sheet. In **row 1**, add these headers:
 2. Delete any sample code and paste the contents of `scripts/google-apps-script.js` from this project
 3. **Save** the project
 
+## 2b. Enable email notifications (required on Render free tier)
+
+Render **blocks SMTP ports** on the free plan, so lead emails are sent from Apps Script instead (using your Google account’s Gmail).
+
+1. In Apps Script: **Project Settings** (gear icon) → **Script properties** → **Add property**
+   - Name: `NOTIFICATION_EMAIL`
+   - Value: inbox that should receive leads (e.g. `JoseLongo@Medialy.Agency`)
+2. After any script change, create a **new deployment** (Deploy → Manage deployments → Edit → New version → Deploy)
+
+Emails are sent from the Google account that owns the script, with **Reply-To** set to the lead’s email.
+
 ## 3. Deploy as web app
 
 1. **Deploy → New deployment**
@@ -49,6 +60,7 @@ A new row should appear in the sheet.
 
 ## Notes
 
-- Email notifications (Gmail) work independently — configure both for redundancy
+- **Render free tier:** outbound SMTP (Gmail port 587/465) is blocked — use Apps Script email (section 2b), not Node SMTP
+- Local development can still use Gmail SMTP in `.env` if you prefer
 - The webhook URL is secret; do not commit it to git (keep it in `.env` only)
 - You can share the sheet with your team for viewing and filtering leads
