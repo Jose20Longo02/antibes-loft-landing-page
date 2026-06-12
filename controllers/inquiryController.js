@@ -1,7 +1,10 @@
 const { sendNewLeadNotification } = require('../services/emailService');
 const { appendLead, isSheetsConfigured } = require('../services/sheetsService');
 const { isEmailConfigured } = require('../services/emailService');
+const { sendLeadEvent, isMetaConversionsConfigured } = require('../services/metaConversionsService');
+const { absoluteUrl } = require('../config/env');
 const { isSupported, DEFAULT_LOCALE } = require('../config/i18n');
+const crypto = require('crypto');
 
 function leadFromBody(body) {
   return {
@@ -47,11 +50,32 @@ async function createInquiry(req, res, next) {
     return next(err);
   }
 
+  const eventId =
+    typeof req.body.meta_event_id === 'string' && req.body.meta_event_id.trim()
+      ? req.body.meta_event_id.trim()
+      : crypto.randomUUID();
+
+  if (isMetaConversionsConfigured()) {
+    const locale = lead.language || DEFAULT_LOCALE;
+    sendLeadEvent({
+      eventId,
+      email: lead.email,
+      phone: lead.phone,
+      name: lead.name,
+      ip: req.ip,
+      userAgent: req.get('user-agent'),
+      sourceUrl: absoluteUrl(`/${locale}#presentation`),
+    }).catch((err) => {
+      console.error('[meta] Failed to send Lead event:', err.message);
+    });
+  }
+
   res.status(201).json({
     success: true,
     data: lead,
     savedToSheets,
     sentEmail,
+    eventId,
   });
 }
 
