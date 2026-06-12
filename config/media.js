@@ -7,12 +7,16 @@ function fileBase(file) {
 
 const galleryFiles = [
   { file: '_DSC1605-Edit.jpg', span: 'wide' },
+  { file: 'IMG_2855.jpg', span: 'wide' },
   { file: '_DSC1602.jpg', span: 'wide' },
   { file: '_DSC1556.jpg', span: 'tall' },
+  { file: 'IMG_2863.jpg', span: 'normal' },
   { file: '_DSC1675-Edit-2.jpg', span: 'normal' },
   { file: '_DSC1520.jpg', span: 'normal' },
+  { file: 'IMG_2883.jpg', span: 'wide' },
   { file: '_DSC1551.jpg', span: 'normal' },
   { file: '_DSC1690-Edit-2.jpg', span: 'normal' },
+  { file: 'IMG_2882.jpg', span: 'wide' },
   { file: '_DSC1566.jpg', span: 'tall' },
   { file: '_DSC1481.jpg', span: 'wide' },
   { file: '_DSC1431.jpg', span: 'normal' },
