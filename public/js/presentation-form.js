@@ -51,6 +51,10 @@
         throw new Error(data.error || msgError);
       }
 
+      if (typeof window.fbq === 'function') {
+        window.fbq('track', 'Lead');
+      }
+
       window.location.assign(thankYouUrl);
     } catch (err) {
       statusEl.textContent = err.message || msgError;

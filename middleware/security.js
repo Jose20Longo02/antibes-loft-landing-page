@@ -3,11 +3,11 @@ const { isProduction, getSiteUrl } = require('../config/env');
 
 const cspDirectives = {
   defaultSrc: ["'self'"],
-  scriptSrc: ["'self'"],
+  scriptSrc: ["'self'", 'https://connect.facebook.net'],
   styleSrc: ["'self'", 'https://fonts.googleapis.com'],
   fontSrc: ["'self'", 'https://fonts.gstatic.com', 'data:'],
   imgSrc: ["'self'", 'data:', 'https:'],
-  connectSrc: ["'self'"],
+  connectSrc: ["'self'", 'https://www.facebook.com', 'https://connect.facebook.net'],
   frameSrc: ["'none'"],
   objectSrc: ["'none'"],
 };

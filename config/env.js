@@ -55,6 +55,10 @@ function validateConfig() {
   warnings.forEach((w) => console.warn(`[config] ${w}`));
 }
 
+function getMetaPixelId() {
+  return (process.env.META_PIXEL_ID || '').trim();
+}
+
 function getDefaultOgImage() {
   return absoluteUrl(media.hero.image);
 }
@@ -65,4 +69,5 @@ module.exports = {
   absoluteUrl,
   validateConfig,
   getDefaultOgImage,
+  getMetaPixelId,
 };

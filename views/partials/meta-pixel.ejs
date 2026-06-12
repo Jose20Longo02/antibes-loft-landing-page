@@ -1,0 +1,12 @@
+<% if (typeof metaPixelId !== 'undefined' && metaPixelId) { %>
+<script src="<%= assetUrl('/js/meta-pixel.js') %>" defer data-pixel-id="<%= metaPixelId %>"></script>
+<noscript>
+  <img
+    height="1"
+    width="1"
+    style="display:none"
+    alt=""
+    src="https://www.facebook.com/tr?id=<%= metaPixelId %>&ev=PageView&noscript=1"
+  >
+</noscript>
+<% } %>

@@ -37,3 +37,5 @@ services:
         sync: false
       - key: NOTIFICATION_EMAIL
         sync: false
+      - key: META_PIXEL_ID
+        sync: false

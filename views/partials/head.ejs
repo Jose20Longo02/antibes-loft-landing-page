@@ -7,6 +7,7 @@
 <meta name="description" content="<%= typeof meta !== 'undefined' ? meta.description : '' %>">
 <meta name="theme-color" content="#f7f5f1">
 <title><%= typeof title !== 'undefined' ? title : '' %></title>
+<%- include('meta-pixel') %>
 <% if (typeof localeSwitcher !== 'undefined') { %>
   <% localeSwitcher.forEach(function (loc) { %>
     <link rel="alternate" hreflang="<%= loc.code %>" href="<%= loc.href %>">

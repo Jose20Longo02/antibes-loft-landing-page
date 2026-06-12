@@ -12,6 +12,7 @@ const { notFound, errorHandler } = require('./middleware/errorHandler');
 const { helmetMiddleware, forceHttps } = require('./middleware/security');
 const { staticCache } = require('./middleware/staticCache');
 const { assetUrl } = require('./config/assets');
+const { getMetaPixelId } = require('./config/env');
 
 validateConfig();
 
@@ -39,6 +40,7 @@ app.get('/sitemap.xml', getSitemap);
 
 app.use((req, res, next) => {
   res.locals.assetUrl = assetUrl;
+  res.locals.metaPixelId = getMetaPixelId();
   next();
 });
 
