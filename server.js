@@ -55,7 +55,13 @@ app.use(errorHandler);
 
 app.listen(PORT, HOST, () => {
   const site = getSiteUrl() || `http://localhost:${PORT}`;
+  const pixelId = getMetaPixelId();
   console.log(`Antibes Luxury Loft — ${site} (${process.env.NODE_ENV || 'development'})`);
+  if (pixelId) {
+    console.log(`[meta] Pixel enabled (${pixelId})`);
+  } else {
+    console.warn('[meta] META_PIXEL_ID is not set — pixel disabled');
+  }
 });
 
 module.exports = app;
