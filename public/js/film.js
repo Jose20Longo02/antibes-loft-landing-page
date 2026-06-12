@@ -159,10 +159,9 @@
 
   function runProgress() {
     if (!progress || reducedMotion) return;
-    progress.style.animation = 'none';
+    progress.classList.remove('is-animating');
     void progress.offsetWidth;
-    progress.style.animation = `filmSpecProgress ${interval}ms linear forwards`;
-    progress.style.animationPlayState = paused ? 'paused' : 'running';
+    progress.classList.add('is-animating');
   }
 
   function setActive(nextIndex) {
@@ -207,13 +206,11 @@
     paused = true;
     root.classList.add('is-paused');
     clearInterval(timer);
-    if (progress) progress.style.animationPlayState = 'paused';
   });
 
   root.addEventListener('mouseleave', () => {
     paused = false;
     root.classList.remove('is-paused');
-    if (progress) progress.style.animationPlayState = 'running';
     schedule();
   });
 
@@ -226,7 +223,6 @@
     if (!root.contains(document.activeElement)) {
       paused = false;
       root.classList.remove('is-paused');
-      if (progress) progress.style.animationPlayState = 'running';
       schedule();
     }
   });

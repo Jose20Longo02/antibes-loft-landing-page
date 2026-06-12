@@ -21,7 +21,7 @@
 
   <div class="pillars reveal">
     <% content.idea.pillars.forEach(function (pillar, i) { %>
-      <article class="pillar" style="--reveal-delay: <%= i * 80 %>ms">
+      <article class="pillar pillar--<%= i + 1 %>">
         <h3 class="pillar__title"><%= pillar.title %></h3>
         <p class="pillar__text"><%= pillar.text %></p>
       </article>

@@ -35,6 +35,7 @@
     if (!payload.name || !payload.email) {
       statusEl.textContent = msgRequired;
       statusEl.classList.add('presentation-form__status--error');
+      statusEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       return;
     }
 
@@ -58,27 +59,29 @@
       }
 
       const leadEventId = data.eventId || eventId;
-      const redirect = () => window.location.assign(thankYouUrl);
+      let redirected = false;
+      const redirect = () => {
+        if (redirected) return;
+        redirected = true;
+        window.location.assign(thankYouUrl);
+      };
 
-      if (typeof window.fbq === 'function') {
-        let redirected = false;
-        const go = () => {
-          if (redirected) return;
-          redirected = true;
-          redirect();
-        };
-
-        window.fbq('track', 'Lead', {}, {
-          eventID: leadEventId,
-          event_callback: go,
-        });
-        window.setTimeout(go, 1500);
-      } else {
-        redirect();
+      try {
+        if (typeof window.fbq === 'function') {
+          window.fbq('track', 'Lead', {}, {
+            eventID: leadEventId,
+            event_callback: redirect,
+          });
+        }
+      } catch (_) {
+        /* Pixel blocked or unavailable — still redirect */
       }
+
+      window.setTimeout(redirect, typeof window.fbq === 'function' ? 1500 : 0);
     } catch (err) {
       statusEl.textContent = err.message || msgError;
       statusEl.classList.add('presentation-form__status--error');
+      statusEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       if (submitBtn) {
         submitBtn.disabled = false;
         submitBtn.removeAttribute('aria-busy');

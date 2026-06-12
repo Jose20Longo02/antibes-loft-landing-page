@@ -599,7 +599,11 @@
   transform-origin: left center;
 }
 
-.film__specs.is-paused .film__specs-progress-fill {
+.film__specs-progress-fill.is-animating {
+  animation: filmSpecProgress var(--film-interval, 5200ms) linear forwards;
+}
+
+.film__specs.is-paused .film__specs-progress-fill.is-animating {
   animation-play-state: paused;
 }
 
@@ -771,6 +775,11 @@
   padding-top: var(--space-md);
   border-top: 1px solid var(--color-line);
 }
+
+.pillars .pillar--1 { --reveal-delay: 0ms; }
+.pillars .pillar--2 { --reveal-delay: 80ms; }
+.pillars .pillar--3 { --reveal-delay: 160ms; }
+.pillars .pillar--4 { --reveal-delay: 240ms; }
 
 .pillar__title {
   margin: 0 0 var(--space-xs);
