@@ -13,6 +13,8 @@ const { helmetMiddleware, forceHttps } = require('./middleware/security');
 const { staticCache } = require('./middleware/staticCache');
 const { assetUrl } = require('./config/assets');
 const { getMetaPixelId } = require('./config/env');
+const { isMetaConversionsConfigured } = require('./services/metaConversionsService');
+const { isEmailConfigured } = require('./services/emailService');
 
 validateConfig();
 
@@ -59,8 +61,19 @@ app.listen(PORT, HOST, () => {
   console.log(`Antibes Luxury Loft — ${site} (${process.env.NODE_ENV || 'development'})`);
   if (pixelId) {
     console.log(`[meta] Pixel enabled (${pixelId})`);
+    if (!isMetaConversionsConfigured()) {
+      console.warn(
+        '[meta] META_CONVERSIONS_API_ACCESS_TOKEN is not set — server Lead events disabled'
+      );
+    } else {
+      console.log('[meta] Conversions API enabled (server Lead events)');
+    }
   } else {
     console.warn('[meta] META_PIXEL_ID is not set — pixel disabled');
+  }
+
+  if (!isEmailConfigured()) {
+    console.warn('[email] SMTP not fully configured — lead notification emails disabled');
   }
 });
 

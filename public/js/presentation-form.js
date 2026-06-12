@@ -45,6 +45,9 @@
         ? crypto.randomUUID()
         : `lead-${Date.now()}-${Math.random().toString(36).slice(2)}`;
 
+    const metaCookies =
+      typeof window.MetaLead !== 'undefined' ? window.MetaLead.getMetaCookies() : { fbp: '', fbc: '' };
+
     const payload = {
       name: fieldValue('full-name'),
       email: fieldValue('email'),
@@ -55,6 +58,8 @@
       language: fieldValue('language') || document.body.dataset.locale || 'en',
       website: fieldValue('website') || '',
       meta_event_id: eventId,
+      meta_fbp: metaCookies.fbp || undefined,
+      meta_fbc: metaCookies.fbc || undefined,
     };
 
     if (!payload.name || !payload.email) {
@@ -86,6 +91,13 @@
       }
 
       const leadEventId = data.eventId || eventId;
+
+      try {
+        sessionStorage.setItem('meta_lead_event_id', leadEventId);
+      } catch (_) {
+        /* Private browsing may block storage */
+      }
+
       let redirected = false;
       const redirect = () => {
         if (redirected) return;
@@ -93,18 +105,22 @@
         window.location.assign(thankYouUrl);
       };
 
-      try {
-        if (typeof window.fbq === 'function') {
+      if (typeof window.MetaLead !== 'undefined') {
+        window.MetaLead.trackLead(leadEventId);
+      } else if (typeof window.fbq === 'function') {
+        try {
           window.fbq('track', 'Lead', {}, {
             eventID: leadEventId,
             event_callback: redirect,
           });
+          window.setTimeout(redirect, 1500);
+          return;
+        } catch (_) {
+          /* Pixel blocked or unavailable — still redirect */
         }
-      } catch (_) {
-        /* Pixel blocked or unavailable — still redirect */
       }
 
-      window.setTimeout(redirect, typeof window.fbq === 'function' ? 1500 : 0);
+      redirect();
     } catch (err) {
       const message =
         err.name === 'AbortError'

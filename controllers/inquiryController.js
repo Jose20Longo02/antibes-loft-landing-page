@@ -1,12 +1,13 @@
-const { sendNewLeadNotification } = require('../services/emailService');
+const { sendNewLeadNotification, isEmailConfigured } = require('../services/emailService');
 const { appendLead, isSheetsConfigured } = require('../services/sheetsService');
-const { isEmailConfigured } = require('../services/emailService');
 const { sendLeadEvent, isMetaConversionsConfigured } = require('../services/metaConversionsService');
 const { absoluteUrl } = require('../config/env');
 const { isSupported, DEFAULT_LOCALE } = require('../config/i18n');
 const crypto = require('crypto');
 
 const EMAIL_TIMEOUT_MS = 15_000;
+const SHEETS_TIMEOUT_MS = 12_000;
+const META_TIMEOUT_MS = 8_000;
 
 function leadFromBody(body) {
   return {
@@ -36,33 +37,34 @@ async function createInquiry(req, res, next) {
     let savedToSheets = false;
     let sentEmail = false;
 
+    const tasks = [];
+
     if (isSheetsConfigured()) {
-      try {
-        await withTimeout(appendLead(lead), 12_000, 'Google Sheets');
-        savedToSheets = true;
-      } catch (err) {
-        console.error('[sheets] Failed to save lead:', err.message);
-      }
+      tasks.push(
+        withTimeout(appendLead(lead), SHEETS_TIMEOUT_MS, 'Google Sheets')
+          .then(() => {
+            savedToSheets = true;
+          })
+          .catch((err) => {
+            console.error('[sheets] Failed to save lead:', err.message);
+          })
+      );
     }
 
     if (isEmailConfigured()) {
-      if (savedToSheets) {
-        sendNewLeadNotification(lead)
+      tasks.push(
+        withTimeout(sendNewLeadNotification(lead), EMAIL_TIMEOUT_MS, 'Email delivery')
           .then(() => {
-            console.log('[email] Lead notification sent');
+            sentEmail = true;
           })
           .catch((err) => {
             console.error('[email] Failed to send lead notification:', err.message);
-          });
-        sentEmail = true;
-      } else {
-        try {
-          await withTimeout(sendNewLeadNotification(lead), EMAIL_TIMEOUT_MS, 'Email delivery');
-          sentEmail = true;
-        } catch (err) {
-          console.error('[email] Failed to send lead notification:', err.message);
-        }
-      }
+          })
+      );
+    }
+
+    if (tasks.length) {
+      await Promise.all(tasks);
     }
 
     if (!savedToSheets && !sentEmail) {
@@ -80,15 +82,30 @@ async function createInquiry(req, res, next) {
 
     if (isMetaConversionsConfigured()) {
       const locale = lead.language || DEFAULT_LOCALE;
-      sendLeadEvent({
-        eventId,
-        email: lead.email,
-        phone: lead.phone,
-        name: lead.name,
-        ip: req.ip,
-        userAgent: req.get('user-agent'),
-        sourceUrl: absoluteUrl(`/${locale}#presentation`),
-      }).catch((err) => {
+      const fbp =
+        typeof req.body.meta_fbp === 'string' && req.body.meta_fbp.trim()
+          ? req.body.meta_fbp.trim()
+          : undefined;
+      const fbc =
+        typeof req.body.meta_fbc === 'string' && req.body.meta_fbc.trim()
+          ? req.body.meta_fbc.trim()
+          : undefined;
+
+      withTimeout(
+        sendLeadEvent({
+          eventId,
+          email: lead.email,
+          phone: lead.phone,
+          name: lead.name,
+          ip: req.ip,
+          userAgent: req.get('user-agent'),
+          sourceUrl: absoluteUrl(`/${locale}#presentation`),
+          fbp,
+          fbc,
+        }),
+        META_TIMEOUT_MS,
+        'Meta Conversions API'
+      ).catch((err) => {
         console.error('[meta] Failed to send Lead event:', err.message);
       });
     }

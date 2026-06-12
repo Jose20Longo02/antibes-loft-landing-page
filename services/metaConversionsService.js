@@ -31,6 +31,8 @@ async function sendLeadEvent({
   ip,
   userAgent,
   sourceUrl,
+  fbp,
+  fbc,
 }) {
   const pixelId = getMetaPixelId();
   const accessToken = getMetaAccessToken();
@@ -47,6 +49,8 @@ async function sendLeadEvent({
   if (firstNameHash) userData.fn = [firstNameHash];
   if (ip) userData.client_ip_address = ip;
   if (userAgent) userData.client_user_agent = userAgent;
+  if (fbp) userData.fbp = fbp;
+  if (fbc) userData.fbc = fbc;
 
   const payload = {
     data: [
