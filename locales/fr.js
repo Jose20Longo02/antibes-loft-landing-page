@@ -44,6 +44,7 @@ module.exports = {
     },
     formMessages: {
       required: 'Veuillez indiquer votre nom complet et votre e-mail.',
+      sending: 'Envoi en cours…',
       success:
         'Merci. Votre demande a bien été reçue — nous vous contacterons prochainement pour organiser votre présentation privée.',
       error: 'Une erreur s\'est produite. Veuillez réessayer.',

@@ -9,6 +9,31 @@
   const msgRequired = form.dataset.msgRequired || 'Please provide your full name and email.';
   const msgError = form.dataset.msgError || 'Something went wrong. Please try again.';
   const thankYouUrl = form.dataset.thankYouUrl || '/en/thank-you';
+  const submitBtn = form.querySelector('[type="submit"]');
+  const defaultBtnLabel = submitBtn?.textContent?.trim() || 'Submit';
+
+  function fieldValue(id) {
+    const el = document.getElementById(id);
+    return el && 'value' in el ? String(el.value).trim() : '';
+  }
+
+  function setSubmitting(isSubmitting) {
+    if (!submitBtn) return;
+    submitBtn.disabled = isSubmitting;
+    if (isSubmitting) {
+      submitBtn.setAttribute('aria-busy', 'true');
+      submitBtn.textContent = submitBtn.dataset.loadingLabel || 'Sending…';
+    } else {
+      submitBtn.removeAttribute('aria-busy');
+      submitBtn.textContent = defaultBtnLabel;
+    }
+  }
+
+  function showError(message) {
+    statusEl.textContent = message;
+    statusEl.className = 'presentation-form__status presentation-form__status--error';
+    statusEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -21,41 +46,43 @@
         : `lead-${Date.now()}-${Math.random().toString(36).slice(2)}`;
 
     const payload = {
-      name: form.name.value.trim(),
-      email: form.email.value.trim(),
-      phone: form.phone.value.trim() || undefined,
-      country: form.country.value.trim() || undefined,
-      purchase_timeline: form.purchase_timeline.value || undefined,
-      message: form.message.value.trim() || undefined,
-      language: form.language?.value || document.body.dataset.locale || 'en',
-      website: form.website?.value || '',
+      name: fieldValue('full-name'),
+      email: fieldValue('email'),
+      phone: fieldValue('phone') || undefined,
+      country: fieldValue('country') || undefined,
+      purchase_timeline: fieldValue('timeline') || undefined,
+      message: fieldValue('message') || undefined,
+      language: fieldValue('language') || document.body.dataset.locale || 'en',
+      website: fieldValue('website') || '',
       meta_event_id: eventId,
     };
 
     if (!payload.name || !payload.email) {
-      statusEl.textContent = msgRequired;
-      statusEl.classList.add('presentation-form__status--error');
-      statusEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      showError(msgRequired);
       return;
     }
 
-    const submitBtn = form.querySelector('[type="submit"]');
-    if (submitBtn) {
-      submitBtn.disabled = true;
-      submitBtn.setAttribute('aria-busy', 'true');
-    }
+    setSubmitting(true);
+
+    const controller = new AbortController();
+    const timeoutId = window.setTimeout(() => controller.abort(), 30000);
 
     try {
       const res = await fetch('/api/inquiries', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
+        signal: controller.signal,
       });
 
       const data = await res.json().catch(() => ({}));
 
       if (!res.ok) {
-        throw new Error(data.error || msgError);
+        const serverError =
+          res.status === 502 || res.status === 504
+            ? 'The server is temporarily unavailable. Please try again in a moment.'
+            : data.error || msgError;
+        throw new Error(serverError);
       }
 
       const leadEventId = data.eventId || eventId;
@@ -79,13 +106,14 @@
 
       window.setTimeout(redirect, typeof window.fbq === 'function' ? 1500 : 0);
     } catch (err) {
-      statusEl.textContent = err.message || msgError;
-      statusEl.classList.add('presentation-form__status--error');
-      statusEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      if (submitBtn) {
-        submitBtn.disabled = false;
-        submitBtn.removeAttribute('aria-busy');
-      }
+      const message =
+        err.name === 'AbortError'
+          ? 'The request timed out. Please check your connection and try again.'
+          : err.message || msgError;
+      showError(message);
+      setSubmitting(false);
+    } finally {
+      window.clearTimeout(timeoutId);
     }
   });
 })();

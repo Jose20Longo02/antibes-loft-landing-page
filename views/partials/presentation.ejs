@@ -71,7 +71,11 @@
         <%= content.ui.privacyNotice %>
         <a href="<%= config.privacyPolicyUrl %>" target="_blank" rel="noopener noreferrer"><%= content.ui.privacyLink %></a>.
       </p>
-      <button type="submit" class="btn btn--dark"><%= content.presentation.cta %></button>
+      <button
+        type="submit"
+        class="btn btn--dark"
+        data-loading-label="<%= content.ui.formMessages.sending %>"
+      ><%= content.presentation.cta %></button>
       <p id="presentation-status" class="presentation-form__status" role="status" aria-live="polite"></p>
     </form>
   </div>

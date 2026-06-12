@@ -44,6 +44,7 @@ module.exports = {
     },
     formMessages: {
       required: 'Please provide your full name and email.',
+      sending: 'Sending…',
       success:
         'Thank you. Your request has been received — we will be in touch shortly to arrange your private presentation.',
       error: 'Something went wrong. Please try again.',

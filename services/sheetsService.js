@@ -1,5 +1,7 @@
 const { getContent, isSupported, DEFAULT_LOCALE, LOCALE_META } = require('../config/i18n');
 
+const SHEETS_TIMEOUT_MS = 12_000;
+
 function isSheetsConfigured() {
   return Boolean(process.env.GOOGLE_SHEETS_WEBHOOK_URL);
 }
@@ -30,13 +32,26 @@ async function appendLead(lead) {
 
   const row = buildRow(lead);
   const url = process.env.GOOGLE_SHEETS_WEBHOOK_URL;
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), SHEETS_TIMEOUT_MS);
 
-  const res = await fetch(url, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(row),
-    redirect: 'follow',
-  });
+  let res;
+  try {
+    res = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(row),
+      redirect: 'follow',
+      signal: controller.signal,
+    });
+  } catch (err) {
+    if (err.name === 'AbortError') {
+      throw new Error('Google Sheets webhook timed out');
+    }
+    throw err;
+  } finally {
+    clearTimeout(timeoutId);
+  }
 
   const text = await res.text();
   let data = {};

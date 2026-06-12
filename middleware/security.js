@@ -13,7 +13,8 @@ const cspDirectives = {
     'https://facebook.com',
     'https://connect.facebook.net',
   ],
-  frameSrc: ["'none'"],
+  formAction: ["'self'", 'https://www.facebook.com', 'https://facebook.com'],
+  frameSrc: ['https://www.facebook.com', 'https://facebook.com'],
   objectSrc: ["'none'"],
 };
 
