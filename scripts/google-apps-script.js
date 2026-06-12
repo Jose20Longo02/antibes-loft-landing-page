@@ -106,6 +106,7 @@ function getNotificationEmail() {
 }
 
 function sendLeadNotificationEmail(data) {
+  data = data || {};
   const notifyTo = getNotificationEmail();
   if (!notifyTo) {
     logStep('NOTIFICATION_EMAIL not set — skipping email');
@@ -125,6 +126,7 @@ function sendLeadNotificationEmail(data) {
 }
 
 function formatLeadEmailBody(data) {
+  data = data || {};
   const lines = [
     'New private presentation request',
     '',
