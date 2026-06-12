@@ -27,6 +27,20 @@ Render **blocks SMTP ports** on the free plan, so lead emails are sent from Apps
 
 Emails are sent from the Google account that owns the script, with **Reply-To** set to the lead’s email.
 
+### Test email from Apps Script (before using the live form)
+
+**Do not click Run on `doPost`** — it only works when the website POSTs data.
+
+1. In Apps Script, open the function dropdown (top toolbar) and select **`checkSetup`**
+2. Click **Run** — in **Execution log** you should see `OK: NOTIFICATION_EMAIL = your@email.com`
+   - If you see `MISSING`, add the Script property (step 2b above)
+3. Select **`testLeadEmail`** → **Run**
+4. The first time, click **Review permissions** → choose your Google account → **Allow** (Gmail access)
+5. Check inbox and **spam** for subject `New lead — The Villa Above Antibes (TEST)`
+6. Open **Executions** (left sidebar) → click the run → full log should show `SUCCESS: Check inbox...`
+
+After the script works, **Deploy → Manage deployments → Edit → New version → Deploy** so the live webhook uses the new code.
+
 ## 3. Deploy as web app
 
 1. **Deploy → New deployment**
