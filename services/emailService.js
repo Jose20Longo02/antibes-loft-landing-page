@@ -51,7 +51,7 @@ function formatLeadPlain(lead) {
   const lines = [
     'New private presentation request',
     '',
-    `Property: ${content.app.propertyConcept}`,
+    `Property: ${appConfig.propertyLeadName}`,
     `Location: ${content.app.propertyLocation}`,
     `Presented by: ${appConfig.siteName}`,
     `Language: ${LOCALE_META[locale].name} (${locale})`,
@@ -86,7 +86,7 @@ function formatLeadHtml(lead) {
     <tr>
       <td style="padding:32px 28px 20px;border-bottom:1px solid #e8e4df;">
         <p style="margin:0 0 8px;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#8a847a;">New lead</p>
-        <h1 style="margin:0;font-size:22px;font-weight:400;letter-spacing:0.06em;text-transform:uppercase;">${escapeHtml(content.app.propertyConcept)}</h1>
+        <h1 style="margin:0;font-size:22px;font-weight:400;letter-spacing:0.06em;text-transform:uppercase;">${escapeHtml(appConfig.propertyLeadName)}</h1>
         <p style="margin:8px 0 0;font-size:14px;color:#3d3a36;">${escapeHtml(content.app.propertyLocation)} · ${appConfig.siteName}</p>
         <p style="margin:6px 0 0;font-size:12px;color:#8a847a;">Language: ${escapeHtml(LOCALE_META[locale].name)} (${locale})</p>
       </td>
@@ -129,7 +129,7 @@ async function sendNewLeadNotification(lead) {
 
   const transport = getTransporter();
   const { locale, content } = getLeadContext(lead);
-  const property = content.app.propertyConcept;
+  const property = appConfig.propertyLeadName;
   const subjectFn = EMAIL_SUBJECTS[locale] || EMAIL_SUBJECTS.en;
   const subject = subjectFn(property);
 

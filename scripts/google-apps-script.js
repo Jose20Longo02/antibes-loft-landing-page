@@ -1,3 +1,6 @@
+/** Bump when you deploy — open the /exec URL in a browser to confirm live version */
+const SCRIPT_VERSION = '2026-06-02-email-v2';
+
 /**
  * Google Sheets lead capture + email notification
  *
@@ -12,11 +15,23 @@
  *
  * TEST FROM EDITOR (do not run doPost manually — it has no data):
  *   Select function: testLeadEmail → Run
+ *   Or: simulateWebhookLead → Run (full doPost path + sheet row + email)
  */
+
+function doGet() {
+  const notifyTo = getNotificationEmail();
+  return jsonResponse({
+    ok: true,
+    version: SCRIPT_VERSION,
+    hasNotificationEmail: Boolean(notifyTo),
+    notificationEmailHint: notifyTo ? maskEmail(notifyTo) : null,
+    hint: 'POST JSON to this URL from the site. Run testLeadEmail() in the editor to test Gmail.',
+  });
+}
 
 function doPost(e) {
   try {
-    logStep('doPost started');
+    logStep('doPost started (version ' + SCRIPT_VERSION + ')');
 
     if (!e || !e.postData || !e.postData.contents) {
       throw new Error('Missing POST body — this function runs via the web app URL, not the Run button.');
@@ -40,18 +55,56 @@ function doPost(e) {
     logStep('Row appended to sheet');
 
     let emailSent = false;
+    let emailError = null;
     try {
       emailSent = sendLeadNotificationEmail(data);
       logStep('Email sent: ' + emailSent);
+      if (!emailSent) {
+        emailError = 'NOTIFICATION_EMAIL script property is missing';
+      }
     } catch (mailErr) {
-      logStep('Email error: ' + mailErr.message);
+      emailError = mailErr.message || String(mailErr);
+      logStep('Email error: ' + emailError);
     }
 
-    return jsonResponse({ success: true, emailSent: emailSent });
+    return jsonResponse({
+      success: true,
+      version: SCRIPT_VERSION,
+      emailSent: emailSent,
+      emailError: emailError,
+    });
   } catch (err) {
     logStep('doPost failed: ' + err.message);
-    return jsonResponse({ success: false, error: err.message });
+    return jsonResponse({ success: false, error: err.message, version: SCRIPT_VERSION });
   }
+}
+
+/**
+ * Simulates a real website POST (same code path as the live webhook).
+ * Adds one row to the sheet and sends email — use before deploying.
+ */
+function simulateWebhookLead() {
+  logStep('=== simulateWebhookLead started ===');
+
+  const fakeEvent = {
+    postData: {
+      contents: JSON.stringify({
+        submittedAt: new Date().toISOString(),
+        property: 'Antibes Loft - €1,980,000 (WEBHOOK TEST)',
+        name: 'Webhook Test Lead',
+        email: 'webhook-test@example.com',
+        phone: '+33 6 00 00 00 00',
+        country: 'France',
+        purchaseTimeline: 'Within 3 months',
+        language: 'English (en)',
+        message: 'Test from simulateWebhookLead() in Apps Script editor',
+      }),
+    },
+  };
+
+  const result = doPost(fakeEvent);
+  logStep('Response: ' + result.getContent());
+  logStep('=== simulateWebhookLead finished ===');
 }
 
 /**
@@ -71,7 +124,7 @@ function testLeadEmail() {
 
   const sample = {
     submittedAt: new Date().toISOString(),
-    property: 'The Villa Above Antibes (TEST)',
+    property: 'Antibes Loft - €1,980,000 (TEST)',
     name: 'Test Lead',
     email: 'test@example.com',
     phone: '+33 6 00 00 00 00',
@@ -113,14 +166,15 @@ function sendLeadNotificationEmail(data) {
     return false;
   }
 
-  const property = data.property || 'The Villa Above Antibes';
+  const property = data.property || 'Antibes Loft - €1,980,000';
   const subject = 'New lead — ' + property;
   const body = formatLeadEmailBody(data);
 
-  GmailApp.sendEmail(notifyTo, subject, body, {
-    replyTo: data.email || undefined,
-    name: 'Finlay Brewer International',
-  });
+  const options = { name: 'Finlay Brewer International' };
+  if (data.email) {
+    options.replyTo = data.email;
+  }
+  GmailApp.sendEmail(notifyTo, subject, body, options);
 
   return true;
 }
@@ -142,6 +196,14 @@ function formatLeadEmailBody(data) {
     'Submitted: ' + (data.submittedAt || new Date().toISOString()),
   ];
   return lines.join('\n');
+}
+
+function maskEmail(email) {
+  const parts = String(email).split('@');
+  if (parts.length !== 2) return 'set';
+  const local = parts[0];
+  const masked = local.length <= 2 ? local + '***' : local.slice(0, 2) + '***';
+  return masked + '@' + parts[1];
 }
 
 function logStep(message) {

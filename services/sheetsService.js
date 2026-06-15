@@ -1,4 +1,5 @@
-const { getContent, isSupported, DEFAULT_LOCALE, LOCALE_META } = require('../config/i18n');
+const appConfig = require('../config/app');
+const { isSupported, DEFAULT_LOCALE, LOCALE_META } = require('../config/i18n');
 
 const SHEETS_TIMEOUT_MS = 12_000;
 
@@ -8,12 +9,11 @@ function isSheetsConfigured() {
 
 function buildRow(lead) {
   const lang = isSupported(lead.language) ? lead.language : DEFAULT_LOCALE;
-  const content = getContent(lang);
   const meta = LOCALE_META[lang];
 
   return {
     submittedAt: lead.created_at || new Date().toISOString(),
-    property: content.app.propertyConcept,
+    property: appConfig.propertyLeadName,
     name: lead.name,
     email: lead.email,
     phone: lead.phone || '',
@@ -65,7 +65,20 @@ async function appendLead(lead) {
     throw new Error(data.error || `Google Sheets webhook failed (${res.status})`);
   }
 
-  return { saved: true, data, emailSent: Boolean(data.emailSent) };
+  const emailSent = Boolean(data.emailSent);
+  if (!emailSent) {
+    console.warn('[sheets] Row saved but Apps Script did not send email', {
+      version: data.version || 'unknown',
+      emailError: data.emailError || null,
+      raw: data.raw ? String(data.raw).slice(0, 200) : undefined,
+    });
+  } else {
+    console.log('[sheets] Lead saved and notification email sent', {
+      version: data.version || 'unknown',
+    });
+  }
+
+  return { saved: true, data, emailSent };
 }
 
 module.exports = { appendLead, isSheetsConfigured };

@@ -41,6 +41,23 @@ Emails are sent from the Google account that owns the script, with **Reply-To** 
 
 After the script works, **Deploy → Manage deployments → Edit → New version → Deploy** so the live webhook uses the new code.
 
+**Verify the live deployment:** open your webhook URL in a browser (the same `/exec` link in Render). You should see JSON like:
+
+```json
+{"ok":true,"version":"2026-06-02-email-v2","hasNotificationEmail":true,...}
+```
+
+If `hasNotificationEmail` is `false`, the Script property is missing. If `version` is old or missing, you are hitting an outdated deployment — update the deployment or paste the new URL into `GOOGLE_SHEETS_WEBHOOK_URL` on Render.
+
+### Form works but no email
+
+1. **Did a new row appear in the sheet?**
+   - **No** → wrong or old `GOOGLE_SHEETS_WEBHOOK_URL` on Render; fix the env var and redeploy Render.
+   - **Yes** → webhook runs; check email in Apps Script **Executions** (left sidebar) → open the latest `doPost` run → log should show `Email sent: true` or an error.
+2. Open the webhook URL in the browser — confirm `hasNotificationEmail: true` and current `version`.
+3. Check **spam** and promotions for subject `New lead — The Villa Above Antibes`.
+4. If you created a **new** Apps Script deployment (instead of editing the existing one), copy the **new** `/exec` URL into Render → Environment → `GOOGLE_SHEETS_WEBHOOK_URL`.
+
 ## 3. Deploy as web app
 
 1. **Deploy → New deployment**
