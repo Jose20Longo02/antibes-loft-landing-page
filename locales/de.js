@@ -1,12 +1,12 @@
 module.exports = {
   meta: {
-    title: 'Die Villa über Antibes | Finlay Brewer International',
+    title: 'Architekten-Loft zum Verkauf in Antibes | Finlay Brewer International',
     description:
       'Privat angebotener Architekten-Loft in Antibes — ca. 206 m², 1.980.000 €. 180° Mittelmeerblick. Private Präsentation durch Finlay Brewer International.',
   },
 
   app: {
-    propertyConcept: 'Die Villa über Antibes',
+    propertyConcept: 'Loft in Antibes',
     propertyLocation: 'Antibes, Französische Riviera',
   },
 
@@ -55,15 +55,16 @@ module.exports = {
   },
 
   hero: {
-    eyebrow: 'Privat angeboten · Antibes · Französische Riviera',
-    headline: 'Die Villa über Antibes',
-    headlineLine1: 'Die Villa',
-    headlineLine2: 'über Antibes',
-    offer: 'Architekten-Loft · ca. 206 m²',
+    eyebrow: 'Antibes · Französische Riviera',
+    headline: 'Architekten-Loft zum Verkauf in Antibes',
+    headlineLine1: 'Architekten-Loft',
+    headlineLine2: 'zum Verkauf in Antibes',
+    offer: 'Etwa 206 m² · Drei Suiten · 40 m² Terrasse',
     price: '1.980.000 €',
-    priceNote: 'Privatverkauf · auf Anfrage',
-    cta: 'Private Besichtigung anfragen',
-    alt: 'Fort Carré, Port Vauban und das Mittelmeer, von oben über Antibes gesehen',
+    support: 'Panoramablick aufs Mittelmeer, Wohnen in doppelter Höhe und eine sichere Garage.',
+    cta: 'Vollständige Unterlagen anfragen',
+    ctaSecondary: 'Private Besichtigung vereinbaren',
+    alt: 'Wohnbereich in doppelter Höhe des Architekten-Lofts in Antibes, mit Tageslicht durch die Fenster',
   },
 
   film: {
@@ -80,7 +81,7 @@ module.exports = {
       { label: 'Aussicht', value: '180° Mittelmeer-Panorama' },
       { label: 'Zugang', value: 'Privater Aufzug · sichere Garage' },
     ],
-    posterAlt: 'Die Villa über Antibes — Mittelmeerpanorama von der Residenz aus',
+    posterAlt: 'Architekten-Loft in Antibes — Mittelmeerpanorama von der Residenz aus',
     playLabel: 'Film abspielen',
     pauseLabel: 'Pause',
     muteLabel: 'Stumm schalten',
@@ -209,7 +210,7 @@ module.exports = {
 
   thankYou: {
     meta: {
-      title: 'Anfrage eingegangen | Die Villa über Antibes',
+      title: 'Anfrage eingegangen | Loft in Antibes',
       description: 'Ihre Anfrage für eine private Präsentation ist eingegangen.',
     },
     eyebrow: 'Anfrage eingegangen',

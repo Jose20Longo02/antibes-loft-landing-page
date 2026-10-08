@@ -1,12 +1,12 @@
 module.exports = {
   meta: {
-    title: 'La Villa au-dessus d\'Antibes | Finlay Brewer International',
+    title: 'Loft d\'architecte à vendre à Antibes | Finlay Brewer International',
     description:
       'Loft d\'architecte proposé en vente privée à Antibes — environ 206 m², 1 980 000 €. Vues méditerranéennes à 180°. Présentation privée par Finlay Brewer International.',
   },
 
   app: {
-    propertyConcept: 'La Villa au-dessus d\'Antibes',
+    propertyConcept: 'Loft à Antibes',
     propertyLocation: 'Antibes, Côte d\'Azur',
   },
 
@@ -55,15 +55,16 @@ module.exports = {
   },
 
   hero: {
-    eyebrow: 'Offre privée · Antibes · Côte d\'Azur',
-    headline: 'La Villa au-dessus d\'Antibes',
-    headlineLine1: 'La Villa',
-    headlineLine2: 'au-dessus d\'Antibes',
-    offer: 'Loft d\'architecte · environ 206 m²',
+    eyebrow: 'Antibes · Côte d\'Azur',
+    headline: 'Loft d\'architecte à vendre à Antibes',
+    headlineLine1: 'Loft d\'architecte',
+    headlineLine2: 'à vendre à Antibes',
+    offer: 'Environ 206 m² · Trois suites · Terrasse de 40 m²',
     price: '1 980 000 €',
-    priceNote: 'Vente privée · sur introduction',
-    cta: 'Demander une visite privée',
-    alt: 'Fort Carré, Port Vauban et la Méditerranée vus au-dessus d\'Antibes',
+    support: 'Vues panoramiques sur la Méditerranée, séjour en double hauteur et garage sécurisé.',
+    cta: 'Demander le dossier complet',
+    ctaSecondary: 'Organiser une visite privée',
+    alt: 'Séjour en double hauteur du loft d\'architecte à Antibes, avec la lumière du jour par les fenêtres',
   },
 
   film: {
@@ -80,7 +81,7 @@ module.exports = {
       { label: 'Vues', value: 'Panorama méditerranéen à 180°' },
       { label: 'Accès', value: 'Ascenseur privé · garage sécurisé' },
     ],
-    posterAlt: 'La Villa au-dessus d\'Antibes — panorama méditerranéen depuis la résidence',
+    posterAlt: 'Loft d\'architecte à Antibes — panorama méditerranéen depuis la résidence',
     playLabel: 'Lire le film',
     pauseLabel: 'Mettre en pause',
     muteLabel: 'Couper le son',
@@ -209,7 +210,7 @@ module.exports = {
 
   thankYou: {
     meta: {
-      title: 'Demande reçue | La Villa au-dessus d\'Antibes',
+      title: 'Demande reçue | Loft à Antibes',
       description: 'Votre demande de présentation privée a bien été reçue.',
     },
     eyebrow: 'Demande reçue',

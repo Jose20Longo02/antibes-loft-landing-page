@@ -1,12 +1,12 @@
 module.exports = {
   meta: {
-    title: 'The Villa Above Antibes | Finlay Brewer International',
+    title: 'Architect-designed loft for sale in Antibes | Finlay Brewer International',
     description:
       'Privately offered architect-designed loft in Antibes, French Riviera — approximately 206 m², €1,980,000. 180° Mediterranean views. Private presentation by Finlay Brewer International.',
   },
 
   app: {
-    propertyConcept: 'The Villa Above Antibes',
+    propertyConcept: 'Loft in Antibes',
     propertyLocation: 'Antibes, French Riviera',
   },
 
@@ -55,15 +55,16 @@ module.exports = {
   },
 
   hero: {
-    eyebrow: 'Privately offered · Antibes · French Riviera',
-    headline: 'The Villa Above Antibes',
-    headlineLine1: 'The Villa',
-    headlineLine2: 'Above Antibes',
-    offer: 'Architect-designed loft · approximately 206 m²',
+    eyebrow: 'Antibes · French Riviera',
+    headline: 'Architect-designed loft for sale in Antibes',
+    headlineLine1: 'Architect-designed loft',
+    headlineLine2: 'for sale in Antibes',
+    offer: 'Approximately 206 m² · Three suites · 40 m² terrace',
     price: '€1,980,000',
-    priceNote: 'Private sale · introduction on request',
-    cta: 'Request Private Viewing',
-    alt: 'Fort Carré, Port Vauban, and the Mediterranean coast viewed from above Antibes',
+    support: 'Panoramic Mediterranean views, double-height living and a secure garage.',
+    cta: 'Request the full property details',
+    ctaSecondary: 'Arrange a private viewing',
+    alt: 'Double-height living room of the architect-designed loft in Antibes, with daylight through the windows',
   },
 
   film: {
@@ -80,7 +81,7 @@ module.exports = {
       { label: 'Views', value: '180° Mediterranean panorama' },
       { label: 'Access', value: 'Private elevator · secure garage' },
     ],
-    posterAlt: 'The Villa Above Antibes — Mediterranean panorama from the residence',
+    posterAlt: 'Architect-designed loft in Antibes — Mediterranean panorama from the residence',
     playLabel: 'Play film',
     pauseLabel: 'Pause film',
     muteLabel: 'Mute',
@@ -209,7 +210,7 @@ module.exports = {
 
   thankYou: {
     meta: {
-      title: 'Request Received | The Villa Above Antibes',
+      title: 'Request Received | Loft in Antibes',
       description: 'Your private presentation request has been received.',
     },
     eyebrow: 'Request received',

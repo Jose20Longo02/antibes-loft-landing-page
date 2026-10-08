@@ -35,15 +35,24 @@
     });
   }
 
-  /* Smooth in-page navigation */
-  document.querySelectorAll('a[href^="#"]').forEach((link) => {
+  /* Smooth in-page navigation, including ?intent=dossier#presentation */
+  document.querySelectorAll('a[href*="#"]').forEach((link) => {
     link.addEventListener('click', (e) => {
-      const id = link.getAttribute('href').slice(1);
+      const href = link.getAttribute('href');
+      if (!href || href.startsWith('http')) return;
+      const hashIndex = href.indexOf('#');
+      const id = href.slice(hashIndex + 1);
       const target = document.getElementById(id);
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (!target) return;
+      e.preventDefault();
+      const query = href.slice(0, hashIndex);
+      if (query.startsWith('?')) {
+        const url = new URL(window.location.href);
+        new URLSearchParams(query).forEach((value, key) => url.searchParams.set(key, value));
+        url.hash = href.slice(hashIndex);
+        history.replaceState(null, '', url);
       }
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
 

@@ -24,15 +24,20 @@
     </div>
 
     <div class="hero__summary" aria-label="Property summary">
-      <p class="hero__summary-type"><%= content.hero.offer %></p>
+      <p class="hero__summary-type">
+        <% content.hero.offer.split('·').forEach(function (part) { %>
+          <span><%= part.trim() %></span>
+        <% }); %>
+      </p>
       <p class="hero__summary-price">
         <span class="hero__summary-amount"><%= content.hero.price %></span>
-        <span class="hero__summary-note"><%= content.hero.priceNote %></span>
       </p>
+      <p class="hero__summary-support"><%= content.hero.support %></p>
     </div>
 
     <div class="hero__actions">
-      <a href="#presentation" class="btn btn--light"><%= content.hero.cta %></a>
+      <a href="?intent=dossier#presentation" class="btn btn--ivory"><%= content.hero.cta %></a>
+      <a href="?intent=viewing#presentation" class="btn btn--light"><%= content.hero.ctaSecondary %></a>
     </div>
   </div>
   <a href="#film" class="hero__scroll" aria-label="<%= content.ui.discover %>">

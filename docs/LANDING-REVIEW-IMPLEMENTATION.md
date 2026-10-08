@@ -49,13 +49,13 @@ Si alguna fila no te encaja, dímelo en la revisión y ajusto el plan antes de i
 
 ### Checklist
 
-Código hecho. Pendiente en Render y en el sitio en vivo:
+Desplegado.
 
-- [ ] En Render → Environment, `SITE_URL=https://finlay-brewer-international.com` (sin barra final) y redeploy.
-- [ ] Desde `finlay-brewer-international.com/en`, EN / FR / DE mantienen ese dominio en la barra.
-- [ ] Lo mismo desde `/fr` y `/de`, ida y vuelta.
-- [ ] La página de gracias también cambia de idioma sin salir del dominio.
-- [ ] Un anuncio en francés debe apuntar a `/fr`, uno en inglés a `/en`, uno en alemán a `/de`. Esto se verifica en el Ads Manager; no lo cambia el código solo.
+- [x] En Render → Environment, `SITE_URL=https://finlay-brewer-international.com` (sin barra final) y redeploy.
+- [x] Desde `finlay-brewer-international.com/en`, EN / FR / DE mantienen ese dominio en la barra.
+- [x] Lo mismo desde `/fr` y `/de`, ida y vuelta.
+- [x] La página de gracias también cambia de idioma sin salir del dominio.
+- [x] Un anuncio en francés debe apuntar a `/fr`, uno en inglés a `/en`, uno en alemán a `/de`. Esto se verifica en el Ads Manager; no lo cambia el código solo.
 
 ---
 

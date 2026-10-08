@@ -43,7 +43,7 @@ module.exports = {
   IMG,
   IMG_LIGHTBOX,
   VIDEO,
-  hero: img('_DSC1605-Edit.jpg'),
+  hero: img('_DSC1556.jpg'),
   film: {
     poster: '/images/film/poster.jpg',
     posterWebp: '/images/film/poster.webp',

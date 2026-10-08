@@ -15,6 +15,18 @@
     border-color var(--duration-fast) var(--ease-out);
 }
 
+.btn--ivory {
+  color: var(--color-charcoal);
+  background: var(--color-ivory);
+  border-color: var(--color-ivory);
+}
+
+.btn--ivory:hover {
+  background: transparent;
+  color: var(--color-ivory);
+  opacity: 1;
+}
+
 .btn--light {
   color: var(--color-ivory);
   border-color: var(--color-line-light);

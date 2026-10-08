@@ -1,6 +1,6 @@
 module.exports = {
   siteName: 'Finlay Brewer International',
-  propertyConcept: 'The Villa Above Antibes',
+  propertyConcept: 'Loft in Antibes',
   propertyLeadName: 'Antibes Loft - €1,980,000',
   propertyLocation: 'Antibes, French Riviera',
   logo: '/images/logo.png',
