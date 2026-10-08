@@ -83,6 +83,55 @@
   color: var(--color-stone-light);
 }
 
+.intent-choice {
+  margin: 0 0 var(--space-md);
+  padding: 0;
+  border: 0;
+}
+
+.intent-choice__legend {
+  margin-bottom: 0.85rem;
+  font-size: 0.68rem;
+  font-weight: 450;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-stone);
+}
+
+.intent-choice__option {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  margin-bottom: 0.7rem;
+  font-size: 0.95rem;
+  font-weight: 300;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  color: var(--color-charcoal);
+  cursor: pointer;
+}
+
+.intent-choice__option input {
+  flex: 0 0 auto;
+  margin-top: 0.28rem;
+  accent-color: var(--color-charcoal);
+}
+
+.form-field__hint {
+  margin: 0.45rem 0 0;
+  font-size: 0.78rem;
+  font-weight: 300;
+  line-height: 1.5;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--color-stone);
+}
+
+.form-field__hint[hidden],
+.label-optional[hidden] {
+  display: none;
+}
+
 .form-field input,
 .form-field select,
 .form-field textarea {

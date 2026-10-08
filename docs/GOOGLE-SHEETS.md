@@ -6,9 +6,11 @@ Leads from the presentation form are appended to a Google Sheet (no database req
 
 Create a new Google Sheet. In **row 1**, add these headers:
 
-| A | B | C | D | E | F | G | H | I |
-|---|---|---|---|---|---|---|---|---|
-| Submitted | Property | Name | Email | Phone | Country | Timeline | Language | Message |
+| A | B | C | D | E | F | G | H | I | J |
+|---|---|---|---|---|---|---|---|---|---|
+| Submitted | Property | Name | Email | Phone | Country | Timeline | Language | Message | Intent |
+
+Column J is new. Add the header `Intent` in an existing sheet; do not insert it earlier, or the current columns will shift. Values are `dossier` or `viewing`.
 
 ## 2. Install the script
 

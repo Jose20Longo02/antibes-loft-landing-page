@@ -48,6 +48,7 @@ module.exports = {
       success:
         'Merci. Votre demande a bien été reçue — nous vous contacterons prochainement pour organiser votre présentation privée.',
       error: 'Une erreur s\'est produite. Veuillez réessayer.',
+      phoneRequired: 'Un numéro de téléphone est nécessaire pour organiser une visite privée.',
     },
     privacyNotice:
       'En envoyant ce formulaire, vous acceptez d\'être contacté par Finlay Brewer International concernant cette résidence.',
@@ -193,11 +194,15 @@ module.exports = {
   },
 
   presentation: {
-    label: 'Présentation privée',
-    title: 'Demander l\'accès',
+    label: 'Demande',
+    title: 'Explorer ce loft à Antibes',
     lead:
-      'Pour envisager l\'acquisition de cette résidence, demandez une présentation privée — en personne ou sur arrangement. Peu commercialisée ; nous accueillons les demandes qualifiées ci-dessous.',
-    cta: 'Demander une visite privée',
+      'Demandez le dossier complet, avec les plans disponibles et les informations complémentaires, ou demandez à notre équipe d\'organiser une visite privée.',
+    intentLegend: 'Je souhaite',
+    intentDossier: 'Recevoir le dossier complet',
+    intentViewing: 'Organiser une visite privée',
+    phoneHint: 'Un numéro est nécessaire pour proposer un horaire.',
+    cta: 'Envoyer la demande',
     timelines: [
       'Sous 3 mois',
       '3 à 6 mois',
@@ -209,22 +214,39 @@ module.exports = {
   },
 
   thankYou: {
-    meta: {
-      title: 'Demande reçue | Loft à Antibes',
-      description: 'Votre demande de présentation privée a bien été reçue.',
-    },
-    eyebrow: 'Demande reçue',
-    headline: 'Nous avons hâte de vous accueillir',
-    lead:
-      'Votre intérêt pour cette résidence a été enregistré en toute discrétion. Un membre de Finlay Brewer International vous contactera personnellement pour organiser votre présentation privée.',
-    responseTime: 'Vous aurez de nos nouvelles sous 24 heures.',
-    stepsTitle: 'Les prochaines étapes',
-    steps: [
-      { title: 'Examen confidentiel', text: 'Votre demande est étudiée par notre équipe Riviera — en toute confidentialité.' },
-      { title: 'Contact direct', text: 'Nous vous contacterons par e-mail ou téléphone pour comprendre vos attentes et votre calendrier.' },
-      { title: 'Présentation privée', text: 'Une introduction sur mesure à la résidence — en personne ou sur arrangement privé.' },
-    ],
     backCta: 'Retour à la résidence',
     imageAlt: 'Accès ascenseur privé',
+    dossier: {
+      meta: {
+        title: 'Dossier demandé | Loft à Antibes',
+        description: 'Votre demande de dossier a bien été reçue.',
+      },
+      eyebrow: 'Demande reçue',
+      headline: 'Votre demande de dossier est bien reçue',
+      lead:
+        'Nous avons reçu votre demande de dossier. L\'équipe vous enverra les informations disponibles. Ce n\'est pas une visite confirmée.',
+      stepsTitle: 'Les prochaines étapes',
+      steps: [
+        { title: 'Lecture', text: 'Votre demande est lue par l\'équipe de Finlay Brewer International.' },
+        { title: 'Dossier', text: 'Nous envoyons les spécifications, plans et informations disponibles.' },
+        { title: 'Une visite, si vous le souhaitez', text: 'Une visite privée peut être organisée ensuite. Rien n\'est réservé tant qu\'un horaire n\'est pas convenu.' },
+      ],
+    },
+    viewing: {
+      meta: {
+        title: 'Visite demandée | Loft à Antibes',
+        description: 'Votre demande de visite privée a bien été reçue.',
+      },
+      eyebrow: 'Demande reçue',
+      headline: 'Votre demande de visite est bien reçue',
+      lead:
+        'Nous avons reçu votre demande de visite privée. L\'équipe vous contactera pour proposer un horaire. Ce n\'est pas un rendez-vous confirmé.',
+      stepsTitle: 'Les prochaines étapes',
+      steps: [
+        { title: 'Lecture', text: 'Votre demande est lue par l\'équipe de Finlay Brewer International.' },
+        { title: 'Un horaire proposé', text: 'Nous vous contactons par téléphone ou e-mail pour suggérer un créneau.' },
+        { title: 'Confirmation', text: 'La visite n\'est confirmée que lorsque vous convenez d\'un horaire avec l\'équipe.' },
+      ],
+    },
   },
 };

@@ -7,10 +7,55 @@
   if (!form || !statusEl) return;
 
   const msgRequired = form.dataset.msgRequired || 'Please provide your full name and email.';
+  const msgPhone = form.dataset.msgPhone || 'A phone number is required to arrange a private viewing.';
   const msgError = form.dataset.msgError || 'Something went wrong. Please try again.';
   const thankYouUrl = form.dataset.thankYouUrl || '/en/thank-you';
   const submitBtn = form.querySelector('[type="submit"]');
   const defaultBtnLabel = submitBtn?.textContent?.trim() || 'Submit';
+  const intentInputs = form.querySelectorAll('input[name="inquiry_intent"]');
+
+  function selectedIntent() {
+    const checked = form.querySelector('input[name="inquiry_intent"]:checked');
+    return checked && checked.value === 'viewing' ? 'viewing' : 'dossier';
+  }
+
+  function syncIntentUi() {
+    const viewing = selectedIntent() === 'viewing';
+    const phone = document.getElementById('phone');
+    const optional = document.getElementById('phone-optional');
+    const hint = document.getElementById('phone-hint');
+
+    if (phone) {
+      if (viewing) phone.setAttribute('required', '');
+      else phone.removeAttribute('required');
+      phone.setAttribute('aria-required', viewing ? 'true' : 'false');
+    }
+    if (optional) optional.hidden = viewing;
+    if (hint) hint.hidden = !viewing;
+  }
+
+  function applyIntentFromUrl() {
+    const intent = new URLSearchParams(window.location.search).get('intent') === 'viewing'
+      ? 'viewing'
+      : 'dossier';
+    const radio = form.querySelector(`input[name="inquiry_intent"][value="${intent}"]`);
+    if (radio) radio.checked = true;
+    syncIntentUi();
+  }
+
+  function writeIntentToUrl() {
+    const url = new URL(window.location.href);
+    url.searchParams.set('intent', selectedIntent());
+    window.history.replaceState(null, '', url);
+  }
+
+  applyIntentFromUrl();
+  intentInputs.forEach((input) => {
+    input.addEventListener('change', () => {
+      syncIntentUi();
+      writeIntentToUrl();
+    });
+  });
 
   function fieldValue(id) {
     const el = document.getElementById(id);
@@ -56,6 +101,7 @@
       purchase_timeline: fieldValue('timeline') || undefined,
       message: fieldValue('message') || undefined,
       language: fieldValue('language') || document.body.dataset.locale || 'en',
+      inquiry_intent: selectedIntent(),
       website: fieldValue('website') || '',
       meta_event_id: eventId,
       meta_fbp: metaCookies.fbp || undefined,
@@ -64,6 +110,11 @@
 
     if (!payload.name || !payload.email) {
       showError(msgRequired);
+      return;
+    }
+
+    if (payload.inquiry_intent === 'viewing' && !payload.phone) {
+      showError(msgPhone);
       return;
     }
 
@@ -102,7 +153,9 @@
       const redirect = () => {
         if (redirected) return;
         redirected = true;
-        window.location.assign(thankYouUrl);
+        const next = new URL(thankYouUrl, window.location.origin);
+        next.searchParams.set('intent', payload.inquiry_intent);
+        window.location.assign(`${next.pathname}${next.search}`);
       };
 
       if (typeof window.MetaLead !== 'undefined') {

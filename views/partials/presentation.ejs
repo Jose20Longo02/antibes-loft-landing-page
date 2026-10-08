@@ -11,6 +11,7 @@
       class="presentation-form reveal"
       novalidate
       data-msg-required="<%= content.ui.formMessages.required %>"
+      data-msg-phone="<%= content.ui.formMessages.phoneRequired %>"
       data-msg-error="<%= content.ui.formMessages.error %>"
       data-thank-you-url="/<%= lang %>/thank-you"
     >
@@ -18,19 +19,18 @@
         <label for="website">Website</label>
         <input type="text" name="website" id="website" tabindex="-1" autocomplete="off">
       </div>
-      <div class="form-field form-field--language">
-        <label for="language-display"><%= content.ui.form.language %></label>
-        <input
-          type="text"
-          id="language-display"
-          class="form-field__readonly"
-          value="<%= currentLanguageName %>"
-          readonly
-          tabindex="-1"
-          aria-readonly="true"
-        >
-        <input type="hidden" name="language" id="language" value="<%= lang %>">
-      </div>
+      <input type="hidden" name="language" id="language" value="<%= lang %>">
+      <fieldset class="intent-choice">
+        <legend class="intent-choice__legend"><%= content.presentation.intentLegend %></legend>
+        <label class="intent-choice__option">
+          <input type="radio" name="inquiry_intent" value="dossier" checked>
+          <span><%= content.presentation.intentDossier %></span>
+        </label>
+        <label class="intent-choice__option">
+          <input type="radio" name="inquiry_intent" value="viewing">
+          <span><%= content.presentation.intentViewing %></span>
+        </label>
+      </fieldset>
       <div class="form-row">
         <div class="form-field">
           <label for="full-name"><%= content.ui.form.fullName %></label>
@@ -43,16 +43,26 @@
       </div>
       <div class="form-row">
         <div class="form-field">
-          <label for="phone"><%= content.ui.form.phone %></label>
-          <input type="tel" id="phone" name="phone" autocomplete="tel">
+          <label for="phone">
+            <%= content.ui.form.phone %>
+            <span class="label-optional" id="phone-optional"><%= content.ui.form.optional %></span>
+          </label>
+          <input type="tel" id="phone" name="phone" autocomplete="tel" inputmode="tel">
+          <p class="form-field__hint" id="phone-hint"><%= content.presentation.phoneHint %></p>
         </div>
         <div class="form-field">
-          <label for="country"><%= content.ui.form.country %></label>
+          <label for="country">
+            <%= content.ui.form.country %>
+            <span class="label-optional"><%= content.ui.form.optional %></span>
+          </label>
           <input type="text" id="country" name="country" autocomplete="country-name">
         </div>
       </div>
       <div class="form-field">
-        <label for="timeline"><%= content.ui.form.timeline %></label>
+        <label for="timeline">
+          <%= content.ui.form.timeline %>
+          <span class="label-optional"><%= content.ui.form.optional %></span>
+        </label>
         <select id="timeline" name="purchase_timeline">
           <option value=""><%= content.ui.form.select %></option>
           <% content.presentation.timelines.forEach(function (t) { %>

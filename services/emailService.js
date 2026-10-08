@@ -3,10 +3,20 @@ const appConfig = require('../config/app');
 const { getContent, isSupported, DEFAULT_LOCALE, LOCALE_META } = require('../config/i18n');
 
 const EMAIL_SUBJECTS = {
-  en: (property) => `New lead — ${property}`,
-  fr: (property) => `Nouveau prospect — ${property}`,
-  de: (property) => `Neue Anfrage — ${property}`,
+  en: (property, intent) => `New lead — ${intent} — ${property}`,
+  fr: (property, intent) => `Nouveau prospect — ${intent} — ${property}`,
+  de: (property, intent) => `Neue Anfrage — ${intent} — ${property}`,
 };
+
+function intentToken(lead) {
+  return lead.inquiry_intent === 'viewing' ? 'viewing' : 'dossier';
+}
+
+function intentLine(lead) {
+  return lead.inquiry_intent === 'viewing'
+    ? 'Request to arrange a private viewing'
+    : 'Request for the full property details';
+}
 
 let transporter;
 
@@ -49,7 +59,7 @@ function getLeadContext(lead) {
 function formatLeadPlain(lead) {
   const { locale, content } = getLeadContext(lead);
   const lines = [
-    'New private presentation request',
+    intentLine(lead),
     '',
     `Property: ${appConfig.propertyLeadName}`,
     `Location: ${content.app.propertyLocation}`,
@@ -85,7 +95,7 @@ function formatLeadHtml(lead) {
   <table width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;margin:24px auto;background:#fff;border:1px solid #e8e4df;">
     <tr>
       <td style="padding:32px 28px 20px;border-bottom:1px solid #e8e4df;">
-        <p style="margin:0 0 8px;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#8a847a;">New lead</p>
+        <p style="margin:0 0 8px;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#8a847a;">${escapeHtml(intentLine(lead))}</p>
         <h1 style="margin:0;font-size:22px;font-weight:400;letter-spacing:0.06em;text-transform:uppercase;">${escapeHtml(appConfig.propertyLeadName)}</h1>
         <p style="margin:8px 0 0;font-size:14px;color:#3d3a36;">${escapeHtml(content.app.propertyLocation)} · ${appConfig.siteName}</p>
         <p style="margin:6px 0 0;font-size:12px;color:#8a847a;">Language: ${escapeHtml(LOCALE_META[locale].name)} (${locale})</p>
@@ -94,7 +104,8 @@ function formatLeadHtml(lead) {
     <tr>
       <td style="padding:24px 28px;">
         <table width="100%" cellpadding="0" cellspacing="0" style="font-size:14px;line-height:1.6;">
-          <tr><td style="padding:8px 0;color:#8a847a;width:140px;vertical-align:top;">Language</td><td style="padding:8px 0;">${escapeHtml(LOCALE_META[locale].name)} (${locale})</td></tr>
+          <tr><td style="padding:8px 0;color:#8a847a;width:140px;vertical-align:top;">Intent</td><td style="padding:8px 0;">${escapeHtml(intentToken(lead))}</td></tr>
+          <tr><td style="padding:8px 0;color:#8a847a;vertical-align:top;">Language</td><td style="padding:8px 0;">${escapeHtml(LOCALE_META[locale].name)} (${locale})</td></tr>
           <tr><td style="padding:8px 0;color:#8a847a;vertical-align:top;">Name</td><td style="padding:8px 0;">${escapeHtml(lead.name)}</td></tr>
           <tr><td style="padding:8px 0;color:#8a847a;vertical-align:top;">Email</td><td style="padding:8px 0;"><a href="mailto:${escapeHtml(lead.email)}" style="color:#1c1b19;">${escapeHtml(lead.email)}</a></td></tr>
           <tr><td style="padding:8px 0;color:#8a847a;vertical-align:top;">Phone</td><td style="padding:8px 0;">${escapeHtml(lead.phone || '—')}</td></tr>
@@ -128,10 +139,10 @@ async function sendNewLeadNotification(lead) {
   }
 
   const transport = getTransporter();
-  const { locale, content } = getLeadContext(lead);
+  const { locale } = getLeadContext(lead);
   const property = appConfig.propertyLeadName;
   const subjectFn = EMAIL_SUBJECTS[locale] || EMAIL_SUBJECTS.en;
-  const subject = subjectFn(property);
+  const subject = subjectFn(property, intentToken(lead));
 
   const info = await transport.sendMail({
     from: process.env.EMAIL_FROM || `"${appConfig.siteName}" <${process.env.SMTP_USER}>`,

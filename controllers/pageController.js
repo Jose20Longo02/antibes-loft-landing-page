@@ -10,14 +10,20 @@ function getHome(req, res) {
   res.render('pages/index', pageLocals(res));
 }
 
+function inquiryIntent(req) {
+  return req.query.intent === 'viewing' ? 'viewing' : 'dossier';
+}
+
 function getThankYou(req, res) {
   const content = res.locals.content;
+  const variant = content.thankYou[inquiryIntent(req)];
   res.render('pages/thank-you', {
     ...pageLocals(res),
-    title: content.thankYou.meta.title,
-    meta: content.thankYou.meta,
+    title: variant.meta.title,
+    meta: variant.meta,
     thankYou: {
       ...content.thankYou,
+      ...variant,
       ...media.thankYou,
     },
   });

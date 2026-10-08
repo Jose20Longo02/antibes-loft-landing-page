@@ -21,6 +21,7 @@ function buildRow(lead) {
     purchaseTimeline: lead.purchase_timeline || '',
     language: `${meta?.name || lang} (${lang})`,
     message: lead.message || '',
+    inquiryIntent: lead.inquiry_intent === 'viewing' ? 'viewing' : 'dossier',
   };
 }
 

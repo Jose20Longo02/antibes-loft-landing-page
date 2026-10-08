@@ -87,10 +87,12 @@ FR y DE reciben el mismo sentido, no una traducción literal rígida. “Villa�
 
 ### Checklist
 
-- [ ] En el primer pantallazo móvil se entiende: loft, Antibes, precio y un CTA.
-- [ ] No hay dos descripciones contradictorias (villa vs loft) en el H1.
-- [ ] El paisaje de Fort Carré sigue en la página, más abajo.
-- [ ] Los dos botones se distinguen y ambos llegan al formulario.
+Implementado.
+
+- [x] En el primer pantallazo móvil se entiende: loft, Antibes, precio y un CTA.
+- [x] No hay dos descripciones contradictorias (villa vs loft) en el H1.
+- [x] El paisaje de Fort Carré sigue en la página, más abajo.
+- [x] Los dos botones se distinguen y ambos llegan al formulario.
 
 ---
 

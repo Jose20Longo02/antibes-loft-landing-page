@@ -18,6 +18,7 @@ function notFound(req, res) {
 }
 
 function safeApiMessage(err) {
+  if (err.publicMessage) return err.publicMessage;
   if (process.env.NODE_ENV === 'production') {
     return 'Something went wrong. Please try again later.';
   }

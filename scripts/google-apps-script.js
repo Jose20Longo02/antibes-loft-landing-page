@@ -1,5 +1,5 @@
 /** Bump when you deploy — open the /exec URL in a browser to confirm live version */
-const SCRIPT_VERSION = '2026-06-02-email-v2';
+const SCRIPT_VERSION = '2026-10-08-intent-v1';
 
 /**
  * Google Sheets lead capture + email notification
@@ -51,6 +51,7 @@ function doPost(e) {
       data.purchaseTimeline || '',
       data.language || '',
       data.message || '',
+      data.inquiryIntent || '',
     ]);
     logStep('Row appended to sheet');
 
@@ -98,6 +99,7 @@ function simulateWebhookLead() {
         purchaseTimeline: 'Within 3 months',
         language: 'English (en)',
         message: 'Test from simulateWebhookLead() in Apps Script editor',
+        inquiryIntent: 'dossier',
       }),
     },
   };
@@ -132,6 +134,7 @@ function testLeadEmail() {
     purchaseTimeline: 'Within 3 months',
     language: 'English (en)',
     message: 'This is a test from Apps Script — testLeadEmail()',
+    inquiryIntent: 'viewing',
   };
 
   const sent = sendLeadNotificationEmail(sample);
@@ -167,7 +170,8 @@ function sendLeadNotificationEmail(data) {
   }
 
   const property = data.property || 'Antibes Loft - €1,980,000';
-  const subject = 'New lead — ' + property;
+  const intent = data.inquiryIntent === 'viewing' ? 'viewing' : 'dossier';
+  const subject = 'New lead — ' + intent + ' — ' + property;
   const body = formatLeadEmailBody(data);
 
   const options = { name: 'Finlay Brewer International' };
@@ -181,9 +185,14 @@ function sendLeadNotificationEmail(data) {
 
 function formatLeadEmailBody(data) {
   data = data || {};
+  const intent = data.inquiryIntent === 'viewing' ? 'viewing' : 'dossier';
+  const intentLine = intent === 'viewing'
+    ? 'Request to arrange a private viewing'
+    : 'Request for the full property details';
   const lines = [
-    'New private presentation request',
+    intentLine,
     '',
+    'Intent: ' + intent,
     'Property: ' + (data.property || '—'),
     'Name: ' + (data.name || '—'),
     'Email: ' + (data.email || '—'),

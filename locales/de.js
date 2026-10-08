@@ -48,6 +48,7 @@ module.exports = {
       success:
         'Vielen Dank. Ihre Anfrage ist eingegangen — wir melden uns in Kürze, um Ihre private Präsentation zu vereinbaren.',
       error: 'Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.',
+      phoneRequired: 'Für eine private Besichtigung ist eine Telefonnummer erforderlich.',
     },
     privacyNotice:
       'Mit dem Absenden stimmen Sie zu, von Finlay Brewer International zu dieser Residenz kontaktiert zu werden.',
@@ -193,11 +194,15 @@ module.exports = {
   },
 
   presentation: {
-    label: 'Private Präsentation',
-    title: 'Zugang anfragen',
+    label: 'Anfrage',
+    title: 'Diesen Loft in Antibes entdecken',
     lead:
-      'Um den Erwerb dieser Residenz zu prüfen, fordern Sie eine private Präsentation an — persönlich oder nach Vereinbarung. Begrenzt vermarktet; qualifizierte Anfragen sind willkommen.',
-    cta: 'Private Besichtigung anfragen',
+      'Fordern Sie die vollständigen Unterlagen an, einschließlich verfügbarer Pläne und weiterer Informationen, oder bitten Sie unser Team, eine private Besichtigung zu vereinbaren.',
+    intentLegend: 'Ich möchte',
+    intentDossier: 'Die vollständigen Unterlagen erhalten',
+    intentViewing: 'Eine private Besichtigung vereinbaren',
+    phoneHint: 'Eine Telefonnummer brauchen wir, um eine Uhrzeit vorzuschlagen.',
+    cta: 'Anfrage senden',
     timelines: [
       'Innerhalb von 3 Monaten',
       '3–6 Monate',
@@ -209,22 +214,39 @@ module.exports = {
   },
 
   thankYou: {
-    meta: {
-      title: 'Anfrage eingegangen | Loft in Antibes',
-      description: 'Ihre Anfrage für eine private Präsentation ist eingegangen.',
-    },
-    eyebrow: 'Anfrage eingegangen',
-    headline: 'Wir freuen uns auf Sie',
-    lead:
-      'Ihr Interesse an dieser Residenz wurde diskret vermerkt. Ein Mitglied von Finlay Brewer International wird sich persönlich melden, um Ihre private Präsentation zu vereinbaren.',
-    responseTime: 'Sie hören innerhalb von 24 Stunden von uns.',
-    stepsTitle: 'Wie es weitergeht',
-    steps: [
-      { title: 'Persönliche Prüfung', text: 'Ihre Anfrage wird von unserem Riviera-Team vertraulich geprüft.' },
-      { title: 'Direkter Kontakt', text: 'Wir kontaktieren Sie per E-Mail oder Telefon, um Ihre Wünsche und Ihren Zeitrahmen zu besprechen.' },
-      { title: 'Private Präsentation', text: 'Eine massgeschneiderte Einführung in die Residenz — persönlich oder in privater Abstimmung.' },
-    ],
     backCta: 'Zurück zur Residenz',
     imageAlt: 'Privater Aufzugzugang',
+    dossier: {
+      meta: {
+        title: 'Unterlagen angefragt | Loft in Antibes',
+        description: 'Ihre Anfrage nach den Unterlagen ist eingegangen.',
+      },
+      eyebrow: 'Anfrage eingegangen',
+      headline: 'Ihre Unterlagenanfrage ist bei uns',
+      lead:
+        'Wir haben Ihre Anfrage nach den vollständigen Unterlagen erhalten. Das Team sendet die verfügbaren Informationen. Das ist keine bestätigte Besichtigung.',
+      stepsTitle: 'Wie es weitergeht',
+      steps: [
+        { title: 'Prüfung', text: 'Ihre Anfrage wird vom Team von Finlay Brewer International gelesen.' },
+        { title: 'Unterlagen', text: 'Wir senden die verfügbaren Angaben, Pläne und weiteren Informationen.' },
+        { title: 'Eine Besichtigung, wenn Sie möchten', text: 'Eine private Besichtigung kann danach vereinbart werden. Gebucht ist nichts, bevor eine Uhrzeit feststeht.' },
+      ],
+    },
+    viewing: {
+      meta: {
+        title: 'Besichtigung angefragt | Loft in Antibes',
+        description: 'Ihre Anfrage für eine private Besichtigung ist eingegangen.',
+      },
+      eyebrow: 'Anfrage eingegangen',
+      headline: 'Ihre Besichtigungsanfrage ist bei uns',
+      lead:
+        'Wir haben Ihre Anfrage für eine private Besichtigung erhalten. Das Team meldet sich, um eine Uhrzeit vorzuschlagen. Das ist kein bestätigter Termin.',
+      stepsTitle: 'Wie es weitergeht',
+      steps: [
+        { title: 'Prüfung', text: 'Ihre Anfrage wird vom Team von Finlay Brewer International gelesen.' },
+        { title: 'Ein Terminvorschlag', text: 'Wir kontaktieren Sie per Telefon oder E-Mail und schlagen eine Uhrzeit vor.' },
+        { title: 'Bestätigung', text: 'Die Besichtigung gilt erst, wenn Sie mit dem Team eine Uhrzeit vereinbaren.' },
+      ],
+    },
   },
 };

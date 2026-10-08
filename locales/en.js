@@ -48,6 +48,7 @@ module.exports = {
       success:
         'Thank you. Your request has been received — we will be in touch shortly to arrange your private presentation.',
       error: 'Something went wrong. Please try again.',
+      phoneRequired: 'A phone number is required to arrange a private viewing.',
     },
     privacyNotice:
       'By submitting this form, you agree that Finlay Brewer International may contact you regarding this property.',
@@ -193,11 +194,15 @@ module.exports = {
   },
 
   presentation: {
-    label: 'Private Presentation',
-    title: 'Request access',
+    label: 'Enquiry',
+    title: 'Explore this Antibes loft',
     lead:
-      'To explore acquiring this residence, request a private presentation — in person or by arrangement. Not widely marketed; we invite qualified enquiries below.',
-    cta: 'Request Private Viewing',
+      'Request the full property details, including available plans and additional information, or ask our team to arrange a private viewing.',
+    intentLegend: 'I would like to',
+    intentDossier: 'Receive the full property details',
+    intentViewing: 'Arrange a private viewing',
+    phoneHint: 'A phone number is needed so we can propose a time.',
+    cta: 'Send request',
     timelines: [
       'Within 3 months',
       '3–6 months',
@@ -209,22 +214,39 @@ module.exports = {
   },
 
   thankYou: {
-    meta: {
-      title: 'Request Received | Loft in Antibes',
-      description: 'Your private presentation request has been received.',
-    },
-    eyebrow: 'Request received',
-    headline: 'We look forward to welcoming you',
-    lead:
-      'Your interest in this residence has been noted with discretion. A member of Finlay Brewer International will reach out personally to arrange your private presentation.',
-    responseTime: 'You will hear from us within 24 hours.',
-    stepsTitle: 'What happens next',
-    steps: [
-      { title: 'Personal review', text: 'Your request is reviewed by our Riviera team — with complete confidentiality.' },
-      { title: 'Direct contact', text: 'We will contact you by email or telephone to understand your preferences and timing.' },
-      { title: 'Private presentation', text: 'A tailored introduction to the residence — in person or by private arrangement.' },
-    ],
     backCta: 'Return to the residence',
     imageAlt: 'Private elevator access',
+    dossier: {
+      meta: {
+        title: 'Details Requested | Loft in Antibes',
+        description: 'Your request for the property details has been received.',
+      },
+      eyebrow: 'Request received',
+      headline: 'Your details request is with us',
+      lead:
+        'We have received your request for the full property details. The team will send the information that is available. This is not a confirmed viewing.',
+      stepsTitle: 'What happens next',
+      steps: [
+        { title: 'Review', text: 'Your request is read by the Finlay Brewer International team.' },
+        { title: 'Property details', text: 'We send the available specifications, plans and further information.' },
+        { title: 'A viewing, if you wish', text: 'A private viewing can be arranged afterwards. Nothing is booked until a time is agreed.' },
+      ],
+    },
+    viewing: {
+      meta: {
+        title: 'Viewing Requested | Loft in Antibes',
+        description: 'Your request to arrange a private viewing has been received.',
+      },
+      eyebrow: 'Request received',
+      headline: 'Your viewing request is with us',
+      lead:
+        'We have received your request to arrange a private viewing. The team will contact you to propose a time. This is not a confirmed appointment.',
+      stepsTitle: 'What happens next',
+      steps: [
+        { title: 'Review', text: 'Your request is read by the Finlay Brewer International team.' },
+        { title: 'A proposed time', text: 'We contact you by phone or email to suggest a time.' },
+        { title: 'Confirmation', text: 'The viewing is confirmed only once you agree a time with the team.' },
+      ],
+    },
   },
 };

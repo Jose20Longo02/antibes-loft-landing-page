@@ -10,16 +10,28 @@ const SHEETS_TIMEOUT_MS = 12_000;
 const META_TIMEOUT_MS = 8_000;
 
 function leadFromBody(body) {
+  const intent = body.inquiry_intent === 'viewing' || body.inquiry_intent === 'dossier'
+    ? body.inquiry_intent
+    : null;
+
   return {
-    name: body.name,
-    email: body.email,
-    phone: body.phone || null,
+    name: typeof body.name === 'string' ? body.name.trim() : '',
+    email: typeof body.email === 'string' ? body.email.trim() : '',
+    phone: typeof body.phone === 'string' && body.phone.trim() ? body.phone.trim() : null,
     country: body.country || null,
     purchase_timeline: body.purchase_timeline || null,
     message: body.message || null,
     language: isSupported(body.language) ? body.language : DEFAULT_LOCALE,
+    inquiry_intent: intent,
     created_at: new Date().toISOString(),
   };
+}
+
+function rejectInquiry(message) {
+  const err = new Error(message);
+  err.status = 400;
+  err.publicMessage = message;
+  return err;
 }
 
 function withTimeout(promise, ms, label) {
@@ -42,6 +54,19 @@ function shouldUseSmtpFallback(sentEmail) {
 async function createInquiry(req, res, next) {
   try {
     const lead = leadFromBody(req.body);
+
+    if (!lead.inquiry_intent) {
+      return next(rejectInquiry('Choose the property details or a private viewing.'));
+    }
+
+    if (!lead.name || !lead.email) {
+      return next(rejectInquiry('Name and email are required.'));
+    }
+
+    if (lead.inquiry_intent === 'viewing' && !lead.phone) {
+      return next(rejectInquiry('A phone number is required to arrange a private viewing.'));
+    }
+
     let savedToSheets = false;
     let sentEmail = false;
 
