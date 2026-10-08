@@ -10,7 +10,7 @@
 <%- include('meta-pixel') %>
 <% if (typeof localeSwitcher !== 'undefined') { %>
   <% localeSwitcher.forEach(function (loc) { %>
-    <link rel="alternate" hreflang="<%= loc.code %>" href="<%= loc.href %>">
+    <link rel="alternate" hreflang="<%= loc.code %>" href="<%= loc.absoluteHref || loc.href %>">
   <% }); %>
   <link rel="alternate" hreflang="x-default" href="<%= typeof siteUrl !== 'undefined' && siteUrl ? siteUrl + '/en' : '/en' %>">
 <% } %>

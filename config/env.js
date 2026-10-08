@@ -25,10 +25,21 @@ function validateConfig() {
   const warnings = [];
 
   if (isProduction()) {
+    const configuredSiteUrl = (process.env.SITE_URL || '').trim().replace(/\/$/, '');
     if (!getSiteUrl()) {
-      issues.push('SITE_URL is required in production (e.g. https://villa.finlaybrewer.com)');
-    } else if (!getSiteUrl().startsWith('https://')) {
+      issues.push(
+        'SITE_URL is required in production (e.g. https://finlay-brewer-international.com)'
+      );
+    } else if (!configuredSiteUrl) {
+      warnings.push(
+        'SITE_URL is not set — canonical, hreflang, Open Graph and sitemap fall back to RENDER_EXTERNAL_URL. Set SITE_URL=https://finlay-brewer-international.com (no trailing slash).'
+      );
+    } else if (!configuredSiteUrl.startsWith('https://')) {
       warnings.push('SITE_URL should use https:// in production');
+    } else if (configuredSiteUrl.includes('onrender.com')) {
+      warnings.push(
+        'SITE_URL points at onrender.com. Set it to the branded domain, e.g. https://finlay-brewer-international.com'
+      );
     }
   }
 

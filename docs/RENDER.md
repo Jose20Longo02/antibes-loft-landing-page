@@ -58,6 +58,7 @@ Your site will be at:
    |-----|--------|
    | `NODE_ENV` | `production` |
    | `TRUST_PROXY` | `1` |
+   | `SITE_URL` | `https://finlay-brewer-international.com` |
    | `PRIVACY_POLICY_URL` | `https://www.finlaybrewer.com/privacy-policy` |
    | `GOOGLE_SHEETS_WEBHOOK_URL` | *(your Apps Script URL)* |
    | `SMTP_HOST` | `smtp.gmail.com` |
@@ -70,7 +71,13 @@ Your site will be at:
 
 5. **Create Web Service** → wait for deploy.
 
-`SITE_URL` is **not required** on Render: the app uses `RENDER_EXTERNAL_URL` automatically. When you add a custom domain, set `SITE_URL` to that domain (see below).
+Set `SITE_URL` to the branded domain (no trailing slash), even though Render also provides `RENDER_EXTERNAL_URL`:
+
+```
+SITE_URL=https://finlay-brewer-international.com
+```
+
+Language switches stay on whatever host the visitor is using (`/en`, `/fr`, `/de`). Canonical, hreflang, Open Graph and the sitemap use `SITE_URL`. If it is missing, those tags fall back to `*.onrender.com`.
 
 ---
 
@@ -90,10 +97,10 @@ Your site will be at:
 3. In **Environment**, set:
 
    ```
-   SITE_URL=https://your-domain.com
+   SITE_URL=https://finlay-brewer-international.com
    ```
 
-   (no trailing slash)
+   (no trailing slash). Language links are relative, so they follow this host. Canonical, hreflang and the sitemap use `SITE_URL` and will keep pointing at `onrender.com` until this is set.
 
 4. **Manual Deploy** or wait for auto-deploy.
 

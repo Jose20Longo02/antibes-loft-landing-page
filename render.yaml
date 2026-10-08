@@ -19,8 +19,10 @@ services:
         value: '1'
       - key: PRIVACY_POLICY_URL
         value: https://www.finlaybrewer.com/privacy-policy
-      # SITE_URL — optional on Render (RENDER_EXTERNAL_URL is set automatically).
-      # Set SITE_URL when you add a custom domain, e.g. https://villa.finlaybrewer.com
+      # Public branded domain. Do not leave this as the onrender.com host:
+      # language SEO tags, canonical and sitemap use it.
+      - key: SITE_URL
+        value: https://finlay-brewer-international.com
       - key: GOOGLE_SHEETS_WEBHOOK_URL
         sync: false
       - key: SMTP_HOST

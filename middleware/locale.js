@@ -24,7 +24,10 @@ function attachLocale(req, res, locale) {
   res.locals.siteUrl = siteUrl;
   res.locals.canonicalUrl = absoluteUrl(pagePath);
   res.locals.ogImage = getDefaultOgImage();
-  res.locals.localeSwitcher = getLocaleSwitcher(req, locale, siteUrl);
+  res.locals.localeSwitcher = getLocaleSwitcher(req, locale).map((loc) => ({
+    ...loc,
+    absoluteHref: absoluteUrl(loc.href),
+  }));
   res.locals.homeUrl = `/${locale}`;
   res.locals.config = {
     ...appConfig,

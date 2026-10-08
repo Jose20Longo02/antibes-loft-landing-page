@@ -43,7 +43,7 @@ The server listens on `PORT` and serves static files from `public/`.
 
 **Full walkthrough:** [RENDER.md](./RENDER.md) — includes Blueprint (`render.yaml`) and env var checklist.
 
-On Render, `RENDER_EXTERNAL_URL` is used as `SITE_URL` if you do not set one manually.
+On Render, set `SITE_URL` to the branded domain (`https://finlay-brewer-international.com`). If it is unset, canonical and sitemap fall back to `RENDER_EXTERNAL_URL`. Language switches use relative paths and stay on the current host.
 
 ### Railway / Fly.io
 

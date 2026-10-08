@@ -84,19 +84,19 @@ function localeUrl(locale, hash = '') {
   return hash ? `${base}${hash.startsWith('#') ? hash : `#${hash}`}` : base;
 }
 
-function getLocaleSwitcher(req, currentLocale, siteBase = '') {
+function getLocaleSwitcher(req, currentLocale) {
   const segments = (req?.path || '/').split('/').filter(Boolean);
   const onThankYou = segments[1] === 'thank-you';
   const suffix = onThankYou ? '/thank-you' : '';
 
   return SUPPORTED_LOCALES.map((code) => {
     const path = `/${code}${suffix}`;
-    const href = siteBase ? `${siteBase}${path}` : path;
     return {
       code,
       label: LOCALE_META[code].label,
       name: LOCALE_META[code].name,
-      href,
+      // Same-origin path so a language switch never leaves the host the visitor is on.
+      href: path,
       active: code === currentLocale,
     };
   });
