@@ -140,11 +140,13 @@ Página de gracias, según intención:
 
 ### Checklist
 
-- [ ] Dossier y visita llegan al formulario con la opción correcta ya marcada.
+Implementado y en vivo. Falta el envío de prueba al inbox.
+
+- [x] Dossier y visita llegan al formulario con la opción correcta ya marcada.
 - [ ] La intención sobrevive al envío (email + fila de Sheets).
-- [ ] Un dossier se puede enviar sin teléfono.
-- [ ] Una visita sin teléfono muestra error y no se envía.
-- [ ] La página de gracias describe lo pedido y no confirma una cita.
+- [x] Un dossier se puede enviar sin teléfono.
+- [x] Una visita sin teléfono muestra error y no se envía.
+- [x] La página de gracias describe lo pedido y no confirma una cita.
 - [ ] Un envío de prueba (cuando implementemos) llega al inbox real, una sola vez, con idioma e intención correctos.
 
 ### Fuera de este código

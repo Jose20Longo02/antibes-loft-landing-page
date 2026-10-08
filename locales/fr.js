@@ -14,6 +14,7 @@ module.exports = {
     discover: 'Découvrir',
     langLabel: 'Langue',
     menu: 'Menu',
+    mobileCta: 'Demander le dossier',
     social: {
       label: 'Finlay Brewer International sur les réseaux sociaux',
       heading: 'Suivre',
@@ -160,14 +161,11 @@ module.exports = {
   lifestyle: {
     label: 'Antibes',
     title: 'La vie sur la Riviera',
-    lead:
-      'Antibes occupe une place singulière sur le littoral — ni station balnéaire, ni banlieue, mais une ville de caractère : port, patrimoine et élégance au quotidien.',
+    lead: 'Une ville portuaire : la marina, les remparts et la mer, à pied.',
     points: [
-      'Port Vauban — l\'un des plus grands ports d\'Europe, où superyachts et restaurants en bord de mer définissent le front de mer.',
-      'Le vieil Antibes — remparts, marchés provençaux, galeries et ruelles qui invitent à la flânerie.',
-      'La mer à portée — plages et criques à quelques minutes à pied.',
-      'Une table pour chaque humeur — du déjeuner en terrasse aux adresses les plus ambitieuses à proximité.',
-      'Bien reliée, jamais envahie — l\'aéroport Nice Côte d\'Azur à environ vingt minutes ; Cannes et Monaco à portée.',
+      'Port Vauban, l\'un des plus grands ports d\'Europe, à quelques minutes à pied.',
+      'Le vieil Antibes, les plages et les remparts, à pied.',
+      'L\'aéroport de Nice à environ vingt minutes ; Cannes et Monaco à portée.',
     ],
     alt: 'Port Vauban et le littoral de la Côte d\'Azur',
   },
@@ -180,17 +178,28 @@ module.exports = {
     location: 'Antibes, Côte d\'Azur',
     specs: [
       { label: 'Intérieur', value: 'Environ 206 m²' },
-      { label: 'Terrasse', value: '40 m², panoramique' },
-      { label: 'Séjour', value: '65 m² en open space' },
       { label: 'Suites', value: 'Trois, dont suite principale avec dressing' },
+      { label: 'Terrasse', value: '40 m², panoramique' },
+      { label: 'Parking', value: 'Garage sécurisé inclus' },
+      { label: 'Séjour', value: '65 m² en open space' },
       { label: 'Suite principale', value: 'Mezzanine bibliothèque / salon' },
       { label: 'Vues', value: 'Panorama méditerranéen à 180°' },
       { label: 'Immeuble', value: 'Deux résidences ; ascenseur privé' },
-      { label: 'Parking', value: 'Garage sécurisé inclus' },
       { label: 'Cuisine', value: 'Contemporaine, sur mesure' },
       { label: 'Finitions', value: 'Prestations de luxe' },
     ],
     note: 'Proposé en exclusivité et en toute discrétion par Finlay Brewer International — sans large commercialisation.',
+  },
+
+  dossier: {
+    label: 'Le dossier',
+    title: 'Ce que vous pouvez demander',
+    lead: 'Le dossier comprend les plans disponibles, les spécifications et des informations complémentaires sur l\'immeuble.',
+    items: [
+      'Les plans disponibles, lorsqu\'ils sont au dossier',
+      'Les spécifications du loft',
+      'Des informations complémentaires sur l\'immeuble',
+    ],
   },
 
   presentation: {

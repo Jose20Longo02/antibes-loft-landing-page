@@ -20,17 +20,42 @@
   updateHeader();
   window.addEventListener('scroll', updateHeader, { passive: true });
 
+  /* Mobile shortcut to the form. Hidden over the hero, the open menu, and the form itself. */
+  const mobileCta = document.querySelector('[data-mobile-cta]');
+  const presentation = document.getElementById('presentation-form') || document.getElementById('presentation');
+  let presentationVisible = false;
+
+  function updateMobileCta() {
+    if (!mobileCta || !hero) return;
+    const menuOpen = nav && nav.classList.contains('is-open');
+    const pastHero = window.scrollY > hero.offsetHeight * 0.72;
+    mobileCta.classList.toggle('is-hidden', menuOpen || presentationVisible || !pastHero);
+  }
+
+  if (mobileCta && presentation && 'IntersectionObserver' in window) {
+    const presentationObserver = new IntersectionObserver((entries) => {
+      presentationVisible = entries.some((entry) => entry.isIntersecting);
+      updateMobileCta();
+    }, { rootMargin: '0px 0px 88px 0px', threshold: 0 });
+    presentationObserver.observe(presentation);
+  }
+
+  updateMobileCta();
+  window.addEventListener('scroll', updateMobileCta, { passive: true });
+
   /* Mobile nav */
   if (navToggle && nav) {
     navToggle.addEventListener('click', () => {
       const open = nav.classList.toggle('is-open');
       navToggle.setAttribute('aria-expanded', String(open));
+      if (typeof updateMobileCta === 'function') updateMobileCta();
     });
 
     nav.querySelectorAll('a').forEach((link) => {
       link.addEventListener('click', () => {
         nav.classList.remove('is-open');
         navToggle.setAttribute('aria-expanded', 'false');
+        updateMobileCta();
       });
     });
   }

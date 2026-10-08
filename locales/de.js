@@ -14,6 +14,7 @@ module.exports = {
     discover: 'Entdecken',
     langLabel: 'Sprache',
     menu: 'Menü',
+    mobileCta: 'Unterlagen anfragen',
     social: {
       label: 'Finlay Brewer International in den sozialen Medien',
       heading: 'Folgen',
@@ -160,14 +161,11 @@ module.exports = {
   lifestyle: {
     label: 'Antibes',
     title: 'Leben an der Riviera',
-    lead:
-      'Antibes hat einen besonderen Platz an der Küste — weder Ferienort noch Vorort, sondern eine Stadt mit Substanz: Hafen, Erbe und eine Beständigkeit im Alltag.',
+    lead: 'Eine Hafenstadt an der Küste: Marina, Altstadt und Meer, alles zu Fuß.',
     points: [
-      'Port Vauban — einer der größten Häfen Europas, wo Superyachten und Restaurants am Wasser das Ufer prägen.',
-      'Alt-Antibes — Stadtmauer, provenzalische Märkte, Galerien und Gassen, die zum Flanieren einladen.',
-      'Das Meer in Reichweite — Strände und Buchten wenige Minuten zu Fuß.',
-      'Ein Tisch für jede Stimmung — vom entspannten Mittagessen auf der Terrasse bis zu ambitionierter Gastronomie in der Nähe.',
-      'Gut verbunden, nie überwältigt — Flughafen Nizza Côte d\'Azur in etwa zwanzig Minuten; Cannes und Monaco gut erreichbar.',
+      'Port Vauban, einer der größten Häfen Europas, wenige Minuten zu Fuß.',
+      'Alt-Antibes, die Strände und die Stadtmauer, zu Fuß.',
+      'Flughafen Nizza in etwa zwanzig Minuten; Cannes und Monaco gut erreichbar.',
     ],
     alt: 'Port Vauban und die Küste der Französischen Riviera',
   },
@@ -180,17 +178,28 @@ module.exports = {
     location: 'Antibes, Französische Riviera',
     specs: [
       { label: 'Innenfläche', value: 'Etwa 206 m²' },
-      { label: 'Terrasse', value: '40 m², panoramisch' },
-      { label: 'Wohnen', value: '65 m² offener Grundriss' },
       { label: 'Suiten', value: 'Drei, inkl. Hauptsuite mit Ankleide' },
+      { label: 'Terrasse', value: '40 m², panoramisch' },
+      { label: 'Parken', value: 'Sichere Garage inklusive' },
+      { label: 'Wohnen', value: '65 m² offener Grundriss' },
       { label: 'Hauptsuite', value: 'Mezzanine-Bibliothek / Lounge' },
       { label: 'Aussicht', value: '180° Mittelmeer-Panorama' },
       { label: 'Gebäude', value: 'Zwei Residenzen; privater Aufzug' },
-      { label: 'Parken', value: 'Sichere Garage inklusive' },
       { label: 'Küche', value: 'Zeitgenössisch, individuell geplant' },
       { label: 'Ausstattung', value: 'Luxusspezifikation durchgehend' },
     ],
     note: 'Exklusiv und diskret über Finlay Brewer International angeboten — nicht breit vermarktet.',
+  },
+
+  dossier: {
+    label: 'Die Unterlagen',
+    title: 'Was Sie anfragen können',
+    lead: 'Die Unterlagen enthalten die verfügbaren Pläne, die Angaben zum Loft und weitere Informationen zum Gebäude.',
+    items: [
+      'Verfügbare Pläne, soweit sie vorliegen',
+      'Angaben zum Loft',
+      'Weitere Informationen zum Gebäude',
+    ],
   },
 
   presentation: {

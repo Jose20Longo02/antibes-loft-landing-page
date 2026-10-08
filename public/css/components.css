@@ -27,6 +27,37 @@
   opacity: 1;
 }
 
+.mobile-cta {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .mobile-cta {
+    position: fixed;
+    z-index: 180;
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 3rem;
+    padding: 0.85rem 1.25rem;
+    background: var(--color-charcoal);
+    color: var(--color-ivory);
+    font-size: 0.68rem;
+    font-weight: 450;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    text-align: center;
+  }
+
+  .mobile-cta.is-hidden {
+    display: none;
+  }
+}
+
 .btn--light {
   color: var(--color-ivory);
   border-color: var(--color-line-light);

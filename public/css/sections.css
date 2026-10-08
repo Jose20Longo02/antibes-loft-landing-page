@@ -771,7 +771,11 @@
 
 /* —— The Idea —— */
 .section--idea {
-  padding-top: var(--space-3xl);
+  padding-block: var(--space-xl);
+}
+
+.section--idea .section__intro {
+  margin-bottom: 0;
 }
 
 .editorial-panel {
@@ -1098,7 +1102,7 @@
 
 /* —— Details —— */
 .section--details {
-  padding-block: var(--space-3xl);
+  padding-block: var(--space-xl);
   background: var(--color-charcoal);
   color: var(--color-ivory);
 }
@@ -1119,7 +1123,7 @@
   max-width: 32rem;
   font-size: 1rem;
   line-height: 1.75;
-  color: var(--color-charcoal-soft);
+  color: var(--color-stone-light);
 }
 
 .details__location {
@@ -1139,16 +1143,18 @@
 }
 
 .details-specs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   margin: 0 auto var(--space-lg);
-  max-width: 28rem;
+  max-width: 40rem;
   text-align: left;
 }
 
 .details-specs__row {
   display: grid;
-  grid-template-columns: 9rem 1fr;
-  gap: var(--space-sm);
-  padding-block: var(--space-xs);
+  grid-template-columns: 1fr;
+  gap: 0.2rem;
+  padding: 0.85rem 1rem;
   border-bottom: 1px solid var(--color-line-light);
 }
 
@@ -1174,10 +1180,45 @@
   color: var(--color-stone-light);
 }
 
-@media (max-width: 520px) {
-  .details-specs__row {
-    grid-template-columns: 1fr;
-    gap: 0.25rem;
+@media (max-width: 900px) {
+  .section--details {
+    padding-block: var(--space-lg);
+  }
+}
+
+/* —— Dossier —— */
+.section--dossier {
+  padding-block: var(--space-xl);
+}
+
+.dossier__inner {
+  width: var(--container-narrow);
+  margin-inline: auto;
+  padding-inline: 4vw;
+}
+
+.dossier-list {
+  margin: var(--space-md) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.dossier-list__item {
+  padding-block: 0.85rem;
+  border-top: 1px solid var(--color-line);
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+.dossier-list__item:last-child {
+  border-bottom: 1px solid var(--color-line);
+}
+
+@media (max-width: 900px) {
+  .section--dossier,
+  .section--idea {
+    padding-block: var(--space-lg);
   }
 }
 
@@ -1203,8 +1244,17 @@
 }
 
 @media (max-width: 900px) {
+  .section--presentation {
+    padding-block: var(--space-lg) var(--space-xl);
+  }
+
   .presentation__layout {
     grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+
+  .presentation__intro .section__lead {
+    margin-bottom: 0;
   }
 
   .presentation-form {

@@ -1,0 +1,12 @@
+<section id="dossier" class="section section--dossier" aria-labelledby="dossier-title">
+  <div class="dossier__inner reveal">
+    <p class="eyebrow"><%= content.dossier.label %></p>
+    <h2 id="dossier-title" class="section__title display"><%= content.dossier.title %></h2>
+    <p class="section__lead"><%= content.dossier.lead %></p>
+    <ul class="dossier-list">
+      <% content.dossier.items.forEach(function (item) { %>
+        <li class="dossier-list__item"><%= item %></li>
+      <% }); %>
+    </ul>
+  </div>
+</section>

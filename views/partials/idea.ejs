@@ -6,25 +6,4 @@
       <p class="section__prose"><%= p %></p>
     <% }); %>
   </div>
-
-  <figure class="editorial-panel reveal">
-    <div class="editorial-panel__media">
-      <%- include('picture-img', {
-        src: content.idea.image,
-        webp: content.idea.imageWebp,
-        alt: content.idea.alt,
-        loading: 'lazy',
-        sizes: '(min-width: 900px) 50vw, 100vw',
-      }) %>
-    </div>
-  </figure>
-
-  <div class="pillars reveal">
-    <% content.idea.pillars.forEach(function (pillar, i) { %>
-      <article class="pillar pillar--<%= i + 1 %>">
-        <h3 class="pillar__title"><%= pillar.title %></h3>
-        <p class="pillar__text"><%= pillar.text %></p>
-      </article>
-    <% }); %>
-  </div>
 </section>
