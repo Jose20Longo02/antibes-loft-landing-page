@@ -57,8 +57,8 @@ module.exports = {
   hero: {
     eyebrow: 'Antibes · French Riviera',
     headline: 'Architect-designed loft for sale in Antibes',
-    headlineLine1: 'Architect-designed loft',
-    headlineLine2: 'for sale in Antibes',
+    headlineLine1: 'Architect\u2011designed',
+    headlineLine2: 'loft for sale in Antibes',
     offer: 'Approximately 206 m² · Three suites · 40 m² terrace',
     price: '€1,980,000',
     support: 'Panoramic Mediterranean views, double-height living and a secure garage.',
