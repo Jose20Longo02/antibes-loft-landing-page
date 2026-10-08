@@ -50,6 +50,7 @@
   }
 
   applyIntentFromUrl();
+  window.addEventListener('inquiry-intent', applyIntentFromUrl);
   intentInputs.forEach((input) => {
     input.addEventListener('change', () => {
       syncIntentUi();

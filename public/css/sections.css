@@ -209,6 +209,10 @@
   .hero__summary-support {
     font-size: 0.88rem;
   }
+
+  .hero__image {
+    object-position: 16% center;
+  }
 }
 
 .hero__scroll {
@@ -1245,7 +1249,9 @@
 
 @media (max-width: 900px) {
   .section--presentation {
-    padding-block: var(--space-lg) var(--space-xl);
+    padding-top: 1.25rem;
+    padding-bottom: var(--space-lg);
+    scroll-margin-top: var(--header-h);
   }
 
   .presentation__layout {

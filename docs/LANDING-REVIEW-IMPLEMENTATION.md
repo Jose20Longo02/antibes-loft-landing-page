@@ -207,9 +207,11 @@ Revisar también el pie, la ficha (`details.note`) y la página de gracias.
 
 ### Checklist
 
-- [ ] Ningún CTA pide “acceso” o “introducción”.
-- [ ] No se dice “no comercializado ampliamente” si los anuncios siguen activos.
-- [ ] El enlace de privacidad sigue abriendo la URL aprobada.
+Implementado.
+
+- [x] Ningún CTA pide “acceso” o “introducción”.
+- [x] No se dice “no comercializado ampliamente” si los anuncios siguen activos.
+- [x] El enlace de privacidad sigue abriendo la URL aprobada.
 
 ---
 

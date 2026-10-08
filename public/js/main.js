@@ -76,6 +76,7 @@
         new URLSearchParams(query).forEach((value, key) => url.searchParams.set(key, value));
         url.hash = href.slice(hashIndex);
         history.replaceState(null, '', url);
+        window.dispatchEvent(new Event('inquiry-intent'));
       }
       target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
