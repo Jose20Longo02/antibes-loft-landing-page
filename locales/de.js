@@ -2,7 +2,7 @@ module.exports = {
   meta: {
     title: 'Architekten-Loft zum Verkauf in Antibes | Finlay Brewer International',
     description:
-      'Privat angebotener Architekten-Loft in Antibes — ca. 206 m², 1.980.000 €. 180° Mittelmeerblick. Private Präsentation durch Finlay Brewer International.',
+      'Architekten-Loft zum Verkauf in Antibes — etwa 206 m², 1.980.000 €. 180° Mittelmeerblick. Finlay Brewer International.',
   },
 
   app: {
@@ -47,7 +47,7 @@ module.exports = {
       required: 'Bitte geben Sie Ihren vollständigen Namen und Ihre E-Mail an.',
       sending: 'Wird gesendet…',
       success:
-        'Vielen Dank. Ihre Anfrage ist eingegangen — wir melden uns in Kürze, um Ihre private Präsentation zu vereinbaren.',
+        'Vielen Dank. Ihre Anfrage ist eingegangen.',
       error: 'Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.',
       phoneRequired: 'Für eine private Besichtigung ist eine Telefonnummer erforderlich.',
     },
@@ -173,7 +173,7 @@ module.exports = {
   details: {
     label: 'Residenz',
     title: 'Das Angebot',
-    lead: 'Im Privatverkauf erhältlich. Unterlagen, Pläne und weitere Bilder auf Anfrage.',
+    lead: 'Zum Verkauf. Die Unterlagen enthalten die verfügbaren Pläne, die Angaben und weitere Bilder.',
     price: '1.980.000 €',
     location: 'Antibes, Französische Riviera',
     specs: [
@@ -188,7 +188,7 @@ module.exports = {
       { label: 'Küche', value: 'Zeitgenössisch, individuell geplant' },
       { label: 'Ausstattung', value: 'Luxusspezifikation durchgehend' },
     ],
-    note: 'Exklusiv und diskret über Finlay Brewer International angeboten — nicht breit vermarktet.',
+    note: 'Angeboten über Finlay Brewer International.',
   },
 
   dossier: {

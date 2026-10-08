@@ -182,11 +182,13 @@ El dossier en sí (planos, cargos, documentos) lo prepara el equipo. La web solo
 
 ### Checklist
 
-- [ ] Precio, m², suites, terraza y garaje se ven antes de la galería.
-- [ ] Galería y vídeo van antes del texto de estilo de vida.
-- [ ] En 390 px no hay recorte ni scroll horizontal.
-- [ ] El botón fijo no cubre el formulario.
-- [ ] Labels y botones siguen legibles.
+Implementado.
+
+- [x] Precio, m², suites, terraza y garaje se ven antes de la galería.
+- [x] Galería y vídeo van antes del texto de estilo de vida.
+- [x] En 390 px no hay recorte ni scroll horizontal.
+- [x] El botón fijo no cubre el formulario.
+- [x] Labels y botones siguen legibles.
 
 ---
 

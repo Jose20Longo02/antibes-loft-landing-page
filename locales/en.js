@@ -2,7 +2,7 @@ module.exports = {
   meta: {
     title: 'Architect-designed loft for sale in Antibes | Finlay Brewer International',
     description:
-      'Privately offered architect-designed loft in Antibes, French Riviera — approximately 206 m², €1,980,000. 180° Mediterranean views. Private presentation by Finlay Brewer International.',
+      'Architect-designed loft for sale in Antibes, French Riviera — approximately 206 m², €1,980,000. 180° Mediterranean views. Finlay Brewer International.',
   },
 
   app: {
@@ -47,7 +47,7 @@ module.exports = {
       required: 'Please provide your full name and email.',
       sending: 'Sending…',
       success:
-        'Thank you. Your request has been received — we will be in touch shortly to arrange your private presentation.',
+        'Thank you. Your request has been received.',
       error: 'Something went wrong. Please try again.',
       phoneRequired: 'A phone number is required to arrange a private viewing.',
     },
@@ -173,7 +173,7 @@ module.exports = {
   details: {
     label: 'Residence',
     title: 'The offering',
-    lead: 'Available by private sale. Full particulars, plans, and further imagery on request.',
+    lead: 'For sale. The property details include the available plans, specifications and further images.',
     price: '€1,980,000',
     location: 'Antibes, French Riviera',
     specs: [
@@ -188,7 +188,7 @@ module.exports = {
       { label: 'Kitchen', value: 'Contemporary, custom-designed' },
       { label: 'Finishes', value: 'Luxury specification throughout' },
     ],
-    note: 'Exclusively and privately offered through Finlay Brewer International — not widely marketed.',
+    note: 'Offered through Finlay Brewer International.',
   },
 
   dossier: {

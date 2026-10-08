@@ -2,7 +2,7 @@ module.exports = {
   meta: {
     title: 'Loft d\'architecte à vendre à Antibes | Finlay Brewer International',
     description:
-      'Loft d\'architecte proposé en vente privée à Antibes — environ 206 m², 1 980 000 €. Vues méditerranéennes à 180°. Présentation privée par Finlay Brewer International.',
+      'Loft d\'architecte à vendre à Antibes — environ 206 m², 1 980 000 €. Vues méditerranéennes à 180°. Finlay Brewer International.',
   },
 
   app: {
@@ -47,7 +47,7 @@ module.exports = {
       required: 'Veuillez indiquer votre nom complet et votre e-mail.',
       sending: 'Envoi en cours…',
       success:
-        'Merci. Votre demande a bien été reçue — nous vous contacterons prochainement pour organiser votre présentation privée.',
+        'Merci. Votre demande a bien été reçue.',
       error: 'Une erreur s\'est produite. Veuillez réessayer.',
       phoneRequired: 'Un numéro de téléphone est nécessaire pour organiser une visite privée.',
     },
@@ -173,7 +173,7 @@ module.exports = {
   details: {
     label: 'Résidence',
     title: 'L\'offre',
-    lead: 'Disponible en vente privée. Dossier complet, plans et visuels supplémentaires sur demande.',
+    lead: 'À vendre. Le dossier comprend les plans disponibles, les spécifications et des visuels supplémentaires.',
     price: '1 980 000 €',
     location: 'Antibes, Côte d\'Azur',
     specs: [
@@ -188,7 +188,7 @@ module.exports = {
       { label: 'Cuisine', value: 'Contemporaine, sur mesure' },
       { label: 'Finitions', value: 'Prestations de luxe' },
     ],
-    note: 'Proposé en exclusivité et en toute discrétion par Finlay Brewer International — sans large commercialisation.',
+    note: 'Proposé par Finlay Brewer International.',
   },
 
   dossier: {
